@@ -285,6 +285,11 @@ button{
 }
 .card{
 	box-sizing: border-box;
+	border-bottom: 1px solid #f0f2f7;
+	background: #fff;
+	overflow: hidden;
+	border-radius: 2px;
+	box-shadow: 0 1px 3px rgba(26,26,26,0.1);
 }
 .story-tabCard{
 	height: 58px;
@@ -395,4 +400,68 @@ button{
 	background: url(../img/more_icon.png) no-repeat;
 	background-position: center center;
 	vertical-align: top;
+}
+
+
+
+.globalSideBar{
+	
+}
+.creatorEntrance{}
+.creatorEntrance-link{
+	display: block;
+	position: relative;
+}
+.creatorEntrance-Link--smallIcon{
+	padding: 0 17px;
+	
+}
+.creatorEntrance-Link--smallIcon .creatorEntrancePage-hint--smallIcon{
+	height: 52px;
+	line-height: 52px;
+	width: 100%;
+	padding: 0;
+	margin: 0 16px;
+}
+.create-icon{
+	
+}
+.creatorEntrance-text{
+	margin-left: 4px;
+}
+.arrowRight{
+	
+}
+.profileSideCreator-analytics{
+	border-top: 1px solid #f6f6f6;
+	padding: 20px 0;
+	width: 100%;
+}
+.profileSideCreator-readCountItem{
+	float: left;
+	width: 50%;
+	text-align: center;
+	border-right: 1px solid #ebebeb;
+}
+.profileSideCreator-readCountTitle{
+	font-size: 12px;
+	line-height: 22px;
+	text-align: center;
+}
+.profileSideCreator-readCountNumber{
+	font-size: 18px ;
+	color: #444;
+	line-height: 28px;
+	font-weight: 600;
+	text-align: center;
+	
+}
+.css_count{
+	text-align: center;
+}
+.css_before{
+	display: inline-block;
+}
+.css_before_count{
+	display: inline-block;
 }
