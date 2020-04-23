@@ -319,6 +319,15 @@ button{
     font-size: 13px;
     cursor: pointer;
 }
+.down-icon{
+	display: inline-block;
+	width: 10px;
+	height: 6px;
+	background: url(../img/arrow_down_icon.png) no-repeat;
+	background-position: center center;
+	background-size: contain;
+	margin-left: 3px;
+}
 .advert-signpc-popup{}
 .advert-signpc-popup--isHidden{
 	display: none;
