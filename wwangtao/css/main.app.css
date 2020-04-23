@@ -7,7 +7,7 @@ body{
 body, button, p{
 	margin: 0;
 }
-ul,ol{
+ul,ol,li,div{
 	margin: 0;
 	padding: 0;
 }
@@ -22,6 +22,10 @@ h1,h2,h3{
 	margin: 0;
 	font: inherit;
 }
+
+/**
+ * header
+ */
 .header{
 	background: #fff;
 }
@@ -271,7 +275,93 @@ button{
 	background-position: center center;
 	
 }
+.pc-feedAd-container{
+}
+.pc-feedAd{
+	font-size: 15px;
+}
+.pc-feedAd-card{}
+.pc-feedAd-card-brand{
+	display: inline-block;
+	margin-bottom: 11px;
+}
+.pc-feedAd-card-brand-wrapper {
+	
+}
+.pc-feedAd-card-brand-wrapper>img{
+	height: 24px;
+	width: 24px;
+	border-radius: 1px;
+	background: #fff;
+	vertical-align: middle;
+}
+.pc-feedAd-card-brand-wrapper>span{
+	margin-left: 12px;
+    color: #444;
+    font-size: 16px;
+    line-height: 24px;
+}
+.pc-feedAd-card-brand--bold{
+	font-weight: 600;
+}
+.pc-feedAd-card-brand-metaText{
+	color: #8590a6;
+    line-height: 24px;
+}
+.advert-signpc{
+	float: right;
+}
+.advert-signpc-label{
+	padding: 3px 6px;
+    border-radius: 3px;
+    color: #8590a6;
+    background: #f6f6f6;
+    font-size: 13px;
+    cursor: pointer;
+}
+.advert-signpc-popup{}
+.advert-signpc-popup--isHidden{
+	display: none;
+}
+.advert-signpc-popup-arrow{}
+.advert-signpc-popup-menu{}
+.pc-feedAd-card-title{
+	color: #1a1a1a;
+    font-weight: 600;
+    font-size: 18px;
+}
+.pc-feedAd-card-content{
+}
+.advertImg{
+	display: inline-block;
+}
 
+.pc-feedAd-card-content-cover{
+	width: 190px;
+    height: 105px;
+    border-radius: 4px;
+    margin-top: 4px;
+    overflow: hidden;
+    vertical-align: top
+}
+.advertImg img{
+	width: 100%;
+	height: 100%;
+}
+.advertImg--isLoaded{}
+.pc-feedAd-card-content-detail{
+	display: inline-block;
+	max-width: 410px;
+}
+.pc-feedAd-card-content-detail-cta {
+    display: inline-block;
+    padding: 0 3px;
+    color: #8590a6;
+    font-size: 14px;
+}
+/**
+ * left
+ */
 .app-main{}
 .story-wrapper{
 	margin-top: 10px;
@@ -403,7 +493,9 @@ button{
 }
 
 
-
+/**
+ * left  创作者中心
+ */
 .globalSideBar{
 	
 }
@@ -424,13 +516,35 @@ button{
 	margin: 0 16px;
 }
 .create-icon{
-	
+	display: inline-block;
+	width: 18px;
+	height:18px;
+	background: url(../img/create_icon.png) no-repeat;
+	background-position: center center;
+	background-size: contain;
+	vertical-align: middle;
+	margin-right: 4px;
 }
 .creatorEntrance-text{
 	margin-left: 4px;
 }
+.creatorEntrance-indexPageTitle{
+	font-size: 14px;
+    margin-left: 3px;
+    color: #8590a6;
+}
 .arrowRight{
 	
+}
+.arrowright-icon{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../img/arrows_right_double_icon.png) no-repeat;
+	background-position: center center;
+	position: absolute;
+	right: 16px;
+	top: 14px; 
 }
 .profileSideCreator-analytics{
 	border-top: 1px solid #f6f6f6;
@@ -444,6 +558,7 @@ button{
 	border-right: 1px solid #ebebeb;
 }
 .profileSideCreator-readCountTitle{
+	color: #8590a6;
 	font-size: 12px;
 	line-height: 22px;
 	text-align: center;
@@ -460,8 +575,111 @@ button{
 	text-align: center;
 }
 .css_before{
+    color: rgb(99, 133, 166);
 	display: inline-block;
 }
 .css_before_count{
 	display: inline-block;
 }
+
+/**
+ * left 关注微信公众号
+ */
+.wechat-follow-wrap{
+	padding: 20px;
+	margin-top: 10px;
+}
+.wechat-follow-title{
+	border-bottom: 2px solid #dcdcdc;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+.wechat-follow-title span{
+	font-size: 16px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #000;
+	
+}
+.wechat-icon{
+	vertical-align: middle;
+}
+.wechat-follow-con{
+	text-indent: 2em;
+}
+.wechat-scan{
+	float: left;
+}
+/**
+ * left 为你推荐
+ */
+.god-recommend{
+	margin-top:10px ;
+}
+.god-recommend-wrap{
+	padding: 16px;
+	
+}
+.god-recommend-tit{
+	font-size: 16px;
+    color: #4a4a4a;
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    position: relative;
+}
+.god-recommend-tit .line{
+	display: block;
+    float: left;
+    width: 3px;
+    height: 16px;
+    background: #0084ff;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+}
+.god-recommend-tit .txt{
+	display: block;
+    float: left;
+    font-size: 16px;
+    color: #2c3033;
+    margin-left: 5px;
+}
+.god-introuduce{
+	font-size: 12px;
+    color: #999;
+    letter-spacing: 0;
+    line-height: 18px;
+    max-height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.feed-god{}
+.god-recommend-items{}
+.god-recommend-item{
+	clear: both;
+}
+.img-box{
+	float: left;
+	margin-right: 10px;
+}
+.img-box img{
+	border-radius: 3px;
+}
+.god-content-box{}
+.god-content-box .god-recommend-title a{
+	max-width: 200px;
+	line-height: 22px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	letter-spacing: 0;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.god-recommend-title{}
