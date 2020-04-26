@@ -510,7 +510,7 @@ button{
  * left  创作者中心
  */
 .globalSideBar{
-	
+	margin-left: 659px;
 }
 .creatorEntrance{}
 .creatorEntrance-link{
@@ -763,7 +763,7 @@ button{
 }
 
 /**
- * detail.html left
+ * detail.html left 点赞分享评论
  */
 .functional-area-left{
 	width: 48px;
@@ -839,3 +839,50 @@ button{
 	color: #fff;
 	box-shadow: 0 2px 8px #0084ff;
 }
+/**
+ * detail.html 左侧内容
+ */
+.article-show{
+	padding: 20px;
+}
+.article-show h2{
+	font-size: 1.75rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px double rgba(0,0,0,0.1);
+}
+.article-show p{
+	text-indent: 2em;
+}
+.article-plan-title{
+	color: #212529!important;
+	font-weight: bold;
+	line-height: 1.2;
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+.itrip-article_tags{
+	margin-bottom: 20px;
+}
+.m-n1{
+	display: inline-block;
+}
+.m-1{}
+.badge-tag{
+	display: inline-block;
+	border-radius: 3px;
+	padding: 5px 5px;
+	color: #0084ff;
+	background: #D3E9F8;
+	
+	
+}
+.font-size-14{
+	display: inline-block
+}
+.image-wrapper{}
+.img-wrap{}
+.img-wrap .titleImage{
+	border-radius: 3px;
+}
+
