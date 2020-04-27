@@ -769,7 +769,7 @@ button{
 	width: 48px;
 	position: fixed;
 	top: 95px;
-	margin-left: -98px;
+	margin-left: -68px;
 }
 .text-center{
 	text-align: center;
@@ -885,4 +885,129 @@ button{
 .img-wrap .titleImage{
 	border-radius: 3px;
 }
+
+/**
+ * 评论区
+ */
+.comment-container{
+	height: 100%;
+}
+
+.comments{}
+.comments-wrapper{
+	padding: 0 20px;
+}
+
+.topbar{
+	border-bottom: 1px solid #f6f6f6;
+}
+.commentTopbar{
+	height: 50px;
+	line-height: 50px;
+}
+.comment-count{
+	display: inline-block;
+	color: #1a1a1a;
+	font-size: 15px;
+	font-weight: 600;
+	float: left;
+	
+}
+.comment-order{
+	display: inline-block;
+	float: right;
+}
+.comment-items{
+}
+.nestComment{
+	position: relative;
+}
+.nestComment:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: 0 20px;
+    border-bottom: 1px solid #f6f6f6;
+    content: "";
+}
+.nestComment-rootComment{
+	position: relative;
+}
+
+.commentItem{
+	padding: 12px 20px 10px;
+    font-size: 15px;
+}
+
+.commentItem-meta{}
+.comment-avater{
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+	margin-right: 4px;
+	background: #F6F6F6;
+}
+.commentItem-meta .user-nickName{
+	font-weight: 500;
+	text-align: center;
+}
+.commentItem-meta .commentItem_time{
+	float: right;
+}
+.commentItem-metaSibling{
+	padding-left: 33px;
+}
+.commentrichText{}
+.commentItem-content{
+	margin-bottom: 6px;
+    line-height: 25px;
+}
+.commentRichText{}
+.nestComment-child{
+	position: relative;
+	padding-left: 33px;
+	
+}
+
+
+.nestComment .nestComment-child:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin-right: 0;
+    margin-left: 56px;
+    border-bottom: 1px solid #f6f6f6;
+    content: "";
+}
+
+.pagination{
+	
+	border-top: 1px solid #ebebeb;
+	padding: 16px 20px;
+	text-align: center;
+	margin: 0 auto;
+}
+.pagination-button{
+	color: #1a1a1a;
+	padding: 0 15px;
+}
+.pagination-button.current{
+	color: #8590a6;
+}
+
+
+
+.commentItem-meta{}
+.comments-input-wrapper{
+	
+}
+.comments-input-wrap{
+	padding: 12px 20px;
+	border-top: 1px solid #ebebeb;
+}
+
 
