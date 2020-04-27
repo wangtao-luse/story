@@ -497,8 +497,8 @@ button{
 	vertical-align: top;
 	background-size: contain;
 }
-.like-icon{
-	background: url(../img/basic_heart.png) no-repeat;
+.eye-icon{
+	background: url(../img/basic_eye.png) no-repeat;
 	background-position: center center;
 	vertical-align: middle;
 	background-size: contain;
