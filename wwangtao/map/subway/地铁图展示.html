@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+		<title>地铁展示地图</title>
+		<style type="text/css">  
+	        html{height:100%}  
+	        body{height:100%;margin:0px;padding:0px}  
+	        #container{
+	        	height: 100%;
+	        	}  
+    	</style>
+    	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.0&type=webgl&ak=y2dGGznPhWsBZUInRvwgIc3e8rrtryds"></script>
+    	<script type="text/javascript" src="http://api.map.baidu.com/api?type=subway&v=1.0&ak=y2dGGznPhWsBZUInRvwgIc3e8rrtryds"></script>
+	</head>
+	<body>
+		<!-- 相关文档
+			http://lbsyun.baidu.com/index.php?title=jspopularGL/guide/show
+			具体步骤：
+			1.编写HTML页面的基础代码
+				完成头部文件和地图容器样式的编写，让地图容器充满网页。
+			2.引入百度地图API文件
+			3.初始化地图逻辑
+				首先创建地图实例，之后用一个Point坐标点和缩放级别来初始化地图
+			4.开启鼠标滚轮缩放
+				地图的鼠标滚轮缩放默认是关闭的，需要配置开启。
+			5.设置地图的旋转角度和倾斜角度
+				地图可以自定义旋转角度和倾斜角角度
+		-->
+		<div id="container"></div>
+		<script>
+		//1.地铁图展示
+		var subwayCityName = '北京';
+    	var list = BMapSub.SubwayCitiesList;
+    	var subwaycity = null;
+	    for (var i = 0; i < list.length; i++) {
+	        if (list[i].name === subwayCityName) {
+	            subwaycity = list[i];
+	            break;
+	        }
+	    }
+	    // 获取北京地铁数据-初始化地铁图
+	    var subway = new BMapSub.Subway('container', subwaycity.citycode);
+	    subway.setZoom(0.5);
+	    //2.添加缩放控件
+	    var zoomControl  = new BMapSub.ZoomControl({
+        anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
+        offset: new BMapSub.Size(10,100)
+        });
+		subway.addControl(zoomControl);	
+		//3.站点标注
+		var startIcon = new BMapSub.Icon(
+        'https://api.map.baidu.com/images/subway/start-bak.png',
+        new BMapSub.Size(50, 80)
+	    );
+	    var marker = new BMapSub.Marker('西直门', {icon: startIcon});
+	    subway.addMarker(marker);
+	    subway.setCenter('西直门');
+	    subway.setZoom(1);
+	    
+	    //4.信息窗口
+	    var infowindow = new BMapSub.InfoWindow(
+        '<div id="bd-subwayInfo">'
+        + '<div id="bd-subwayTitle">'
+        + '西直门'
+        + '</div>'
+        + '</div>'
+    );
+    subway.openInfoWindow(infowindow, '西直门');
+    subway.setCenter('西直门');
+    subway.setZoom(1);
+    
+    //5.站点点击事件
+     subway.addEventListener('tap', function(e) {
+        alert('您点击了"' + e.station.name + '"站');
+    });
+    //6.地铁图加载事件
+     subway.addEventListener('subwayloaded', function() {
+        alert('地铁图加载完成');
+    });
+    
+    //7.地点检索
+     subway.addEventListener('subwayloaded', function() {
+        var detail = new BMapSub.DetailInfo(subway);
+        detail.search('西直门');
+    });
+    // 地铁路线规划
+    subway.addEventListener('subwayloaded', function() {
+        var drct = new BMapSub.Direction(subway);
+        drct.search('西直门', '西红门');
+    });
+    subway.addEventListener('directioncomplete', function() {
+        alert('可以自定义点击详情后的操作！');
+    });
+		</script>
+	</body>
+</html>
+
