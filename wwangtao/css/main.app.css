@@ -27,6 +27,10 @@ h1,h2,h3,h4,h5,h6{
 	display: block;
 	clear: both;
 }
+em{
+	font-weight: bold;
+	font-style: normal;
+}
 /**
  * header
  */
@@ -851,8 +855,14 @@ button{
     padding-bottom: 0.5rem;
     border-bottom: 1px double rgba(0,0,0,0.1);
 }
+.article-show h3{
+	font-size: 1.25rem;
+	padding-bottom: 1.5rem;
+	padding-top: 1.5rem;
+}
 .article-show p{
 	text-indent: 2em;
+	line-height: 1.8;
 }
 .article-plan-title{
 	color: #212529!important;
