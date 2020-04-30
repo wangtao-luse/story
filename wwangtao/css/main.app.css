@@ -7,7 +7,7 @@ body{
 body, button, p{
 	margin: 0;
 }
-ul,ol,li,div{
+ul,ol,li,div,dl,dt,dd{
 	margin: 0;
 	padding: 0;
 }

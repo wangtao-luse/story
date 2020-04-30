@@ -1,0 +1,48 @@
+/**
+ * 布局修改
+ */
+.story-mainColumn{
+		margin-right: 0;
+		width: auto;
+		margin-left: 351px;
+		float: none;
+}
+.globalSideBar{			
+		width: 341px;
+		float: left;
+		margin-left: 0;
+}
+/**
+ * left
+ */
+.blog_container_aside{
+	
+}
+.aside{}
+.asideProfile{
+	margin-bottom: 10px;
+}
+.aside .profile-intro{
+	padding: 16px 16px 6px 16px;
+	
+}
+.aside .profile-intro .avatar-box {
+	display: inline-block;
+	position: relative;
+	width: 48px;
+	height: 48px;
+}
+.aside .profile-intro .user-info{
+display: inline-block;
+position: relative;	
+}
+.aside .profile-intro .avatar-box .avatar-pic{	
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+}
+.aside .profile-intro .user-info .name{
+	position: absolute;
+	top: -40px;
+	margin-left: 5px;
+}
