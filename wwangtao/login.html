@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>wangtao-欢迎登录</title>
+    <link rel="icon" href="img/favicon.ico" />
     <link type="text/css" rel="stylesheet" href="css/user-base.css" source="widget">
-    <script type="text/javascript" src="../../js/jquery-3.4.1.js.js"></script>
-    <script type="text/javascript" src="../../js/account/login.js"></script>
-   <style>
+    <style>
    	.login-form .login-tab-l, .login-form .login-tab-r {
      width: 100%;
    }
@@ -43,8 +42,8 @@
 <!-- SDK 登录 -->
 <div class="w">
     <div id="logo">
-        <a href="#" clstag="pageclick|keycount|20150112ABD|45">
-            <img src="#" alt="Ibeer" width="170" height="60">
+        <a href="#" clstag="#">
+            <img src="img/logo.png" alt="Ibeer" width="170" height="60">
         </a>
         <b></b>
     </div>
@@ -62,7 +61,8 @@
     		</div>
     	</div>
     </div>
-	--><div class="login-wrap">
+	-->
+	<div class="login-wrap">
         <div class="w">
             <div class="login-form">
             	<div class="tips-wrapper">
@@ -155,8 +155,8 @@
                             <ul>
                                 <li class="fore1">
                                     <span>打开</span>
-                                    <a href="#" target="_blank" clstag="pageclick|keycount|201607144|9">
-                                        <span class="red">手机京东</span></a>
+                                    <a href="#" target="_blank" clstag="#">
+                                        <span class="red">wangtao-攻略</span></a>
                                 </li>
                                 <li>扫描二维码</li>
                             </ul>
@@ -170,23 +170,30 @@
                         </div>
                     </div>
                 </div>
-                             <div class="coagent" id="kbCoagent">
+                <div class="coagent" id="kbCoagent">
                     <ul>
-                        						                        <li>
-                            <b></b>
-                            <a href="javascript:void(0)" onclick="#" clstag="#" class="pdl"><b class="QQ-icon"></b><span>QQ</span></a>
-                                                        <span class="line">|</span>
-                                                    </li>
-                                                                        <li>
-                            <a href="javascript:void(0)" onclick="window.location='//qq.jd.com/new/wx/login.action'+window.location.search;return false;" clstag="pageclick|keycount|login_pc_201804112|4" class="pdl"><b class="weixin-icon"></b><span>微信</span></a>
-								                        </li>
+                      <li>
+                        <b></b>
+                        <a href="javascript:void(0)" onclick="#" clstag="#" class="pdl">
+                        	<b class="QQ-icon"></b>
+                        	<span>QQ</span>
+                        </a>
+                        <span class="line">|</span>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" onclick="#" clstag="#" class="pdl">
+                        	<b class="weixin-icon"></b>
+                        	<span>微信</span>
+                        </a>
+					 </li>
                                                                                                 <li class="extra-r">
-                            <div>
+                <div>
                                                                     <div class="regist-link"><a href="https://reg.jd.com/p/regPage" clstag="pageclick|keycount|login_pc_201804112|5" target="_blank"><b></b>立即注册</a></div>
                                                             </div>
                         </li>
                     </ul>
-                </div>            </div>
+                </div>
+            </div>
         </div>
         <div class="login-banner" style="background-color: #1169EE">
         	  <div class="w">
@@ -218,70 +225,13 @@
             </a>
        </div>
         <div class="copyright">
-            Copyright&nbsp;&#169;&nbsp;2004-2019&nbsp;&nbsp;爱啤酒Ibeer.com&nbsp;版权所有
+            Copyright&nbsp;&#169;&nbsp;2004-2019&nbsp;&nbsp;爱旅行 wangtao.com&nbsp;版权所有
         </div>
     </div>
 </div>
-<script type="text/javascript">
-	~function () {
-		var data = [{
-			src:"../../img/account/login/3463e516aa794bed.jpg",
-			bgColor:"#061046", 
-			weight: ""
-			},
-			{src:"../../img/account/login/8d6e8af1f3e3448d.jpg",	
-			bgColor:"#f02665", 
-			weight: ""},
-		{src:"../../img/account/login/3b9f0c85f010bbe1.jpg",
-		  bgColor:"#cf0724",
-		  weight:""
-		}
-		];	
-		var getRandom = function (arr) {
-			var _temp = 0, _random = 0, _weight, _newArr = [];
-			for (var i = 0; i < arr.length; i++) {
-				_weight = parseInt(arr[i].weight) ? parseInt(arr[i].weight) : 1;
-				_newArr[i] = [];
-				_newArr[i].push(_temp);
-				_temp += _weight;
-				_newArr[i].push(_temp);
-			}
-			_random = Math.ceil(_temp * Math.random());	
-			for (var i = 0; i< _newArr.length; i++){
-				if(_random > _newArr[i][0] && _random <= _newArr[i][1]){
-					return arr[i];
-				}	
-			}	
-		};	
-		var tpl = '<div class="login-banner" style="background-color: {bgColor}">\    <div class="w">\	 <div id="banner-bg"  clstag="pageclick|keycount|20150112ABD|46" class="i-inner" style="background: url({imgURI}) 0px 0px no-repeat;background-color: {bgColor}"></div>\</div>\</div>';	
-		var bgData = getRandom(data);
-		var bannerHtml = tpl.replace(/{bgColor}/g, bgData.bgColor).replace(/{imgURI}/g, bgData.src);
-		$('.login-banner').replaceWith(bannerHtml);	}();
-</script>
 
-<script language="JavaScript">
-    function loginGetEid(count) {
-        if(count >= 4) {
-            return;
-        }
-        try {
-            if(typeof(getJdEid) == "function") {
-                getJdEid(function(eid,fp,udfp){
-                    $("#eid").prop("value", eid);
-                    $("#sessionId").prop("value", fp);
-                });
-            } else {
-                count ++;
-                setTimeout('loginGetEid('+count+')', 300);
-            }
-        }catch(e){
-            $("#eid").prop("value", "unknown");
-            $("#sessionId").prop("value", "unknown");
-        }
-    }
 
-    setTimeout('loginGetEid(0)', 1000);
-</script>
+
 
 
 </body>

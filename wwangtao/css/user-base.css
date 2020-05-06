@@ -529,7 +529,7 @@ a {
 }
 
 a:hover {
-	color: #E4393C;
+	color: #008FEE;
 	text-decoration: underline
 }
 
@@ -4685,12 +4685,12 @@ div.safetips {
 }
 
 .coagent .regist-link {
-	color: #b61d1d;
+	color: #0099FF;
 	font-size: 14px
 }
 
 .coagent .regist-link a {
-	color: #b61d1d
+	color: #0099FF
 }
 
 .coagent .regist-link b {

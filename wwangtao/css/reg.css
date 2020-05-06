@@ -4,9 +4,9 @@
 .i-error,
 .i-error1,
 .i-global,
-/*.i-suc {
-	background: url(/user/reg/3.0.0/css/i/icon.png) no-repeat
-}*/
+.i-suc {
+	background: url(../img/logo.png) no-repeat
+}
 
 .i-error {
 	background-position: -17px -100px
