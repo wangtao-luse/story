@@ -341,7 +341,7 @@ input::-ms-reveal {
 
 .progress-bar .pro-line,
 .progress-bar .pro-step .step-index {
-	background: url(../../../img/account/login/reg-icon.png) no-repeat
+	background: url(../img/account/reg-icon.png) no-repeat
 }
 
 .i-error {
