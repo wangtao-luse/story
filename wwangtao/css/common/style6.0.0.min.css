@@ -1,28 +1,28 @@
 @charset "UTF-8";
-.JDValidate-wrap * {
+.taoValidate-wrap * {
  margin:0;
  padding:0
 }
-.JDValidate-wrap .itour-slide,
-.JDValidate-wrap .itour-dsc,
-.JDValidate-wrap .itour-pic-click {
+.taoValidate-wrap .itour-slide,
+.taoValidate-wrap .itour-dsc,
+.taoValidate-wrap .itour-pic-click {
  position:relative;
  font-family:Helvetica,Tahoma,Arial,'Microsoft YaHei','微软雅黑',sans-serif;
  font-size:14px;
  -webkit-text-size-adjust:100%
 }
-.JDValidate-wrap .itour-slide-inner {
+.taoValidate-wrap .itour-slide-inner {
  position:absolute;
  left:0;
  top:0;
  width:100%;
  height:100%
 }
-.JDValidate-wrap .itour-slide-bg {
+.taoValidate-wrap .itour-slide-bg {
  height:40px;
  position:relative
 }
-.JDValidate-wrap .itour-slide-bar {
+.taoValidate-wrap .itour-slide-bar {
  display:none;
  width:44px;
  border-radius:30px;
@@ -31,14 +31,14 @@
  -webkit-transition:background .4s ease;
  transition:background .4s ease
 }
-.JDValidate-wrap .itour-slide-bar .itour-slide-bar-left {
- background:url(../img/account/slide-bar-left2.png) no-repeat;
+.taoValidate-wrap .itour-slide-bar .itour-slide-bar-left {
+ background:url(../../img/account/slide-bar-left2.png) no-repeat;
  width:24px;
  height:40px;
  float:left
 }
-.JDValidate-wrap .itour-slide-bar .itour-slide-bar-center {
- background-image:url(../img/account/slide-bar-bg.png);
+.taoValidate-wrap .itour-slide-bar .itour-slide-bar-center {
+ background-image:url(../../img/account/slide-bar-bg.png);
  margin-left:24px;
  margin-right:25px;
  color:#fff;
@@ -50,16 +50,16 @@
  text-overflow:ellipsis;
  white-space:nowrap
 }
-.JDValidate-wrap .itour-slide-bar .itour-slide-bar-right {
+.taoValidate-wrap .itour-slide-bar .itour-slide-bar-right {
  display:none;
  width:25px;
  height:40px;
- background:url(../img/account/slide-bar-right2.png) no-repeat;
+ background:url(../../img/account/slide-bar-right2.png) no-repeat;
  position:absolute;
  right:0;
  top:0
 }
-.JDValidate-wrap .itour-slide-text {
+.taoValidate-wrap .itour-slide-text {
  text-align:center;
  line-height:40px;
  font-size:14px;
@@ -67,90 +67,90 @@
  opacity:1;
  color:#10b2fa
 }
-.JDValidate-wrap .itour-slide-text .itour-slide-left {
+.taoValidate-wrap .itour-slide-text .itour-slide-left {
  float:left;
  width:40px;
  height:40px;
- background:url(../img/account/slide-left-icon2.png) no-repeat
+ background:url(../../img/account/slide-left-icon2.png) no-repeat
 }
-.JDValidate-wrap .itour-slide-text .itour-slide-center {
- background-image:url(../img/account/slide-center-bg.png);
+.taoValidate-wrap .itour-slide-text .itour-slide-center {
+ background-image:url(../../img/account/slide-center-bg.png);
  margin-left:40px;
  margin-right:40px;
  overflow:hidden;
  white-space:nowrap
 }
-.JDValidate-wrap .itour-slide-text .itour-slide-right {
+.taoValidate-wrap .itour-slide-text .itour-slide-right {
  width:40px;
  height:40px;
- background:url(../img/account/slide-right-icon2.png) no-repeat;
+ background:url(../../img/account/slide-right-icon2.png) no-repeat;
  position:absolute;
  right:0;
  top:0
 }
-.JDValidate-wrap .itour-slide-text-hide {
+.taoValidate-wrap .itour-slide-text-hide {
  visibility:hidden;
  opacity:0
 }
-.JDValidate-wrap .itour-slide-btn {
+.taoValidate-wrap .itour-slide-btn {
  margin-top:-6px;
  margin-left:-6px;
  width:55px;
  height:55px;
  border-radius:40px;
- background:url(../img/account/jd-slide-btn2.png) no-repeat;
+ background:url(../../img/account/jd-slide-btn2.png) no-repeat;
  cursor:pointer;
  touch-action:none
 }
-.JDValidate-wrap .itour-slide-succ .itour-slide-bar-right {
+.taoValidate-wrap .itour-slide-succ .itour-slide-bar-right {
  display:block
 }
-.JDValidate-wrap .itour-slide-succ .itour-slide-btn {
+.taoValidate-wrap .itour-slide-succ .itour-slide-btn {
  display:none
 }
-.JDValidate-wrap .itour-slide-err .itour-slide-bar .itour-slide-bar-left {
- background:url(../img/account/slide-bar-err-left2.png) no-repeat
+.taoValidate-wrap .itour-slide-err .itour-slide-bar .itour-slide-bar-left {
+ background:url(../../img/account/slide-bar-err-left2.png) no-repeat
 }
-.JDValidate-wrap .itour-slide-err .itour-slide-bar .itour-slide-bar-center {
- background-image:url(../img/account/slide-bar-err-bg.png)
+.taoValidate-wrap .itour-slide-err .itour-slide-bar .itour-slide-bar-center {
+ background-image:url(../../img/account/slide-bar-err-bg.png)
 }
-.JDValidate-wrap .itour-slide-err .itour-slide-btn .itour-slide-icon {
+.taoValidate-wrap .itour-slide-err .itour-slide-btn .itour-slide-icon {
  background:url(https://ivs.jd.com/slide/i/slide-err-icon.png) center center no-repeat
 }
-.JDValidate-wrap .itour-img-panel .itour-img-wrap {
+.taoValidate-wrap .itour-img-panel .itour-img-wrap {
  position:relative;
  width:100%
 }
-.JDValidate-wrap .itour-img-panel .itour-bigimg {
+.taoValidate-wrap .itour-img-panel .itour-bigimg {
  position:relative;
  left:0;
  top:0;
  width:100%
 }
-.JDValidate-wrap .itour-img-panel .itour-bigimg img {
+.taoValidate-wrap .itour-img-panel .itour-bigimg img {
  border-radius:3px;
  width:100%
 }
-.JDValidate-wrap .itour-img-panel .itour-smallimg {
+.taoValidate-wrap .itour-img-panel .itour-smallimg {
  touch-action:none;
  position:absolute;
  left:0;
  top:20px;
  width:50px
 }
-.JDValidate-wrap .itour-img-panel .itour-smallimg img {
+.taoValidate-wrap .itour-img-panel .itour-smallimg img {
  width:100%
 }
-.JDValidate-wrap .itour-img-panel .itour-refresh {
+.taoValidate-wrap .itour-img-panel .itour-refresh {
  height:25px
 }
-.JDValidate-wrap .itour-img-panel .itour-lable-refresh {
+.taoValidate-wrap .itour-img-panel .itour-lable-refresh {
  white-space:nowrap;
  overflow:hidden;
  width:59%;
  float:left
 }
-.JDValidate-wrap .itour-img-panel .itour-img-refresh {
+.taoValidate-wrap .itour-img-panel .itour-img-refresh {
  position:relative;
  float:right;
  padding-right:0;
@@ -158,16 +158,16 @@
  cursor:pointer;
  color:#06c
 }
-.JDValidate-wrap .itour-img-panel .itour-img-refresh div {
- background:url(../img/account/refresh2.png) center center no-repeat;
+.taoValidate-wrap .itour-img-panel .itour-img-refresh div {
+ background:url(../../img/account/refresh2.png) center center no-repeat;
  width:20px;
  height:20px;
  float:right
 }
-.JDValidate-wrap .itour-img-panel .itour-img-refresh span {
+.taoValidate-wrap .itour-img-panel .itour-img-refresh span {
  float:right
 }
-.JDValidate-wrap .itour-float {
+.taoValidate-wrap .itour-float {
  bottom:0;
  position:absolute;
  width:100%;
@@ -178,39 +178,39 @@
  transition:all .5s ease;
  visibility:hidden
 }
-.JDValidate-wrap .itour-float-hover {
+.taoValidate-wrap .itour-float-hover {
  visibility:visible;
  bottom:50px;
  opacity:1
 }
-.JDValidate-wrap .itour-embed,
-.JDValidate-wrap .itour-bind,
-.JDValidate-wrap .itour-popup,
-.JDValidate-wrap .itour-click-popup,
-.JDValidate-wrap .itour-click-suspend,
-.JDValidate-wrap .itour-click-bind-suspend {
+.taoValidate-wrap .itour-embed,
+.taoValidate-wrap .itour-bind,
+.taoValidate-wrap .itour-popup,
+.taoValidate-wrap .itour-click-popup,
+.taoValidate-wrap .itour-click-suspend,
+.taoValidate-wrap .itour-click-bind-suspend {
  margin-bottom:10px;
  position:relative;
  width:100%;
  visibility:visible
 }
-.JDValidate-wrap .itour-slide-intelligence .itour-slide-text {
+.taoValidate-wrap .itour-slide-intelligence .itour-slide-text {
  cursor:pointer;
  color:#45494c
 }
-.JDValidate-wrap .itour-slide-intelligence .itour-slide-text:hover {
+.taoValidate-wrap .itour-slide-intelligence .itour-slide-text:hover {
  color:#1991fa
 }
-.JDValidate-wrap .JRJRV-animate-el {
+.taoValidate-wrap .JRJRV-animate-el {
  -moz-transition:all .4s ease;
  -o-transition:all .4s ease;
  -webkit-transition:all .4s ease;
  transition:all .4s ease
 }
-.JDValidate-wrap .itour-bottom-slide-hide {
+.taoValidate-wrap .itour-bottom-slide-hide {
  margin-bottom:0
 }
-.JDValidate-wrap .itour-hide {
+.taoValidate-wrap .itour-hide {
  display:none
 }
 .itour-pop-wrap {
@@ -250,7 +250,7 @@
  display:block;
  width:12px;
  height:12px;
- background-image:url(../img/account/x.png)
+ background-image:url(../../img/account/x.png)
 }
 .itour-click-warp {
  border:1px solid #409eff;
@@ -307,13 +307,13 @@
  display:block;
  width:12px;
  height:12px;
- background-image:url(../img/account/x.png)
+ background-image:url(../../img/account/x.png)
 }
 .itour-suspend-warp .itour-arrow {
  z-index:2147483647;
  display:block;
  position:absolute;
- background-image:url(../img/tips.gif);
+ background-image:url(../../img/tips.gif);
  background-repeat:no-repeat;
  width:16px;
  height:8px;
@@ -382,7 +382,7 @@
  color:#06c
 }
 .itour-dsc .itour-question .itour-question-refresh div {
- background:url(../img/account/refresh2.png) center center no-repeat;
+ background:url(../../img/account/refresh2.png) center center no-repeat;
  width:20px;
  height:20px;
  float:right
@@ -399,12 +399,12 @@
 }
 .itour-dsc .itour-dsc-result-succ {
  display:block;
- background:url(../img/account/succ-icon.png) center center no-repeat;
+ background:url(../../img/account/succ-icon.png) center center no-repeat;
  background-size:100%
 }
 .itour-dsc .itour-dsc-result-err {
  display:block;
- background:url(../img/account/err-icon.png) center center no-repeat;
+ background:url(../../img/account/err-icon.png) center center no-repeat;
  background-size:100%
 }
 .itour-pic-click {
@@ -431,7 +431,7 @@
  color:#06c
 }
 .itour-pic-click .itour-question .itour-question-refresh div {
- background:url(../img/account/refresh2.png) center center no-repeat;
+ background:url(../../img/account/refresh2.png) center center no-repeat;
  width:20px;
  height:20px;
  float:right
@@ -494,41 +494,41 @@
  }
 }
 .itour-joybuy .itour-slide-bar .itour-slide-bar-left {
- background:url(../img/account/slide-bar-left2.png) no-repeat!important
+ background:url(../../img/account/slide-bar-left2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-bar .itour-slide-bar-center {
- background-image:url(../img/account/slide-bar-bg.png)!important
+ background-image:url(../../img/account/slide-bar-bg.png)!important
 }
 .itour-joybuy .itour-slide-bar .itour-slide-bar-right {
- background:url(../img/account/slide-bar-right2.png) no-repeat!important
+ background:url(../../img/account/slide-bar-right2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-left {
- background:url(../img/account/slide-left-icon2.png) no-repeat!important
+ background:url(../../img/account/slide-left-icon2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-center {
- background-image:url(../img/account/slide-center-bg.png)!important
+ background-image:url(../../img/account/slide-center-bg.png)!important
 }
 .itour-joybuy .itour-slide-right {
- background:url(../img/account/slide-right-icon2.png) no-repeat!important
+ background:url(../../img/account/slide-right-icon2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-btn {
- background:url(../img/account/jd-slide-btn2.png) no-repeat!important
+ background:url(../../img/account/jd-slide-btn2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-err .itour-slide-bar-left {
- background:url(../img/account/slide-bar-err-left2.png) no-repeat!important
+ background:url(../../img/account/slide-bar-err-left2.png) no-repeat!important
 }
 .itour-joybuy .itour-slide-err .itour-slide-bar-center {
- background-image:url(../img/account/slide-bar-err-bg.png)!important
+ background-image:url(../../img/account/slide-bar-err-bg.png)!important
 }
 .itour-joybuy .itour-slide-err .itour-slide-icon {
- background:url(../img/account/slide-err-icon.png) center center no-repeat!important
+ background:url(../../img/account/slide-err-icon.png) center center no-repeat!important
 }
 .itour-joybuy .itour-img-refresh div {
- background:url(../img/account/refresh2.png) center center no-repeat!important
+ background:url(../../img/account/refresh2.png) center center no-repeat!important
 }
 .itour-joybuy .itour-close {
- background-image:url(../img/account/x.png)!important
+ background-image:url(../../img/account/x.png)!important
 }
 .itour-joybuy .itour-arrow {
- background-image:url(../img/tips.gif)!important
+ background-image:url(../../img/tips.gif)!important
 }

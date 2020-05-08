@@ -1099,7 +1099,7 @@ body {
 .item-email-wrap {
 	height: 86px;
 	position: relative;
-	z-index: 1000
+	z-index: 2
 }
 
 .item-email-wrap .orPhone {
