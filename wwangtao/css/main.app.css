@@ -171,7 +171,7 @@ button{
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	background: url(../img/search_icon.png)no-repeat;
+	background: url(../img/travel/search_icon.png)no-repeat;
 	background-position: center center; 
 	position: absolute;
 	top: 9px;
@@ -200,7 +200,7 @@ button{
 }
 .message-icon{
 	display: inline-block;
-	background: url(../img/message_icon.png) no-repeat;
+	background: url(../img/travel/message_icon.png) no-repeat;
 	width: 16px;
 	height: 16px;	
 }
@@ -279,19 +279,19 @@ button{
 	height: 16px;	
 }
 .user-icon{	
-	background: url(../img/user_icon.png)no-repeat;
+	background: url(../img/travel/user_icon.png)no-repeat;
 	background-position: center center;
 }
 .writing-icon{	
-	background: url(../img/writing_icon.png) no-repeat;
+	background: url(../img/travel/writing_icon.png) no-repeat;
 	background-position: center center;
 }
 .setting-icon{	
-	background: url(../img/setting_icon.png) no-repeat;
+	background: url(../img/travel/setting_icon.png) no-repeat;
 	background-position: center center;
 }
 .power-icon{
-	background: url(../img/power_icon.png) no-repeat;
+	background: url(../img/travel/power_icon.png) no-repeat;
 	background-position: center center;
 	
 }
@@ -343,7 +343,7 @@ button{
 	display: inline-block;
 	width: 10px;
 	height: 6px;
-	background: url(../img/arrow_down_icon.png) no-repeat;
+	background: url(../img/travel/arrow_down_icon.png) no-repeat;
 	background-position: center center;
 	background-size: contain;
 	margin-left: 3px;
@@ -502,25 +502,25 @@ button{
 	background-size: contain;
 }
 .share-icon{
-	background: url(../img/basic_share.png) no-repeat;
+	background: url(../img/travel/basic_share.png) no-repeat;
 	background-position: center center;
 	vertical-align: top;
 	background-size: contain;
 }
 .collect-icon{
-	background: url(../img/basic_star.png) no-repeat;
+	background: url(../img/travel/basic_star.png) no-repeat;
 	background-position: center center;
 	vertical-align: top;
 	background-size: contain;
 }
 .eye-icon{
-	background: url(../img/basic_eye.png) no-repeat;
+	background: url(../img/travel/basic_eye.png) no-repeat;
 	background-position: center center;
 	vertical-align: middle;
 	background-size: contain;
 }
 .more-icon{
-	background: url(../img/more_icon.png) no-repeat;
+	background: url(../img/travel/more_icon.png) no-repeat;
 	background-position: center center;
 	vertical-align: top;
 }
@@ -552,7 +552,7 @@ button{
 	display: inline-block;
 	width: 18px;
 	height:18px;
-	background: url(../img/create_icon.png) no-repeat;
+	background: url(../img/travel/create_icon.png) no-repeat;
 	background-position: center center;
 	background-size: contain;
 	vertical-align: middle;
@@ -573,7 +573,7 @@ button{
 	display: inline-block;
 	width: 24px;
 	height: 24px;
-	background: url(../img/arrows_right_double_icon.png) no-repeat;
+	background: url(../img/travel/arrows_right_double_icon.png) no-repeat;
 	background-position: center center;
 	position: absolute;
 	right: 16px;
