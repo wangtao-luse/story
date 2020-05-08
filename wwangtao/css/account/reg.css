@@ -5,7 +5,7 @@
 .i-error1,
 .i-global,
 .i-suc {
-	background: url(../img/logo.png) no-repeat
+	background: url(../../img/logo.png) no-repeat
 }
 
 .i-error {
@@ -34,7 +34,7 @@
 
 .header {
 	height: 110px;
-	background: url(../img/account/headbg.jpg) repeat-x left bottom
+	background: url(../../img/account/headbg.jpg) repeat-x left bottom
 }
 
 .header .logo {
@@ -46,11 +46,11 @@
 
 .header .logo-title {
 	float: left;
-	height: 34px;
-	line-height: 34px;
+	height: 50px;
+	line-height: 50px;
 	font-size: 24px;
 	color: #333;
-	margin-top: 34px
+	margin-top: 18px
 }
 
 .header .have-account {
@@ -82,7 +82,7 @@
 .i-suc,
 .registerDialog .close,
 .registerDialog .ico {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/icon.png) no-repeat
+	background: url(icon.png) no-repeat
 }
 
 .i-error {
@@ -289,7 +289,7 @@ input::-ms-reveal {
 	background: #e22;
 	border: 0;
 	font-size: 16px;
-	font-family: "Microsoft YaHei", "Hiragino Sans GB"
+	font-family: inherit;
 }
 
 .en-register .user-suggest .disable .value span {
@@ -297,7 +297,7 @@ input::-ms-reveal {
 }
 
 .en-register .header .logo {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/jdcloud-en-logo.png);
+	background: url(jdcloud-en-logo.png);
 	background-size: contain;
 	height: 43px
 }
@@ -336,12 +336,12 @@ input::-ms-reveal {
 .i-error1,
 .i-global,
 .i-suc {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/icon.png) no-repeat
+	background: url(icon.png) no-repeat
 }
 
 .progress-bar .pro-line,
 .progress-bar .pro-step .step-index {
-	background: url(../img/account/reg-icon.png) no-repeat
+	background: url(../../img/account/reg-icon.png) no-repeat
 }
 
 .i-error {
@@ -492,14 +492,14 @@ input::-ms-reveal {
 .i-pwd-strong,
 .i-pwd-weak,
 .i-suc {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/icon.png) no-repeat
+	background: url(icon.png) no-repeat
 }
 
 .form-agreen .agree-tip i,
 .form-agreen .sim-checkbox,
 .form-item .i-cancel,
 .reg-other .reg-ohter-icon {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/reg-icon.png) no-repeat
+	background: url(../../img/account/reg-icon.png) no-repeat
 }
 
 .i-error {
@@ -721,7 +721,7 @@ body {
 }
 
 .form-item-phone .arrow {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/icon.png) no-repeat;
+	background: url(icon.png) no-repeat;
 	width: 15px;
 	height: 15px;
 	display: inline-block;
@@ -814,7 +814,7 @@ body {
 }
 
 .pending .i-status {
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/loading.gif);
+	background: url(loading.gif);
 	display: block
 }
 
@@ -860,7 +860,6 @@ body {
 	background: #0084ff;
 	border: 0;
 	font-size: 16px;
-	font-family: "Microsoft YaHei", "Hiragino Sans GB";
 	cursor: pointer
 }
 
@@ -1210,7 +1209,7 @@ body {
 }
 
 .ui-dialog .ui-dialog-close {
-	background: url(../../../img/account/login/x.png) no-repeat;
+	background: url(../../img/account/x.png) no-repeat;
 	background-size: 13px 13px
 }
 
@@ -1239,7 +1238,7 @@ body {
 .slide-authCode-wraper .arrow {
 	display: block;
 	position: absolute;
-	background-image: url(../../../img/reg/tips.gif);
+	background-image: url(../../img/tips.gif);
 	background-repeat: no-repeat;
 	width: 16px;
 	height: 8px;
@@ -1258,7 +1257,7 @@ body {
 	display: block;
 	width: 12px;
 	height: 12px;
-	background-image: url(../img/account/x.png)
+	background-image: url(../../img/account/x.png)
 }
 
 #step2-wrap {
@@ -1302,7 +1301,7 @@ body {
 /* foreign-number-layer-170524.css Date:2018-07-23 18:59:01 */
 
 #country_code_layer {
-	font-family: "Microsoft YaHei";
+	font-family: inherit;
 	display: none;
 	background-color: #fff;
 	position: absolute;
@@ -1323,7 +1322,7 @@ body {
 	right: 4px;
 	top: 5px;
 	position: absolute;
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/widget/foreign-number-layer-170524/i/close-button.png) no-repeat;
+	background: url(close-button.png) no-repeat;
 	width: 17px;
 	height: 17px
 }
@@ -1331,7 +1330,7 @@ body {
 #country_code_layer .arrow {
 	display: block;
 	position: absolute;
-	background-image: url(//misc.360buyimg.com/user/reg/3.0.0/widget/foreign-number-layer-170524/i/tips.gif);
+	background-image: url(../../img/tips.gif);
 	background-repeat: no-repeat;
 	width: 16px;
 	height: 9px;
@@ -1368,7 +1367,7 @@ body {
 	display: inline-block;
 	width: 17px;
 	height: 16px;
-	background: url(//misc.360buyimg.com/user/reg/3.0.0/css/i/search-icon.png) no-repeat;
+	background: url(search-icon.png) no-repeat;
 	position: absolute;
 	left: 17px;
 	top: 13px
