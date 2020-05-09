@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<style type="text/css">
+	
 			.protocol a{color:#c81623;text-decoration: underline;}</style>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -76,7 +77,7 @@
                 <input id="slideSuccessMsg" value="" type="hidden">
                 <input type="hidden" id="popupProtocol" value="1">
                 <div id="step1-wrap">
-                    <div class="item-phone-wrap" style="display: none;">
+                   <!-- <div class="item-phone-wrap" style="display: none;">
                         <div class="form-item form-item-phone">
                             <label class="select-country" id="select-country" country_id="0086">中国 0086<a href="javascript:void(0)" class="arrow"></a></label>
                             <div class="item-input-wrap">
@@ -88,15 +89,25 @@
                                 <span></span>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="item-email-wrap">
-                        <div class="form-item">
+                        <div class="form-item form-item-email form-item-valid">
                             <label>邮 箱 验 证</label>
                             <input type="text" name="email" id="form-email" class="field" autocomplete="off" maxlength="50" placeholder="请输入邮箱" default="&lt;i class='i-def'&gt;&lt;/i&gt;验证完成后，你可以使用该邮箱登录">
                             <i class="i-status"></i>
-                        <ul class="suggest-container email-suggest"><li class=""><div class="value">@qq.com</div></li><li class=""><div class="value">@163.com</div></li><li class=""><div class="value">@126.com</div></li><li class=""><div class="value">@Gmail.com</div></li><li class=""><div class="value">@Sohu.com</div></li><li class="suggest-li-last "><div class="value">@Sina.com</div></li></ul></div>
-                        <div class="input-tip">
-                            <span></span>
+	                        <ul class="suggest-container email-suggest">
+	                        	<li class=""><div class="value">@qq.com</div></li>
+	                        	<li class=""><div class="value">@163.com</div></li>
+	                        	<li class=""><div class="value">@126.com</div></li>
+	                        	<li class=""><div class="value">@Gmail.com</div></li>
+	                        	<li class=""><div class="value">@Sohu.com</div></li>
+	                        	<li class="suggest-li-last "><div class="value">@Sina.com</div></li>
+	                        </ul>
+                        </div>
+                        <div class="input-tip">                            
+                            <span id="form-email-error" class="error">
+                            	<i class="i-error"></i>格式错误
+                            </span>
                         </div>
                     </div>
                     <div class="item-getcode-wrap">
@@ -182,7 +193,7 @@
                     <div class="input-tip">
                         <span></span>
                     </div>
-                    <div class="item-email-wrap" style="display: none;">
+                   <!-- <div class="item-email-wrap" style="display: none;">
                         <div class="form-item">
                             <label>邮 箱 验 证</label>
                             <input type="text" name="email" id="form-email" class="field" autocomplete="off" maxlength="50" placeholder="请输入邮箱" default="&lt;i class='i-def'&gt;&lt;/i&gt;验证完成后，你可以使用该邮箱登录">
@@ -191,8 +202,8 @@
                         <div class="input-tip">
                             <span></span>
                         </div>
-                    </div>
-                    <div class="item-mailcode-wrap">
+                    </div>-->
+                 <!--   <div class="item-mailcode-wrap">
                         <div class="form-item form-item-mailcode">
                             <div class="mailcode-left">
                                 <label>邮箱验证码</label>
@@ -205,8 +216,8 @@
                                 <span></span>
                             </div>
                         </div>
-                    </div>
-                    <div><button class="btn-register" id="form-register" clstag="#">立即注册</button></div>
+                    </div>-->
+                    <div><button type="button" class="btn-register" id="form-register" clstag="#">立即注册</button></div>
                     <div class="input-tip">
                         <span></span>
                     </div>
