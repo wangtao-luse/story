@@ -12,7 +12,18 @@
     <link type="text/css" rel="stylesheet" href="../css/account/reg.css">
     <link type="text/css" rel="stylesheet" href="../css/common/style6.0.0.min.css" />
     <script src="../js/jquery-3.4.1.js.js"></script>
-        
+    <script>
+    	$(function(){
+    		$(".checkCode").click(function(){
+        		 //显示验证码浮出层
+        		 $(".slide-authCode-wraper").css("display","block");
+			});
+			$(".slide-authCode-wraper .close").click(function(){
+    	    	$(".slide-authCode-wraper").css("display","none");
+    	    });
+    	});
+    	   
+    </script>    
 <body>
         <!-- widget header begin -->
     <div class="header">
@@ -74,15 +85,8 @@
                     <div class="item-email-wrap">
                         <div class="form-item form-item-email form-item-valid">
                             <input type="text" name="email" id="form-email" class="field" autocomplete="off" maxlength="50" placeholder="请输入用户名/邮箱" default="&lt;i class='i-def'&gt;&lt;/i&gt;验证完成后，你可以使用该邮箱登录">
-                            <i class="i-status"></i>
-	                        <ul class="suggest-container email-suggest">
-	                        	<li class=""><div class="value">@qq.com</div></li>
-	                        	<li class=""><div class="value">@163.com</div></li>
-	                        	<li class=""><div class="value">@126.com</div></li>
-	                        	<li class=""><div class="value">@Gmail.com</div></li>
-	                        	<li class=""><div class="value">@Sohu.com</div></li>
-	                        	<li class="suggest-li-last "><div class="value">@Sina.com</div></li>
-	                        </ul>
+                            <!--<i class="i-status"></i>-->
+	                       
                         </div>
                         <div class="input-tip">                            
                             <span id="form-email-error" class="error">
@@ -92,7 +96,7 @@
                     </div>
                     <div class="item-getcode-wrap">
                         <div class="form-item form-item-getcode" clstag="#">
-                                                           点击按钮进行验证 
+                            <div class="checkCode">点击按钮进行验证</div> 
                             <div class="slide-authCode-wraper" style="display: none;">
                             	<a class="arrow"></a>
                             	<a class="close"></a>
