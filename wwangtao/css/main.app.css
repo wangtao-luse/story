@@ -177,7 +177,19 @@ button{
 	top: 9px;
 	right: 9px;
 }
-
+.header-button{
+	display: inline-block;
+	margin-left: 30px;
+}
+.blue-btn{
+	color: #fff;
+	border-color: #0084FF;
+	background-color: #0084FF;
+	margin-right: 10px;
+}
+.blue-btn:hover{
+	background-color:#1890FF;
+}
 .header-userinfo{
 	float: right;
 }
@@ -432,7 +444,7 @@ button{
 .story-recommend{}
 .storyItem{}
 
-.storyItem-isRecommend{
+.storyItem-isRecommend,.storyItem-isPlan,.storyItem-isVlog{
 	padding: 20px;
 }
 .contentItem_title{
@@ -460,7 +472,8 @@ button{
 	border-radius: 4px;
 }
 .richContent-cover-inner{
-	
+	height: inherit;
+	width: inherit;
 }
 .richContent-cover-inner img{
 	width: 100%;
