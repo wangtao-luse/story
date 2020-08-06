@@ -1,0 +1,147 @@
+body{}
+.video-container{}
+.ivideo{
+	max-width: 1000px;
+	border: 1px solid red;
+	margin: 24px auto;
+	padding: 0 16px;
+}
+.video_mainColumn{
+	margin-right: 286px;
+}
+.video_viedo{
+	width: 694px;
+	height: 390px;
+	border: 1px solid green;
+}
+.video_author{
+	margin: 16px 0;
+}
+.video-authorAvatar{
+	margin-right: 8px;
+}
+.video-authorContent{
+display: inline-block;
+}
+.follow_me{
+float: right;
+margin-right: 16px;
+}
+.video-content{
+	
+}
+.video-headline{}
+.video-title{
+	font-size: 18px;
+	line-height: 25px;
+	color: #1a1a1;
+	font-weight: 600;
+	
+}
+.video-meta{
+	margin-top: 6px;
+	font-size: 14px;
+	line-height: 17px;
+	color: #999;
+}
+.videoToolbar{
+	margin-bottom: 14px;
+}
+.contentItem-actions{
+	padding: 10px 20px;
+	color: #646464;
+	background: #fff;
+}
+.video_tags{
+border-bottom: 1px solid #f6f6f6;
+border-top: 1px solid #f6f6f6;	
+}
+.video-tagsContainer{
+	padding: 16px 0;
+}
+.video-sliderColumn{
+margin-left: 20px;
+width: 286px;
+float: right;	
+}
+.video_recomment_title{
+	margin-bottom: 6px;
+    font-size: 17px;
+    line-height: 20px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+.video_recommend_item{
+	display: block;
+    padding: 12px 16px;
+    margin: 0 -16px;
+}
+.video_recommend_item_thumbnail{
+	float:left;
+	position: relative;
+    width: 112px;
+    height: 70px;
+    margin-right: 12px;
+    border-radius: 6px;
+}
+.video_recommend_item_thumbnailImg{
+	display: block;
+	width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+.video_RecommendationItem_duration{
+position: absolute;
+    z-index: 1;
+    right: 6px;
+    bottom: 6px;
+    font-size: 12px;
+    line-height: 12px;
+    color: hsla(0,0%,100%,.9);
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);	
+}
+.videoRecommendationItem-thumbnail{
+	width: 112px;
+    height: 70px;
+    margin-right: 12px;
+    border-radius: 6px;
+}
+.videoRecommendationItem-content{
+	width: 162px;
+	float: left;
+	overflow: hidden;
+}
+.videoRecommendationItem-title {
+    font-size: 15px;
+    line-height: 22px;
+    color: #1a1a1a;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.videoRecommendationItem-meta{
+    font-size: 12px;
+    line-height: 16px;
+    color: #999;
+   
+}
+.videoRecommendationItem-avatar {
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    border-radius: 50%; 
+    vertical-align: top;
+    margin-top: 6px;
+}
+.videoRecommendationItem-avatarImage{
+	width: 100%;
+	height: 100%;
+}
+.video-info{
+	display: inline-block;
+	width: 132px;
+	
+}
