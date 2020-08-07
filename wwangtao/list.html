@@ -163,17 +163,17 @@
 			width: 600px;
 			margin: 10px auto;
 			border: 1px solid palegreen;
-			word-break: break-all;
-		}
-		.info{
-			display: block;
-			overflow:hidden; 
-			width: 160px;
 		}
 		.avatar-image{
 			float: left;
 			vertical-align: middle;
 		}
+		.info{
+			display: block;
+			overflow:hidden; 
+			width: 300px;
+		}
+		
 	</style>
 	  <div class="video-wrap clearfix">
 	    		<span >
@@ -200,5 +200,49 @@
 	    			        
 	    				
 	    </div>
+	    <style>
+	    	a{text-decoration: none;}
+	    	.video_author{
+	    		width: 600px;
+	    		margin: 0 auto;
+	    		height: 36px;
+	    		line-height: 36px;
+	    		border: 1px solid red;
+	    	}
+	    	.video-authorAvatar{
+	    		float: left;
+	    		margin-right: 8px;
+	    	}
+	    	.video-authorContent{
+	    		float: left;
+	    	}
+	    	.follow_me{
+	    		float: right;
+	    	}
+	    </style>
+<div class="video_author">
+	<span class="userLink video-authorAvatar">
+		<a href="#"><img alt="观察网" width="34" height="34" src="https://pic3.zhimg.com/v2-bee337c97796fae3dc71c0ea42ddc57e_im.jpg?source=12a79843" class="Avatar UserLink-avatar"></a>
+	</span>
+	<div class="video-authorContent">
+		<span class="userLink video-authorName">
+			<a href="#" class="userLink-link" alt="22">wangtao</a>
+			<a href="#">
+				<span class="icon"></span>
+			</a>
+		</span>
+	    <span class="userLink video-authorDescription">
+	    	<a href="#">
+	    		<div class="video-author-descText">已认证账号</div>
+	    	</a>
+	    </span>
+	</div>
+	<div class="follow_me">
+		<button class="Button FollowButton ZVideo-authorFollowButton Button--blue">
+    	<span></span>关注
+    </button>
+	</div>
+				    
+</div>
 	</body>
 </html>
