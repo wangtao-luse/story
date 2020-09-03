@@ -11,14 +11,26 @@
 	    		$(".listShortcut .voteButton--up").click(function(){
 	    			var c = $(this).hasClass("is-active");
 	    			if(c){
+	    				var alias = $(this).attr("alias");
+	    			    var alia = parseInt(alias)-1;
+	    			    $(this).attr("alias",alia);
+	    			    $(this).text("赞同 "+alia);
 	    				$(this).removeClass("is-active");
 	    			}else{
+	    				var alias = $(this).attr("alias");
+	    			    var alia = parseInt(alias)+1;
+	    			    $(this).attr("alias",alia);
+	    			    $(this).text("已赞同 "+alia);
 	    				$(this).addClass("is-active");
 	    			}
 					
 				});
-				
-				
+				$(".collectBtn").click(function(){
+					$(".Modal-wrapper").show();
+				});
+				$(".Modal-closeButton").click(function(){
+					$(".Modal-wrapper").hide()
+				});
 	    	});
 	    </script>
 	</head>
@@ -134,8 +146,8 @@
 			   	    					</div>
 			   	    					<div class="contentItem-actions">
 			   	    						<div class="item_action">
-			   	    							<button class="button voteButton voteButton--up">赞同&nbsp;6707</button>
-			   	    							<button class="button contentItem-action button--plain button--withIcon button--withLabel">
+			   	    							<button class="button voteButton voteButton--up" alias="6707">赞同&nbsp;6707</button>
+			   	    							<button class="button button--plain button--withIcon button--withLabel">
 			   	    								<span class="comment-icon icon"></span>2,267条评论
 			   	    							</button>
 			   	    							<div class="popover shareMenu contentItem-action">
@@ -144,7 +156,7 @@
 			   	    							</button>
 			   	    							</div>
 			   	    							
-			   	    							<button class="button contentItem-action button--plain button--withIcon button--withLabel">
+			   	    							<button class="button collectBtn contentItem-action button--plain button--withIcon button--withLabel">
 			   	    								<span class="collect-icon icon"></span>收藏
 			   	    							</button>
 			   	    							<button class="button contentItem-action button--plain button--withIcon button--withLabel">
@@ -501,6 +513,220 @@
 			   </div>
 			</div>
 		</div>
-		
+		<style>
+			h1, h2, h3 {
+			    margin: 0;
+			    font: inherit;
+			}
+			.Modal-wrapper{
+				position: fixed;
+				right: 0;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 100;
+			}
+			.Modal-backdrop{
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				background-color: rgba(26,26,26,0.65);
+				z-index: 0;
+			}
+		    .Modal{
+		    	position: relative;
+		    	z-index: 1;
+		    	width: 400px;
+		    	margin: 0 auto;
+		    	box-shadow: 0 5px 20px rgba(26,26,26,.1);
+		    }
+		    .Modal-large{
+		    	width: 536px;
+		    }
+		    .Modal-inner{
+		    	background: #FFF;
+		    	border-radius: 2px;
+		    }
+		    .Modal-title {
+			    margin-top: 40px;
+			    font-size: 24px;
+			    font-weight: 500;
+			    color: #1a1a1a;
+			    text-align: center;
+		 	}
+		 	.Modal-subtitle {
+			    padding: 0 38px;
+			    margin-top: 4px;
+			    font-size: 14px;
+			    line-height: 1.5;
+			    color: #8590a6;
+			    text-align: center;
+			}
+			.Modal-content {
+			    padding: 0 24px 32px;
+			    margin-top: 24px;
+			    line-height: 1.7;
+			    opacity: 1;
+			}
+			.Favlists-content{}
+			.Favlists-items {
+			    max-height: 335px;
+			    min-height: 140px;
+			    margin-bottom: 40px;
+			    overflow-x: hidden;
+			    overflow-y: auto;
+			}
+			.Favlists-item{
+				padding: 8px 0;
+    			border-bottom: 1px solid #ebebeb;
+			}
+			.Favlists-updateButton {
+			    padding-left: 0;
+			    padding-right: 0;
+			    width: 76px;
+			}
+			.Button--blue {
+			    color: #0084ff;
+			    border-color: #0084ff;
+			}
+			.fr{
+				float: right;
+			}
+			.fl{
+				float: left;
+			}
+			.mt6{
+				margin-top: 6px;
+			}
+			.Favlists-actions {
+			    padding: 16px 20px;
+			    text-align: center;
+			}
+			.Favlists-addButton {
+    			width: 220px;
+			}
+			.button--primary.button--blue {
+			    color: #fff;
+			    background-color: #0084ff;
+			}
+			.Modal-closeButton {
+			    position: absolute;
+			    top: 0px;
+			    right: 0px;
+			    padding: 2px;
+			    background: transparent;
+			}
+			.icon-close{
+				display: block;
+			    width: 25px;
+			    height: 25px;
+			    background: url(img/icon/btn-dialog-close.png) 0 0 no-repeat;
+			    cursor: pointer;
+			}
+			.icon-close:hover {
+    			background-position: 0 -25px;
+			}
+		</style>
+		<div class="Modal-wrapper" style="display: none;">
+			<div class="Modal-backdrop"></div>
+			<div class="Modal Modal-large">
+				<div class="Modal-inner">
+					<h3 class="Modal-title">添加收藏</h3>
+					<div class="Modal-subtitle">请选择你想添加的收藏夹</div>
+					<div class="Modal-content">
+						<div class="Favlists-content">
+							<div class="Favlists-items">
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+								<div class="Favlists-item clearfix">
+									<div class="Favlists-itemInner">
+										<div class="fl">
+											<div class="Favlists-itemName">
+												<span class="Favlists-itemNameText">图片处理工具</span>
+											</div>
+											<div class="Favlists-itemContent">1条内容</div>
+										</div>
+										<div class="fr">
+											<button type="button" class="button mt6 Favlists-updateButton Button--blue">收藏</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						    <div class="Favlists-actions">
+						    	<button type="button" class="button Favlists-addButton button--primary button--blue">创建收藏夹</button>
+						    </div>
+						</div>
+					</div>
+				</div>
+			    <button type="button" class="Button Modal-closeButton Button--plain">
+			    	<span class="icon-close"></span>
+			    </button>
+			</div>
+		</div>		
 	</body>
 </html>
