@@ -501,6 +501,14 @@ button{
     border-color: transparent;
     
 }
+.voteButton.is-active {
+    color: #fff;
+    background: #0084ff;
+}
+.storyItem .button:not(.button--plain):not(.button--link) {
+    line-height: 30px;
+    padding: 0 12px;
+}
 .contentItem-action{
 	margin-left: 24px;
 	font-size: 14px;

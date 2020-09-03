@@ -5,7 +5,24 @@
 		<title>wangtao-首页</title>
 		<link rel="icon" href="img/favicon.ico" />
 		<link rel="stylesheet" href="css/main.app.css" />
+		<script src="js/jquery-3.4.1.js.js"></script>
+	    <script>
+	    	$(function(){
+	    		$(".listShortcut .voteButton--up").click(function(){
+	    			var c = $(this).hasClass("is-active");
+	    			if(c){
+	    				$(this).removeClass("is-active");
+	    			}else{
+	    				$(this).addClass("is-active");
+	    			}
+					
+				});
+				
+				
+	    	});
+	    </script>
 	</head>
+	
 	<body>
 		<div class="mod-container">
 			<div class="header">
@@ -117,7 +134,7 @@
 			   	    					</div>
 			   	    					<div class="contentItem-actions">
 			   	    						<div class="item_action">
-			   	    							<button class="button voteButton voteButton--up">赞同6707</button>
+			   	    							<button class="button voteButton voteButton--up">赞同&nbsp;6707</button>
 			   	    							<button class="button contentItem-action button--plain button--withIcon button--withLabel">
 			   	    								<span class="comment-icon icon"></span>2,267条评论
 			   	    							</button>
