@@ -485,9 +485,12 @@ button{
 .contentItem-actions{
 	padding: 10px 0;
 	clear: both;
+	height: 32px;
 }
 .item_action{
-	
+	position: absolute;
+    height: 32px;
+    padding: 10px 0;
 }
 .contentItem-actions .popover{
 	display: inline-block;
