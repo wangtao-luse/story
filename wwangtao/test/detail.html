@@ -463,7 +463,6 @@
         	$(function(){
         		$("#is-like").click(function(){
         			var count=$(this).find(".count").text();
-        			
 	        		if($("#is-like-img").is(':hidden')){//取消点赞
 		        		$("#is-like-imgactive").hide();
 		        		$(this).find(".name").text("点赞");
@@ -478,11 +477,10 @@
         		});
         		$("#tool-share").click(function(){
         			$("#tool-QRcode").css("left","-92%");
-        			$(".more-toolbox-active").removeClass("more-toolbox-active");
-        			
-                    
+        			//$(".more-toolbox").removeClass("more-toolbox-active");
         			$("#tool-QRcode").show();
         		});
+        		
         		var tool=$(".more-toolbox .left-toolbox").offset();
         		var top =tool.top;
         		var top =tool.left;
@@ -490,27 +488,33 @@
         		$(window).scroll(function(){
         			var s = $(document).scrollTop();
         			console.log(s);
-        			if(parseFloat(s)>500){
+        			//分享
+        			if(parseFloat(s)>=parseFloat(top)){
+        			    $(".more-toolbox").removeClass("more-toolbox-active");
+        			    $(".more-toolbox .tool-active .QRcode").css("top","");
+        			}else{
         				$(".more-toolbox").addClass("more-toolbox-active");
         				$(".more-toolbox .tool-active .QRcode").css("top","-240px");
-        			}else{
-        				$("#tool-QRcode").css("left","-92%");
-        			    $(".more-toolbox-active").removeClass("more-toolbox-active");
         			}
-        			
+        			//left-toolbox
         			if(parseFloat(s)>=parseFloat(top)){
-        			$(".more-toolbox .left-toolbox")
-        			.css("position","relative")
-        			.css("bottom","0px")
-        			/*.css("left","0px")*/
-        			.css("width","1010px")
-  				}else{
-  					$(".more-toolbox .left-toolbox")
-        			.css("position","fixed")
-        			/*.css("left","410px")*/
-        			.css("bottom","0px")
-        			.css("width","1010px")
-  				}
+	        			$(".more-toolbox .left-toolbox")
+	        			.css("position","relative")
+	        			.css("bottom","0px")
+	        			/*.css("left","0px")*/
+	        			.css("width","1010px");
+  					}else{
+	  					$(".more-toolbox .left-toolbox")
+	        			.css("position","fixed")
+	        			/*.css("left","410px")*/
+	        			.css("bottom","0px")
+	        			.css("width","1010px")
+	  				}
+        		});
+        		
+        		$(".QRcode-close").click(function(){
+        			//https://blog.csdn.net/qq_41700374/article/details/83963075
+        			$("#tool-QRcode").hide("fast");//不添加参数无效原因待研究
         		});
         	});
         	
@@ -606,7 +610,7 @@
 									<img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarShare.png" />
 									<span class="name">分享</span>
 								</a>
-								<div class="QRcode" id="tool-QRcode" style="display: none;">
+								<div class="QRcode" id="tool-QRcode" style="left:92%;display: none;">
 									<span class="QRcode-close">x</span>
 									<p class="title">海报分享</p>
 									<div id="shareCode">
