@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,ol{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.elevator{
+				position:absolute ;
+				top: 60%;
+				left: 50%;
+				margin-left: 615px;
+			}
+			.app{
+				background: pink;
+				position: relative;
+			}
+			.wrapper{
+				width: 1000px;
+				margin: 0 auto;
+				position: absolute;
+				left: 50%;
+				top: 20%;
+			}
+		</style>
+		<script>
+			/**
+			 * https://www.imooc.com/article/74121
+			 * https://www.cnblogs.com/easirm/p/4205155.html
+			 * https://www.cnblogs.com/htwdz-qhm/p/3967974.html
+			 * 绝对滚动
+			 * element.scrollTo(x-coord, y-coord);
+			 *    x-coord 文档水平轴上的像素。
+				  y-coord 文档垂直轴上的像素。
+			   element.scrollTo(options);
+			      相对定位
+			   scrollBy(x-coord, y-coord);
+			   scrollBy(options);
+
+			 */
+			$(function(){
+					var element = $(".box").offset();
+			var left = element.left;
+			var top =element.top;
+			console.log(top,left);
+				$(".elevator_list .elevator_lk").click(function(){
+					var tag =$(this).attr("clstag");
+					if(tag=='elvt_01'){//滚动到顶部
+						toTop();
+					}else if(tag=='elvt_02'){//滚动到底部
+						toBottom();
+					}else if(tag=='elvt_03'){//平滑滚动到顶部
+						smoothToTop();
+					}else if(tag=='elvt_04'){//平滑滚动到底部
+						smoothToBottom();
+					}else if(tag=='elvt_05'){//相对定位
+						toBy();
+					}else if(tag=='elvt_06'){//滚动到指定元素;
+						toElemnt();
+					}
+				});
+				$(".wrapper button").click(function(){
+						var tag =$(this).attr("clstag");
+						if(tag=='bt1'){//控制其他元素节点(textarea、div)
+							selectorTextarea();
+						}
+				});
+			});
+			//滚动到顶部
+			var toTop =function(){
+				window.scrollTo(0, 0);
+
+			}
+			//滚动到底部
+			var toBottom=function(){
+				//获取整个页面的宽度
+				var y =document.documentElement.offsetHeight;
+				window.scrollTo(0, y);
+
+			 }
+			//平滑滚动到顶部
+			var smoothToTop = function(){
+				window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+			}
+			//平滑滚动到底部
+			var smoothToBottom = function(){
+				var t = document.documentElement.offsetHeight;
+				console.log(t);
+				window.scrollTo({ top: t, left: 0, behavior: 'smooth' });
+
+			}
+			//控制指定元素节点(textarea,div)
+			var selectorTextarea=function(){
+				let elem = document.querySelector('textarea');
+				let height = elem.offsetHeight;
+				elem.scrollTo({ top: height, left: 0, behavior: 'smooth' });
+			}
+			//相对定位
+			var toBy = function(){
+				window.scrollBy({ top: 100, left: 0, behavior: 'smooth' });
+
+			}
+			//滚动到指定元素
+			var toElemnt=function(){
+				let elem = document.querySelector("textarea");
+				// 使元素出现在视窗顶部
+				//elem.scrollIntoView({ block: 'start' });
+				// 使元素出现在视窗中间
+				//elem.scrollIntoView({ block: 'center' });
+				// 使元素出现在视窗底部
+				//elem.scrollIntoView({ block: 'end' });
+				// 加过渡动画
+				elem.scrollIntoView({ behavior: 'smooth' });
+
+			}
+
+			function scrollToTarget(target) {
+			  let elem = document.querySelector(target);
+			  elem.scrollIntoView({behavior: 'smooth'});
+			  return elem;
+			}
+
+		
+		</script>
+		
+	</head>
+	<body>
+		<!-- 导航 -->
+			<ul class="nav">
+			  <li><a href="#intro">介绍</a></li>
+			  <li><a href="#pro">产品</a></li>
+			  <li><a href="#about">关于我们</a></li>
+			</ul>
+		<div class="app" style="min-height: 1920px;">
+		    <div class="elevator">
+		    	<ul class="elevator_list">
+		    		<li>
+		    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_01">
+		    				<div>
+		    					<span class="elevator_lk_bg"></span>
+		    					<span class="elevator_lk_txt">滚动到顶部</span>
+		    				</div>
+		    			</a>
+		    			</li>
+	    			<li>
+	    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_02">
+	    				<div>
+	    					<span class="elevator_lk_bg"></span>
+	    					<span class="elevator_lk_txt">滚动到底部</span>
+	    				</div>
+	    			</a>
+	    			</li>
+	    			<li>
+	    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_03">
+	    				<div>
+	    					<span class="elevator_lk_bg"></span>
+	    					<span class="elevator_lk_txt">平滑滚动到顶部</span>
+	    				</div>
+	    			</a>
+	    			</li>
+	    			<li>
+	    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_04">
+	    				<div>
+	    					<span class="elevator_lk_bg"></span>
+	    					<span class="elevator_lk_txt">平滑滚动到底部</span>
+	    				</div>
+	    			</a>
+	    			</li>
+					<li>
+	    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_05">
+	    				<div>
+	    					<span class="elevator_lk_bg"></span>
+	    					<span class="elevator_lk_txt">相对定位</span>
+	    				</div>
+	    			</a>
+	    			</li>
+	    			<li>
+	    			<a href="javascript:void(0);" class="elevator_lk" clstag="elvt_06">
+	    				<div>
+	    					<span class="elevator_lk_bg"></span>
+	    					<span class="elevator_lk_txt">滚动到指定元素</span>
+	    				</div>
+	    			</a>
+	    			</li>
+		    	</ul>
+		    		
+		    </div>
+			
+		</div>
+	    <div class="wrapper">
+	    	<textarea >
+	    		春节，即农历新年，是一年之岁首、传统意义上的年节。俗称新春、新年、新岁、岁旦、年禧、大年等，口头上又称度岁、庆岁、过年、过大年。春节历史悠久，由上古时代岁首祈年祭祀演变而来。万物本乎天、人本乎祖，祈年祭祀、敬天法祖，报本反始也。春节的起源蕴含着深邃的文化内涵，在传承发展中承载了丰厚的历史文化底蕴。在春节期间，全国各地均有举行各种庆贺新春活动，带有浓郁的各地域特色，热闹喜庆的气氛洋溢；这些活动以除旧布新、驱邪攘灾、拜神祭祖、纳福祈年为主要内容，形式丰富多彩，凝聚着中华传统文化精华。 [1-2] 
+在古代民间，人们从年末廿三或廿四的祭灶便开始“忙年”了，新年到正月十九日才结束。在现代，人们把春节定于农历正月初一，但一般至少要到正月十五新年才算结束。节日交流问候传递着亲朋乡里之间的亲情伦理，它是人们增深感情的重要节日，是个欢乐祥和、亲朋好友欢聚的传统佳节。 [2-4] 
+百节年为首，春节是中华民族最隆重的传统佳节，它不仅集中体现了中华民族的思想信仰、理想愿望、生活娱乐和文化心理，而且还是祈福攘灾、饮食和娱乐活动的狂欢式展示。受到中华文化的影响，世界上一些国家和地区也有庆贺新春的习俗。据不完全统计，已有近20个国家和地区把中国春节定为整体或者所辖部分城市的法定节假日。春节与清明节、端午节、中秋节并称为中国四大传统节日。春节民俗经国务院批准列入第一批国家级非物质文化遗产名录。
+	    	</textarea>
+	    	<button type="button" clstag="bt1">滚动到底部</button>
+	    </div>
+	    <div class="box">
+	    	
+			
+			<!-- 内容 -->
+			<ul class="content-list">
+			  <li id="intro">1</li>
+			  <li id="pro">2</li>
+			  <li id="about">3</li>
+			</ul>
+		</div>
+	</body>
+</html>

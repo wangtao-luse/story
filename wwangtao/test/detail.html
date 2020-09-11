@@ -218,7 +218,7 @@
 			}
 			.more-toolbox .left-toolbox{
 				position: fixed;
-				left: 409px;
+				/*left: 409px;*/
 			    bottom: 0px;
 			    width: 1010px;
 			}
@@ -483,6 +483,10 @@
                     
         			$("#tool-QRcode").show();
         		});
+        		var tool=$(".more-toolbox .left-toolbox").offset();
+        		var top =tool.top;
+        		var top =tool.left;
+        		console.log("top:"+top);
         		$(window).scroll(function(){
         			var s = $(document).scrollTop();
         			console.log(s);
@@ -493,16 +497,17 @@
         				$("#tool-QRcode").css("left","-92%");
         			    $(".more-toolbox-active").removeClass("more-toolbox-active");
         			}
-        			if(parseFloat(s)>600){
+        			
+        			if(parseFloat(s)>=parseFloat(top)){
         			$(".more-toolbox .left-toolbox")
         			.css("position","relative")
         			.css("bottom","0px")
-        			.css("left","0px")
+        			/*.css("left","0px")*/
         			.css("width","1010px")
   				}else{
   					$(".more-toolbox .left-toolbox")
         			.css("position","fixed")
-        			.css("left","410px")
+        			/*.css("left","410px")*/
         			.css("bottom","0px")
         			.css("width","1010px")
   				}
