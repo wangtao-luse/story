@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>微信公众号模板</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{  
+				color: #576b95;
+				text-decoration: none;
+			}
+			@media screen and (min-width: 1024px){
+				.rich_media_area_primary {
+					padding-top: 32px;
+				}
+				.rich_media_area_primary_inner{
+					max-width: 677px;
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+			.rich_media{}
+			/**
+			 * https://www.cnblogs.com/dashenjileige/p/10833340.html
+			 * word-break:自动换行的处理方法
+			 *      normal:使用浏览器默认的换行规则。
+			 *      break-all:允许在单词内换行;
+			 *      keep-all:只能在半角空格或连字符处换行;
+			 * 
+			 * word-wrap:允许长单词换行到下一行;
+			 *      normal: 默认值;只在允许的断字点换行（浏览器保持默认处理）。
+			 *      break-word:在长单词或 URL地址内部进行换行
+			 */
+			.rich_media_inner{
+				word-wrap: break-word;
+			}
+			.rich_media_area_primary{
+				background: #FAFAFA;
+			}
+			.rich_media_area_primary_inner{
+				
+			}
+			.rich_media_wrp{
+				position: relative;
+			}
+			.rich_media_title{
+				font-size: 22px;
+				line-height: 1.4;
+				margin-bottom: 14px;
+			}
+			.rich_media_meta_list{
+				word-wrap: break-word;
+				margin-bottom: 22px;
+				line-height: 20px;
+			}
+			.rich_media_meta{
+				font-size: 15px;
+			}
+			.rich_media_meta_nickname{}
+			.rich_media_meta_text{
+				 color: rgba(0,0,0,0.3);
+			}
+		</style>
+	</head>
+	<body class="">
+		<div id="js_article" class="rich_media">
+			<div class="rich_media_inner">
+				<div id="page-content" class="rich_media_area_primary">
+					<div class="rich_media_area_primary_inner">
+						<div id="img-content" class="rich_media_wrp">
+							<h2 class="rich_media_title" id="activity-name">上海的小伙伴去深圳怎么玩？去这10个地方肯定没错！</h2>
+							<div id="meta_content" class="rich_media_meta_list">
+								<span id="profileBt" class="rich_media_meta rich_media_meta_nickname">
+									<a id="js_name" href="javascript:void(0);">爱旅行</a>
+									<div id="js_profile_qrcode" class="profile_container" style="display: none;">
+										<div class="profile_inner">
+											<strong class="profile_nickname">爱旅行</strong>
+											<img id="js_profile_qrcode_img" class="profile_avatar" src="https://mp.weixin.qq.com/rr?timestamp=1600067937&src=11&ver=1&signature=0kbI-e4zc*YpuX4eZCj3Y00KRYqe1Ljp0S7n3mwUdToY8ElO3aD4xdM98GoSjbMPN2qcb9xVip*QDWPfJsWl0e6uMF2a7i5Gk6kEpssMuyc="/>
+										    <p class="profile_meta">
+				                              <label class="profile_meta_label">微信号</label>
+				                              <span class="profile_meta_value">itour</span>
+				                            </p>
+				                            <p class="profile_meta">
+				                              <label class="profile_meta_label">功能介绍</label>
+				                              <span class="profile_meta_value">提供优质的旅行攻略,让出行更简单！</span>
+				                            </p>
+										</div>
+										<span id="js_profile_arrow_wrp" class="profile_arrow_wrp">
+											<i class="profile_arrow arrow_out"></i>
+											<i class="profile_arrow arrow_in"></i>
+										</span>
+									</div>
+								</span>
+							    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2020-9-14</em>
+							</div>
+						    <div class="js_tags" class="article-tag__list"></div>
+						    <div id="js_content" class="rich_media_content">
+						    	<section>
+						    		动态banner图片位置
+						    	</section>
+						    </div>
+						</div>
+					</div>
+				</div>
+			    <div id="js_pc_qr_code" class="qr_code_pc_outer">
+			    	<div class="qr_code_pc_inner">
+			    		<div class="qr_code_pc">
+			    			<img id="js_pc_qr_code_img" class="qr_code_pc_img" src="https://mp.weixin.qq.com/rr?timestamp=1600067937&src=11&ver=1&signature=0kbI-e4zc*YpuX4eZCj3Y00KRYqe1Ljp0S7n3mwUdToY8ElO3aD4xdM98GoSjbMPN2qcb9xVip*QDWPfJsWl0e6uMF2a7i5Gk6kEpssMuyc="/>
+			    			<p>微信扫一扫<br>关注该公众号</p>
+			    		</div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<p>word-wrap</p>
+		<p style="width:11em; border:1px solid #000000;word-wrap:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+		<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+		<p>word-break</p>
+		<p style="width:11em; border:1px solid #000000;word-break:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+		<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+	</body>
+</html>
