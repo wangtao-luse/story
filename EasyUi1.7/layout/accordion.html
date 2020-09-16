@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Accordion 折叠面板</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	</head>
+	<!--
+		1.通过标记创建折叠面板（Accordion），
+		    添加 'easyui-accordion' class 到 <div> 标记。
+		2.Accordion容器选项
+		  widht:折叠面板（Accordion）容器的宽度;
+		  height:折叠面板（Accordion）容器的高度;
+		  fit:   设置为 true，就使折叠面板（Accordion）
+		                    容器的尺寸适应它的父容器。默认值false;
+		3.面板（Panel）选项
+		  折叠面板（Accordion）的面板（panel）选项继承自面板（panel）；
+		  selected:设置为 true 就展开面板（panel）。
+	-->
+	<script>
+		$(function(){
+			/**
+			 * 初始化折叠式面板
+			 * @param {Object} accordionNode 元素节点
+			 * @param {Object} options
+			 *  var options={width:300,height:200,}
+			 */
+			function initAccordion(accordionNode,options){
+				accordionNode.accordion(options);
+			}
+			/**
+			 * 添加面板
+			 * @param {Object} accordionNode
+			 * @param {Object} options
+			 * var options={title:'title1',content:'content1',selected:true,}
+			 */
+			function addAccordion(accordionNode,options){
+				accordionNode.accordion('add',options);
+			}
+			//初始化折叠式面板
+				initAccordion($(".index-accordion"),{
+					width:300,
+					height:200,
+				});
+				//往折叠式面板中添加面板
+				addAccordion($(".index-accordion"),{
+					title:'title1',
+					content:'content1',
+					selected:true,
+				});
+		});
+		
+	</script>
+	<body>
+	<div class="index-accordion"></div>
+	</body>
+</html>

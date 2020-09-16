@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>textbox-文本框</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	
+	</head>
+	<body>
+		<!--
+			1.文本框：
+			2.使用标签创建文本框;
+			3.使用js创建文本框
+		 	4.属性
+		 	   width：组件的宽度。
+		 	   height:组件的高度。
+		 	   iconCls:在文本框显示背景图标。
+		 	   iconAlign:背景图标的位置。
+		 	                            可用值有："left", "right"。
+		-->
+		 <input class="easyui-textbox" data-options="iconCls:'icon-search'" style="width:300px">
+		 <script>
+		 	$(function(){
+		 		  $('#tb').textbox({
+                        buttonText:'Search',
+                        iconCls:'icon-man',
+                        iconAlign:'left'
+                   });
+		 	});
+		 </script>
+		  <input id="tb" type="text" style="width:300px">
+	
+	</body>
+</html>

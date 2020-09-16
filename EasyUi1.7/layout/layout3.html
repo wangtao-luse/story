@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Layout 布局</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	</head>
+<!--
+1.页面中引用 EasyUI CSS 和 JavaScript 文件
+2.创建嵌套布局
+3.常用属性:
+  1.collapsed/kəˈlæpst/:
+  		定义初始化面板（panel）是不是折叠的;
+                      默认值：false;
+  2.fit:
+                 当设置为 true 时,设置布局（layout）的尺寸适应它
+                 的父容器。当在 'body' 标签上创建布局（layout）时，
+                  它将自动最大化到整个页面的全部尺寸。
+                                  
+  
+	       
+-->
+	<body class="easyui-layout">
+		<div data-options="region:'north'" style="height:100px"></div>
+	    <div data-options="region:'center'">
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'west',collapsed:true" style="width:180px"></div>
+				<div data-options="region:'center'"></div>
+			</div>
+	    </div>
+	   
+	</body>
+</html>

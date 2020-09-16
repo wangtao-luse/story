@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>combogrid</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	
+	</head>
+	<body>
+		<!-- 1.从标记创建组合网格（combogrid）。
+			 2.属性：
+			
+		-->
+		<select id="cc" class="easyui-combogrid" name="dept" style="width:250px;"
+		    data-options="
+		    panelWidth:450,
+		    value:'4',
+		    idField:'code',
+		    textField:'name',
+		    url:'datagrid_data.json',
+		    columns:[[
+		    {field:'code',title:'Code',width:60},
+		    {field:'name',title:'Name',width:100},
+		    {field:'addr',title:'Address',width:120},
+		    {field:'col4',title:'Col41',width:100}
+		    ]]
+		    "></select>
+		    
+		  <!--  2、使用 javascript 从已有的 <select> 或 <input> 元素创建。-->
+			<input id="cc" name="dept" value="1">
+			<script>
+				$(function(){
+					 $('#cc').combogrid({
+					    panelWidth:450,
+					    value:'1',
+					    idField:'code',
+					    textField:'name',
+					    url:'datagrid_data.json',
+					    columns:[[
+					    {field:'code',title:'Code',width:60},
+					    {field:'name',title:'Name',width:100},
+					    {field:'addr',title:'Address',width:120},
+					    {field:'col4',title:'Col41',width:100}
+					    ]]
+					    });
+				});
+			</script>
+			   
+	</body>
+</html>

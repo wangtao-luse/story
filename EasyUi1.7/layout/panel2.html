@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局-panel</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+        <script>
+        	$(function(){
+        		var options ={
+        			width:500,
+        			height:150,
+        			iconCls:'icon-save',
+        			title:'编辑',
+        			collapsible:true,
+        			minimizable:true,
+        			maximizable:true,
+        			tools:[{
+        				iconCls:'icon-add',
+        				handler:function(){
+        					alert("add");
+        				}
+        			},
+        			{
+        				iconCls:'icon-save',
+        				handler:function(){
+        					alert("save");
+        				}
+        			}]
+        		};
+        		$("#p").panel(options);
+        	});
+        </script>
+	</head>
+	<body>
+<!--
+	Panel用法：
+   1.通过JS方式创建面板（Panel）
+   2.常用属性
+      id：面板（panel）的 id 属性。
+      title:显示在面板（panel）头部的标题文字;
+      iconCls:在面板（panel）里显示一个 16x16 图标的 CSS class;
+      closable:定义是否显示关闭按钮;默认值false;
+      collapsible:定义是否显示折叠按钮;默认值false;
+      minimizable:定义是否显示最小化按钮;默认值false;
+      maximizable:定义是否显示最大化按钮;默认值false;
+      tools:自定义工具组 ;
+		-->
+	<div id="p">
+	    <p>panel content.</p>
+	    <p>panel content.</p>
+	</div>
+	
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局-panel</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+
+	</head>
+	<body>
+<!--
+	Panel用法：
+   1.通过标记创建面板（Panel）
+          从标记创建面板（Panel）更容易。
+          把 'easyui-panel' class 添加到 <div> 标记。
+    2.常用属性
+      id：面板（panel）的 id 属性。
+      title:显示在面板（panel）头部的标题文字;
+      iconCls:在面板（panel）里显示一个 16x16 图标的 CSS class;
+      closable:定义是否显示关闭按钮;默认值false;
+      collapsible:定义是否显示折叠按钮;默认值false;
+      minimizable:定义是否显示最小化按钮;默认值false;
+      maximizable:定义是否显示最大化按钮;默认值false;
+		-->
+	<div id="p" class="easyui-panel" title="My Panel"
+	    style="width:500px;height:150px;padding:10px;background:#fafafa;"
+	    data-options="iconCls:'icon-save',closable:true,
+	    collapsible:true,minimizable:true,maximizable:true">
+	    <p>panel content.</p>
+	    <p>panel content.</p>
+	</div>
+	</body>
+</html>

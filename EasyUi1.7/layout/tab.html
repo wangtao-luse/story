@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局 Tabs</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+        
+	</head>
+	<!--
+    	1、对Tabs初始化做简单封装;
+    	2.Tabs常用属性
+    	  widht:标签页（Tabs）容器的宽度;
+    	  height:标签页（Tabs）容器的高度;
+    	3.标签页面板（Tab Panel）
+    	  iconCls:显示在标签页面板（tab panel）
+    	  		    标题上的图标的 CSS class
+    	  closable：当设置为 true 时，标签页面板（tab panel）
+    	                         将显示一个关闭按钮,点击它就能关闭这个标签
+    	                         页面板（tab panel）;默认值false;
+    -->
+    <script>
+    	$(function(){
+    		
+    		/**
+    		 * 初始化Tabs
+    		 * @param {Object} tabsNode 元素节点
+    		 * @param {Object} options 选项 
+    		 *  var options={width:500,height:250}
+    		 */
+    		function initTabs(tabsNode,options){
+    			tabsNode.tabs(options);
+    		}
+    		/**
+    		 * 添加Tab
+    		 * @param {Object} tabsNode
+    		 * @param {Object} options
+    		 * var option ={title:'tab1',content:'content1',closable:false};
+    		 */
+    		function addTab(tabsNode,options){
+    			tabsNode.tabs("add",options)
+    		}
+    		//初始化Tabs
+    		initTabs($("#index-tab"),{
+    			width:500,
+    			height:250,
+    		})
+    		//添加tab
+    		addTab($("#index-tab"),{
+    			title:'tab1',
+    			content:'content1',
+    			closable:false
+    		});
+    		
+    	});
+    	
+    </script>
+	<body>
+		<div id="index-tab">
+		
+		</div>
+	</body>
+</html>

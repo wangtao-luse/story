@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单-calendar</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	
+	</head>
+	<body>
+		<!--1.从标记创建日历（calendar）。-->
+		<div id="cc" class="easyui-calendar" style="width:180px;height:180px;"></div>
+		<!--2.使用 javascript 创建日历（calendar）。
+			3.常用属性
+		      width	:日历（calendar）组件的宽度。
+			  height:日历（calendar）组件的高度。
+			  current:当前的日期。默认值:当前日期
+		-->
+		<script>
+			$(function(){
+				$('#cc').calendar({
+				    current:new Date()
+				});
+			});
+		</script>
+		<div id="cc" style="width:180px;height:180px;"></div>
+
+	</body>
+</html>

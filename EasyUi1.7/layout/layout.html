@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Layout布局</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	</head>
+	<script>
+		$(function(){
+			var options={fit:true};
+		    $("#index-layout").layout(options);
+		})
+		
+	</script>
+	<!--layout布局在实际中开发中的应用
+	1.引入EasyUI文件;
+	2.通过标记创建布局
+	  a.添加 'easyui-layout' class 到 <div> 标记;
+	3.可以通过JS方式创建布局;
+	4.总结:
+	   1.需要为元素设置width或height属性;
+	   2.split:true/fase 是否显示拆分栏,
+	                       显示拆分栏时可以调整面板的大小;
+	                       默认值：false
+	   2.fit:true/fase 设置布局（layout）的尺寸是否适应它
+                  	       的父容器;当在 'body' 标签上创建布
+                  	       局（layout）时,它将自动最大化到整
+                  	       个页面的全部尺寸。
+	    3.可以通过ajax加载内容
+	             通过设置href属性;
+	  -->
+	<body>
+		<div id="index-layout" class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',href:'west_content.php'" style="height: 86px;"></div>
+			<div data-options="region:'west',title:'模块导航',split:true" style="width: 210px;"></div>
+			<div data-options="region:'center'">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'north',title:'查询条件'" style="height: 100px;"></div>
+					<div data-options="region:'center',title:'会员管理'"></div>
+					<div data-options="region:'south'" style="height: 50px;"></div>
+				</div>
+			</div>
+			<div data-options="region:'south'" style="height: 30px;"></div>
+		</div>
+	</body>
+</html>
