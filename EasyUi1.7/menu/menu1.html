@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>菜单 menu</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.7.0/themes/icon.css">
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+	</head>
+	<body>
+		<!--1.创建菜单（Menu）
+                              通过标记创建菜单（menu）
+                                添加 'easyui-menu' class 到 <div> 标记。
+                                每个菜单项（menu item）通过 <div> 标记创建。
+                                可以添加 'iconCls' 属性到菜单项（menu item），
+                                可以定义一个显示在菜单项（menu item）左边的图标。
+                                添加 'menu-sep' class 到菜单项（menu item）将
+                                产生一个菜单（menu）分隔符。
+            注意事项：
+             1.当菜单（menu）被创建时，它是隐藏不可见的。调用 'show' 方法来显示菜单（menu）。
+				$('#mm').menu('show', {
+				    left: 200,
+				    top: 100
+				});
+		-->
+		<script>
+			//显示菜单
+			$(function(){
+				$('#mm').menu('show', {
+				    left: 200,
+				    top: 100
+				});
+			})
+			
+		</script>
+			<div id="mm" class="easyui-menu" style="width:120px;">
+			    <div>New</div>
+			    <div>
+					<span>Open</span>
+					<div style="width:150px;">
+						<div><b>Word</b></div>
+						<div>Excel</div>
+						<div>PowerPoint</div>
+					</div>
+			    </div>
+			    <div data-options="iconCls:'icon-save'">Save</div>
+			    <div class="menu-sep"></div>
+			    <div>Exit</div>
+			</div>
+			
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<script>
+				function test(){
+					$.ajax({
+						type:"get",
+						url:"index.html",
+						async:false,
+						beforeSend:function(){
+						$(".line").css("width","100%");
+						},
+						complete:function(){
+						 // $(".line").css("width","0px");	
+						}
+					});
+				}
+				
+		
+			
+		</script>
+		<style>
+			.wrapper{
+				width: 1000px;
+				height: 500px;
+				background: #FAFAFA;
+			}
+			.line{
+				width: 0;
+				border-bottom: 1px solid #10AEFF;
+				transition: 2s ease all;
+			}
+			h2:hover{
+    width: 1000px;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s,-webkit-transform 0.3s;
+}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h2 class="line">444</h2>
+		<div class="wrapper"></div>
+		<button type="button" onclick="test()"> ajax</button>
+	</body>
+</html>
