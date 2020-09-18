@@ -22,6 +22,11 @@
 					margin-right: auto;
 				}
 			}
+			body {
+			    line-height: 1.6;
+			    font-family: -apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;
+			    font-size: 16px;
+			}
 			.rich_media{}
 			/**
 			 * https://www.cnblogs.com/dashenjileige/p/10833340.html
@@ -57,13 +62,130 @@
 				line-height: 20px;
 			}
 			.rich_media_meta{
+				display: inline-block;
+				margin: 0 10px 10px 0;
+				vertical-align: middle;
 				font-size: 15px;
 			}
-			.rich_media_meta_nickname{}
+			.rich_media_meta_nickname{
+				position: relative;
+			}
 			.rich_media_meta_text{
 				 color: rgba(0,0,0,0.3);
 			}
+			.profile_container{
+				width: 535px;
+				position: absolute;
+				left: 0;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			.profile_nickname{
+				font-size: 16px;
+				font-weight: 500;
+			}
+			.profile_avatar{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 24px;
+				top: 24px;
+			}
+			.profile_inner{
+				position: relative;
+				padding: 30px 22px 36px 144px;
+				background-color: #fff;
+				border: 1px solid #d9dadc;
+				
+			}
+			.profile_meta{
+				margin-top: 5px;
+			}
+			.profile_meta_label {
+			    float: left;
+			    width: 4.3em;
+			    margin-right: 1em;
+			}
+			.profile_meta_value {
+			    display: block;
+			    overflow: hidden;
+			    color: #adadad;
+			}
+			.profile_arrow_wrp{
+				position: absolute;
+				left: 31px;
+				top: -8px;
+			}
+			.profile_arrow{
+				display: inline-block;
+				position: absolute;
+				top: 0;
+				width: 0;
+				height: 0;
+				border-width: 8px;
+				border-style: dashed;
+				border-color: transparent;
+				border-top-width:0;
+				border-bottom-style:solid;
+				border-bottom-color: #d9dadc;
+			}
+			.profile_arrow.arrow_in{
+				margin-top: 1px;
+				border-bottom-color:#fff;
+			}
+			
+			.rich_media_content{
+				position: relative;
+				overflow: hidden;
+			    color: #333;
+			    font-size: 17px;
+			    word-wrap: break-word;
+
+			}
+			.rich_media_content * {
+			    max-width: 100%!important;
+			    box-sizing: border-box!important;
+			    -webkit-box-sizing: border-box!important;
+			    word-wrap: break-word!important;
+			}
+			.audio_area{
+			  margin: 16px 0;
+			  line-height: 1.4;	
+			}
+			.audio_card {
+			    padding: 20px;
+			    line-height: 1.4;
+			}
+			.audio_card_title{
+				font-weight: 700;
+			    font-size: 17px;
+			    color: rgba(0,0,0,0.9);
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    
+			}
+			
+			.audio_card_desc {
+			    display: block;
+			    font-size: 12px;
+			    color: rgba(0,0,0,0.5);
+			    width: auto;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    word-wrap: normal;
+			    padding: 4px 72px 4px 0;
+			}
 		</style>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<script>
+			$(function(){
+				$("#js_name").click(function(){
+					$("#js_profile_qrcode").show();
+				});
+				
+			})
+		</script>
 	</head>
 	<body class="">
 		<div id="js_article" class="rich_media">
@@ -85,7 +207,7 @@
 				                            </p>
 				                            <p class="profile_meta">
 				                              <label class="profile_meta_label">功能介绍</label>
-				                              <span class="profile_meta_value">提供优质的旅行攻略,让出行更简单！</span>
+				                              <span class="profile_meta_value">提供优质的旅行攻略,让出行更简单,让旅途更精彩！</span>
 				                            </p>
 										</div>
 										<span id="js_profile_arrow_wrp" class="profile_arrow_wrp">
@@ -94,18 +216,27 @@
 										</span>
 									</div>
 								</span>
-							    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2020-9-14</em>
+							    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2020-9-14 12:00</em>
 							</div>
 						    <div class="js_tags" class="article-tag__list"></div>
 						    <div id="js_content" class="rich_media_content">
 						    	<section>
-						    		动态banner图片位置
+						    		<div class="hd-banner">
+						    			<img src="https://mmbiz.qpic.cn/sz_mmbiz_gif/PM9AfVUDnSMA3cVHia2CP8lCvURD9tJ74771NtHvicmtVS69UFoqkSkQ7KXjx2LMGLOJO7mr1dAUVYGc4wwRQ8Qg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" />
+						    		</div>
+						    		<div class="js_audio_frame audio_area ">
+						    			<div class="audio_card">
+						    				<strong class="audio_card_title">上海的小伙伴去深圳怎么玩？去这10个地方肯定没错！</strong>
+						    				<span class="audio_card_desc">来自爱旅行</span>
+						    				<span class="weui-flex">音频位置</span>
+						    			</div>
+						    		</div>
 						    	</section>
 						    </div>
 						</div>
 					</div>
 				</div>
-			    <div id="js_pc_qr_code" class="qr_code_pc_outer">
+			    <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display: none;">
 			    	<div class="qr_code_pc_inner">
 			    		<div class="qr_code_pc">
 			    			<img id="js_pc_qr_code_img" class="qr_code_pc_img" src="https://mp.weixin.qq.com/rr?timestamp=1600067937&src=11&ver=1&signature=0kbI-e4zc*YpuX4eZCj3Y00KRYqe1Ljp0S7n3mwUdToY8ElO3aD4xdM98GoSjbMPN2qcb9xVip*QDWPfJsWl0e6uMF2a7i5Gk6kEpssMuyc="/>
@@ -115,11 +246,14 @@
 			    </div>
 			</div>
 		</div>
-		<p>word-wrap</p>
-		<p style="width:11em; border:1px solid #000000;word-wrap:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
-		<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
-		<p>word-break</p>
-		<p style="width:11em; border:1px solid #000000;word-break:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
-		<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
-	</body>
+		<div style="display: none;">
+			<p>word-wrap</p>
+			<p style="width:11em; border:1px solid #000000;word-wrap:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+			<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+			<p>word-break</p>
+			<p style="width:11em; border:1px solid #000000;word-break:break-word;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+			<p style="width:11em; border:1px solid #000000;" class="test">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+	
+		</div>
+		</body>
 </html>

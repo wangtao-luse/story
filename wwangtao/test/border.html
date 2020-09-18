@@ -2,29 +2,115 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>使用CSS盒模型中的border（边框）实现三角形</title>
 		<style>
 			body{
 				width: 1000px;
 				margin: 10px auto;
 			}
-			div.box{
-			 width: 0px;
-			 height: 0px;
+			.line{
+				margin-bottom: 18px;
+			}
+			.box0{
+				width: 30px;
+				height: 30px;
+				border: 1px solid orange;
+			}
+			.box1{
+			   width: 30px;
+			   height: 30px;
+			   border-top: 10px solid #E2231A;
+			   border-right:10px solid #02BB00;
+			   border-bottom:10px solid #000000;
+			   border-left: 10px solid #0084FF;
+			   
+			}
+			.box1{
+			   width: 30px;
+			   height: 30px;
+			   border:10px solid;
+			   border-color: orange blue red green;
+			   
+			}
+			.box2{
+			   width: 0;
+			   height: 0;
+			   border-top: 30px solid #E2231A;
+			   border-right:30px solid #02BB00;
+			   border-bottom:30px solid #000000;
+			   border-left: 30px solid #0084FF;
+			   
+			}
+			.box2{
+			   width: 0;
+			   height: 0;
+			   border:10px solid;
+			   border-color: orange blue red green;
+			   
 			}
 			.box{
-				border-top: 24px transparent solid;
-				border-right:24px transparent solid;
-				border-bottom: 24px #ebebeb solid;
-				border-left: 24px transparent solid;
-				
-				
-				
+				width: 0px;
+			 	height: 0px;
+				border-top: 30px transparent solid;
+				border-right:30px transparent solid;
+				border-bottom: 30px #FF8822 solid;
+				border-left: 30px transparent solid;
+			}
+			.box{
+				width: 0px;
+			 	height: 0px;
+				border: 30px solid;
+				border-color: transparent transparent red;
 			}
 		</style>
 	</head>
 	<body>
-		
+		/**
+		 * https://www.jianshu.com/p/9a463d50e441
+		 */
+		<p>一、实现一个简单的三角形</p>
+		<p>1.使用border最普遍的情况——往往只给border一个较小的宽度（通常为1-2px）</p>
+		<div class="box0"></div>
+		<div class="line"></div>
+		<p>2.增大border的宽度，并为各border边设置不同的颜色</p>
+		<div class="box1"></div>
+		<div class="line"></div>
+		<p>3.把元素的内容尺寸设置为0</p>
+		<div class="box2"></div>
+		<p>4.保留需要的三角形,把其它border边的颜色设置为白色或透明色：</p>
 		<div class="box"></div>
+		<div class="line"></div>
+		<hr />
+		<style>
+			.blue{
+				position: relative;
+			    width: 0px;
+			 	height: 0px;
+			 	border-width: 0 40px 40px;
+			 	border-style: solid;
+			 	border-color: transparent transparent blue;
+			}
+			.blue.yellow:after{
+				content: "";
+				/*width: 0;
+				height: 0;*/
+				position: absolute;
+				top: 1px;
+				left: -38px;
+				border-width: 0 38px 38px;  
+				border-style: solid;
+				border-color: transparent transparent yellow;
+				
+			}
+		</style>
+		<p>二、实现带边框的三角形(三角形叠放，即把当前三角形叠放在更大的三角形上方)</p>
+		<p>思路：把黄色三角形放在了尺寸更大的蓝色三角形上</p>
+		<p>1.绘制蓝色的三角形</p>
+		<div class="blue"></div>
+		<p>2.定义黄色三角形，由于黄色三角形的定位需要参考蓝色三角形的位置，所以需要用到绝对定位方法。
+			为此还需要将黄色三角形作为蓝色三角形的子元素。一个可行的办法是在蓝色三角形内部定义一个额外的标签以表示黄色三角形，但为了节约标签起见，更好的办法是使用伪元素:
+  		</p>
+		<div class="blue yellow"></div>
+		
 	</body>
 </html>
