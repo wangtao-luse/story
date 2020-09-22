@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				width: 100%;
+				height: 100%;
+				background: #0099FF;
+			}
+			body{
+				width: 1920px;
+				height: 1080px;
+				background: #0099FF;
+			}
+		</style>
+		<script src="../js/jquery-3.4.1.js.js"></script>
+		<script>
+			$(function(){
+				/**https://www.cnblogs.com/flyromance/p/5042187.html
+				 * https://blog.csdn.net/fishegg07/article/details/84679262
+				 *$(window).height()代表屏幕可视窗口大小;
+				 *$(window).height()浏览器窗口的大小变化时,大小会随之变化;
+				 *$(document).height()代表整个文档的高度;
+				 *$(document).height()浏览器窗口的大小变化时,大小不发生变化;;
+				 */
+				var wh = $(window).height();
+				var dh = $(document).height();
+				console.log('window height:'+wh+","+"document height:"+dh);
+				
+				/**
+				 * $(document).scrollTop()以像素计的相对滚动条顶部的偏移(滚动条滚动的距离)
+				 * $(document).scrollTop()>=$(document).height()-$(window).height()
+				 * 说明已经滚动到了底端了
+				 */
+				var dt = $(document).scrollTop();
+				var wt = $(window).scrollTop();
+				console.log("document scrollTop:"+dt+" window scrollTop: "+wt);
+				
+				//返回元素相对于文档的偏移（位置）
+				var lineH = $("#line").offset();
+				//https://blog.csdn.net/qq_36658051/article/details/81984842
+				var lineiH = $("#line").innerHeight();
+				console.log("$node.offset:"+lineH.top+"$node.innerHeight: "+lineiH);
+				//元素的height+padding
+				console.log("ele height:"+$("#element").height()+",ele innerHeight:"+$("#element").innerHeight())
+			})
+		</script>
+	</head>
+	<body>
+		
+		<div style="height: 1000px;"></div>
+		<span id="line" style="display: block;">更多</span>
+		<div id="element" style="margin:5px; padding:10px; width:100px; height:100px; border:1px solid #000;"></div>
+	</body>
+</html>
