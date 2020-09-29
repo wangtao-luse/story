@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>二列布局</title>
+		<style>
+		/*二列布局
+			a.特点:
+			    一列固定宽度，一列自动适应宽;
+			   1.固定宽度的列：通常称为边栏 主要放置一些固定的内容如导航、菜单之类;
+			   2.自适应宽的列：根据浏览器窗口的大小自动判断宽度，主要放置主体内容
+			b.应用：
+			    后台管理;用户中心;博客;
+			c.实现方式:
+			    固定容器{
+			    	width: 固定数值;
+			    	float:left|right;
+			    } 
+			  自适应容器{
+			  	margin-方向:数值=固定列宽 ;
+			  } //不能设置宽度
+			  */
+			 
+			 .left{
+			 	width: 300px;
+			 	float: left;
+			 	border: 1px solid #0084FF;
+			 }
+			 .right{
+			 	margin-left: 300px;
+			 	border: 1px solid #02BB00;
+			 }
+			 .main{
+			 	margin-left: 310px;
+			 	border: 1px solid #02BB00;
+			 }
+		</style>
+	</head>
+	<body>
+
+			<div class="left">我是左边的内容</div>
+			<div class="right">我是右边的内容</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="left">左边的内容</div>
+			<div class="main">右边的内容</div>
+	
+	</body>
+</html>

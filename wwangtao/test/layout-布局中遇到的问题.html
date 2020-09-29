@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局总结</title>
+		<style>
+		布局中遇到的问题
+		   1. html,body{heigth:100%}无效果;
+		      a.why:
+		        一个div块级元素没有主动为其设置宽度和高度，
+		         浏览器会为其分配可使用的最大宽度(比如全屏宽度)，
+		          但是不负责分配高度，块级元素的高度是由子元素堆砌撑起来的;
+		      b.解决方案为子元素设置高度;
+		       .wrapper{heigth:100%}
+			  c.相关博客:https://blog.csdn.net/javaloveiphone/article/details/51098972
+		   2.使用float带来的问题
+		     a.why:如果父元素只包含了浮动元素 ，那么父元素在未设置高度的同时，则父元素高度塌缩为零;
+		     b.解决方案:
+		       a.为父元素设置高度;
+		       b.清除浮动
+		         https://blog.csdn.net/qq_29393273/article/details/84453880
+		     c.相关博客:https://segmentfault.com/a/1190000022791084
+		     
+		</style>
+	</head>
+	<body>
+	</body>
+</html>

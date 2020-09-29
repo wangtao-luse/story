@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		 /* 1.html中的元素种类;
+		    a.块状元素
+		    b.行内元素
+		    c.行类块状元素
+		   2.三种之间的关系:
+		     a.可以相互转换;
+		       display:block;块状元素
+		       display:inline;行内元素
+		       display: inline-block;行类块状元素
+		   3.块状元素的特点:
+		    a.独占一行;
+		    b.支持所有样式;
+		    c.不写宽时,跟父元素宽相同;
+		    d.所占区域是一个矩形;
+		   4.行内元素的特点:
+		     a.同行排列
+		     b.不支持width;height;
+		       对margin仅设置左右方向有效，上下无效;
+		       padding设置上下左右都有效，即会撑大空间;
+		     c.不写宽的时候，宽度由内容决定;
+		     d.内部的标签的只能是文字或者Inline型标签,项目中的inline主要用来套文字;
+		     f.所占的区域不一定是矩形;
+		     h.内联标签之间会有空隙。
+		        原因：由于代码换行产生的。
+	  			   不改变代码位置，消除该空隙的方法：
+				  为其父级设置font-size:o;并在子级中恢复字体大小，
+				  恢复的原因是font-size具有继承性;
+		    5.行类块状元素
+		      a.可以在同一行，并且支持宽高;
+  			  b.支持所有的css样式设置
+  			  c.在不设置宽高大小时，由内容撑开盒子的大小，其内容可以时任意的标签和文字;
+  			  d.垂直方向上，所有的行级标签，在默认情况下按照其内部最后一行文字的底线对齐,为了保持其一致性,需要给每个行级标签设置vertical-align属性,保证垂直方向上的对齐
+                 vertical-align:Middle|bottom|top 
+		     
+		    1.元素脱离文档流有两种方式
+		       a.浮动
+		       b.定位
+		       c.相关文档
+		          https://www.jianshu.com/p/2c1708a73438
+		    2.b.文档流:
+		       https://blog.csdn.net/qq_40421277/article/details/79687268 
+		    3.float 浮动:  
+		      a.作用:
+		         	浮动可以使得多个块级元素可以放置在同一行上;
+		   4.position:定位;
+		   
+		   
+		   1.元素居中
+		    a.水平居中
+		      1.在容器上定义一个固定的宽度，然后配合margin左右的值为auto
+		      .wrapper{
+		      	width:1200px;
+		      	margin: 0 auto;
+		      }
+		      2.将元素设置display: inline-block,然后将父元素设置为text-align: center;
+		         .page{
+		         	text-align: center;
+		         }
+		         .pagination{
+		         	display: inline-block
+		         }       
+		      相关文档：https://www.cnblogs.com/chengxs/p/11231906.html
+		   
+		   
+		   文字居中:
+		   
+		     
+		     * */
+		  .pagination li{
+		    line-height: 25px;	
+		    list-style: none;
+		    display: inline;
+		    float: left;
+			}
+			.pagination a{
+			    text-decoration: none;
+			    display: block;
+			    color: #000;
+			    padding: 0 10px;
+			    border-radius: 2px;
+			    border: 1px solid #F2F2F2;
+			    background: #333;
+			}
+.pagination a:hover{
+    background: orange;
+}   
+.pagination{
+	display: inline-block;
+} 
+.page{
+	text-align: center;
+}  
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<div class="pagination">
+		  <ul>
+		    <li><a href="#">Prev</a></li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li><a href="#">Next</a></li>
+		  </ul>
+		</div>
+		</div>
+		
+	</body>
+</html>

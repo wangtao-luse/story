@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.item:first-child{
+				background: red;
+			}
+			.item:last-child{
+				background: green;
+			}
+			.item{ 
+				display: inline-block;
+				}
+			.wrap{
+				position: relative;
+			}
+			a{
+				
+				text-decoration: none;
+				color: #0099FF;
+			}
+			.menu a{
+				display: block;
+			}
+			li{
+				list-style: none;
+			}
+			.wrap{
+				position: relative;
+				display: inline-block;
+			}
+			.menu{
+				position: absolute;
+				background: #F0F0F0;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="wrapper">
+		<ul>
+			<li class="item">
+				<a>用户中心</a>
+			</li>
+			<li class="item">
+				<div class="wrap">
+					<a>创作中心</a>
+					<div class="menu" style="display: block;">
+						<a href="#">写博客</a>
+						<a href="#">退出</a>
+					</div>
+				</div>
+				
+			</li>
+		</ul>
+		<ul>
+			<li class="item">兴趣爱好</li>
+			<li class="item">爱旅行SHOW</li>
+		</ul>
+	</div>	
+		
+	</body>
+</html>

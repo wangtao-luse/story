@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.Modal-wrapper{
+				position: fixed;
+				right: 0;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 100;
+			}
+		.Modal-backdrop{
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				background-color: rgba(26,26,26,0.65);
+				z-index: 0;
+			}
+		.Modal{
+		    	position: relative;
+		    	top: 10%;
+		    	z-index: 1;
+		    	width: 400px;
+		    	margin: 0 auto;
+		    	box-shadow: 0 5px 20px rgba(26,26,26,.1);
+		    }
+		    .Modal-large{
+		    	width: 536px;
+		    }
+		    .Modal-inner-2{
+		    	overflow: auto;
+		    	background: #FFF;
+		    	border-radius: 2px;
+		    	padding: 24px;
+		    }
+		    .Modal-inner-2 .form-native{
+		    	height: 36px;
+			    line-height: 36px;
+			    background: #fff6e5;
+			    border-radius: 4px;
+			    font-size: 12px;
+			    font-family: PingFangSC-Regular,PingFang SC;
+			    font-weight: 400;
+			    color: #e33e33;
+			    text-align: center;
+		    }
+		    .form-entry {
+		    	position: relative;
+			    margin: 1em 0;
+			    line-height: 32px;
+			}
+			.form-entry__label {
+			    margin-right: 8px;
+			    display: block;
+			    font-size: .9rem;
+			    color: #4d4d4d;
+			    white-space: nowrap;
+			}
+			.mark_selection {
+			    position: relative;
+			}
+			.mark_selection button.tag__btn-tag {
+			    padding: 0 8px;
+			    height: 28px;
+			    background: #fff;
+			    border-radius: 4px;
+			    border: 1px solid #e8e8ee;
+			    color: #555666;
+			    line-height: 28px;
+			    font-size: 14px;
+			}
+			.tag__box div.tag__options-content div.tag__options-txt {
+			    height: 36px;
+			    line-height: 36px;
+			    border-bottom: 1px solid #e8e8ee;
+			}
+			.tag__box div.tag__options-list {
+			    margin-left: 1px;
+			    padding: 8px 8px 0 0;
+			    width: 454px;
+			    max-height: 117px;
+			    background: #fff;
+			    overflow-x: hidden;
+			    overflow-y: auto;
+			}
+			.modal__button-bar {
+			    margin-top: 1.75rem;
+			    text-align: right;
+			}
+	</style>
+	<body>
+		<div class="Modal-wrapper">
+			<div class="Modal-backdrop"></div>
+			<div class="Modal Modal-large">
+				<div class="Modal-inner-2">
+				  <form class="info-content">
+					<h3>发布文章</h3>
+					<div class="form-native">
+						<span class="icon tip"></span>
+						<span>请勿发布涉及政治、广告、营销、翻墙、违反国家法律法规等内容，</span>
+					</div>
+					<div class="form-entry form-tag-box">
+						<label class="form-entry__label">文章标签：</label>
+						<div class="mark_selection">
+							<div class="mark_selection_title_el_tag">
+								<button><span class="icon tag-icon"></span> 添加文章标签 </button>
+							</div>
+						</div>
+					</div>
+					<div class="form-entry form-tag-box">
+						<label>分类专栏</label>
+						<div class="form-entry__field">
+							<div class="tag__box">
+								<div class="tag-wrap">
+									<button>
+										<span class="icon tag-icon"></span>
+										新建分类专栏
+									</button>
+								</div>
+								<div class="tag__options-content">
+									<div class="tag__options-txt">
+										<span>最多选择3个分类专栏</span>
+										<font>#为二级分类</font>
+									</div>
+									<div class="tag__options-list">
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				    <div class="inline-box">
+				    	<div class="form-entry">
+				    		<label class="form-entry__label">文章类型</label>
+				    		<div class="form-entry__field">
+				    			<select class="textfield">
+				    				<option value="0" selected="selected">请选择</option>
+				    				<option value="original">原创</option>
+				    				<option value="repost">转载</option>
+				    			</select>
+				    		</div>
+				    	</div>
+				    </div>
+				    <div class="form-entry">
+				    	<label class="form-entry">发布形式：</label>
+				    	<div class="form-entry__field">
+				    		<div class="switch-box">
+				    			<input type="radio" id="public" value="public" class="form-control form-control-sm chk-switch">
+				    			<label for="public" class="lab-switch">公开</label>
+				    			<input type="radio" id="private" value="private" class="form-control form-control-sm chk-switch">
+				    			<label for="private" class="lab-switch">公开</label>
+				    		</div>
+				    	</div>
+				    </div>
+				    <div class="modal__button-bar">
+				    	<button class="button">取消</button>
+				    	<button class="button btn-c-blue">保存为草稿</button>
+				    	<button class="button btn-b-red">发布文章</button>
+				    </div>
+				  </form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
