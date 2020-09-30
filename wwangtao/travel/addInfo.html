@@ -31,14 +31,33 @@
 		    	box-shadow: 0 5px 20px rgba(26,26,26,.1);
 		    }
 		    .Modal-large{
-		    	width: 536px;
+		    	max-width: 606px;
+		    	width: 606px;
 		    }
 		    .Modal-inner-2{
+		    	position: relative;
+		    	margin:7% auto 0;
 		    	overflow: auto;
 		    	background: #FFF;
 		    	border-radius: 2px;
 		    	padding: 24px;
+		    	border: 1px solid #e3e3e3;
+    			box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 		    }
+		    .Modal .modal__close-button {
+			    position: absolute;
+			    top: 16px;
+			    right: 16px;
+			    color: #ccc!important;
+			    width: 24px;
+			    height: 24px!important;
+			    line-height: 28px!important;
+			    padding: 2px!important;
+			    z-index: 2;
+			    outline: none;
+			   
+			    
+			}
 		    .Modal-inner-2 .form-native{
 		    	height: 36px;
 			    line-height: 36px;
@@ -50,6 +69,13 @@
 			    color: #e33e33;
 			    text-align: center;
 		    }
+		    .Modal-inner-2 .form-native .tip {
+		    	display: inline-block;
+			    width: 14px;
+			    height: 14px;
+			    margin-left: 13px;
+			    margin-right: 6px;
+			}
 		    .form-entry {
 		    	position: relative;
 			    margin: 1em 0;
@@ -64,6 +90,15 @@
 			}
 			.mark_selection {
 			    position: relative;
+			}
+			.mark_selection button {
+			    display: inline;
+			    padding: 0;
+			    margin: 0;
+			    background-color: transparent;
+			    font-size: 12px;
+			    border: none;
+			    white-space: nowrap;
 			}
 			.mark_selection button.tag__btn-tag {
 			    padding: 0 8px;
@@ -89,36 +124,230 @@
 			    overflow-x: hidden;
 			    overflow-y: auto;
 			}
+			.tag__box button {
+			    display: flex;
+			    padding: 0;
+			    margin: 0;
+			    background-color: transparent;
+			    font-size: 14px;
+			    border: none;
+			    height: 20px;
+			    line-height: 20px;
+			    white-space: nowrap;
+			}
+			.tag__box button.tag__btn-tag {
+			    height: 28px;
+			    padding: 0 8px;
+			    border-radius: 4px;
+			    border: 1px solid rgba(38,125,204,.1);
+			    color: #555666;
+			    font-size: 14px;
+			}
+			.tag__box button.tag__btn-tag {
+			    height: 28px;
+			    padding: 0 8px;
+			    border-radius: 4px;
+			    border: 1px solid rgba(38,125,204,.1);
+			    color: #555666;
+			    font-size: 14px;
+			}
+			.form-tag-box .form-entry__field {
+			    border: none!important;
+			}
+			.tag__box {
+			    padding-top: 4px;
+			    width: 480px;
+			}
+			.tag__box div.tag__options-content {
+			    width: 99%;
+			    height: 160px;
+			    margin-top: 8px;
+			    border-radius: 4px;
+			    border: 1px solid #e8e8ee;
+			    padding: 0 16px;
+			    box-sizing: border-box;
+			}
+			.tag__box div.tag__options-content div.tag__options-txt {
+			    height: 36px;
+			    line-height: 36px;
+			    border-bottom: 1px solid #e8e8ee;
+			}
+			.tag__box div.tag__options-list {
+			    margin-left: 1px;
+			    padding: 8px 8px 0 0;
+			    width: 454px;
+			    max-height: 117px;
+			    background: #fff;
+			    overflow-x: hidden;
+			    overflow-y: auto;
+			    box-sizing: border-box;
+			}
+			.tag__option-box {
+			    float: left;
+			    height: 21px;
+			    line-height: 21px;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    margin: 0 16px 8px 0;
+			    font-size: 14px;
+			    font-family: PingFangSC-Regular,PingFang SC;
+			    font-weight: 400;
+			    color: #606266;
+			}
+			.tag__option-box label.tag__option-label {
+			    padding-left: 10px;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			}
 			.modal__button-bar {
 			    margin-top: 1.75rem;
 			    text-align: right;
 			}
-	</style>
+			.flex{
+				display: flex;
+			}
+			.tag__box .flex-box {
+			    display: flex;
+			    min-height: 24px;
+			    line-height: 24px;
+			}
+			.textfield {
+			    display: block;
+			    background-color: #fff;
+			    font-family: inherit;
+			    font-weight: 400;
+			    font-size: 1.05em;
+			    padding: .25em .5em;
+			    box-sizing: border-box;
+			    width: 100%;
+			    max-width: 100%;
+			    color: inherit;
+			    height: 2em;
+			    border: 0;
+			    border-radius: 4px;
+			}
+			.inline-box .form-entry {
+			    margin: 0;
+			    width: 50%;
+			}
+			.form-entry {
+			    margin: 1em 0;
+			    line-height: 32px;
+			}
+			.form-entry {
+			    position: relative;
+			}
+			.inline-box .form-entry .form-entry__field select.textfield {
+			    height: 32px;
+			    background: #fafafa;
+			    border: 1px solid #ddd;
+			    border-radius: 4px;
+			    font-size: 14px;
+			    color: #999;
+			}
+			.form-entry__field {
+			    width: 100%;
+			    border: 1px solid #ccc;
+			    border-radius: 4px;
+			    position: relative;
+			    overflow: hidden;
+			}
+			.inline-box .form-entry .form-entry__field {
+		    border: none;
+			}
+			.form-entry-marginBottom {
+    margin-bottom: 5px;
+}
+.form-entry__field-switch-box .form-entry__field {
+    border: none;
+    overflow: unset;
+}
+.button.btn-b-red {
+    padding: 6px;
+    background: #fcecea;
+    border-radius: 4px;
+    color: #e33e33;
+    transition: all .3s ease-in-out;
+}
+.button, .text-input {
+    background-image: none;
+    border: 0;
+    border-radius: 4px;
+}
+.Modal .button {
+    color: #333;
+    background-color: transparent;
+    display: inline-block;
+    height: auto;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: .875em;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+}
+ 
+  
+.Modal .button:hover{
+    background-color: rgba(0,0,0,.05);
+    outline: 0;
+    text-decoration: none;
+    }
+      .button.btn-b-red {
+    padding: 6px;
+    background: #fcecea;
+    border-radius: 4px;
+    color: #e33e33;
+    transition: all 0.3s ease-in-out;
+}
+.button.btn-b-red:hover{
+	background: #fcecea;
+}
+.button.btn-c-blue {
+    color: #3399ea;
+}
+
+    	</style>
 	<body>
 		<div class="Modal-wrapper">
 			<div class="Modal-backdrop"></div>
 			<div class="Modal Modal-large">
 				<div class="Modal-inner-2">
+				  <button class="modal__close-button button not-tabbable">X</button>
 				  <form class="info-content">
 					<h3>发布文章</h3>
 					<div class="form-native">
 						<span class="icon tip"></span>
-						<span>请勿发布涉及政治、广告、营销、翻墙、违反国家法律法规等内容，</span>
+						<span>请勿发布涉及政治、广告、营销、翻墙、违反国家法律法规等内容!</span>
 					</div>
-					<div class="form-entry form-tag-box">
-						<label class="form-entry__label">文章标签：</label>
+					<div class="form-entry flex form-tag-box">
+						<label class="form-entry__label">文章标签:</label>
 						<div class="mark_selection">
 							<div class="mark_selection_title_el_tag">
-								<button><span class="icon tag-icon"></span> 添加文章标签 </button>
+								<button class="tag__btn-tag"><span class="icon tag-icon"></span> 添加文章标签 </button>
 							</div>
 						</div>
 					</div>
-					<div class="form-entry form-tag-box">
-						<label>分类专栏</label>
+					<div class="form-entry flex form-tag-box">
+						<label class="form-entry__label">分类专栏:</label>
 						<div class="form-entry__field">
 							<div class="tag__box">
 								<div class="tag-wrap">
-									<button>
+									<button class="tag__btn-tag">
 										<span class="icon tag-icon"></span>
 										新建分类专栏
 									</button>
@@ -147,6 +376,33 @@
 										  	<span class="spanIsAgree">Java</span>
 										  </label>
 										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
 									</div>
 									
 									
@@ -155,8 +411,8 @@
 						</div>
 					</div>
 				    <div class="inline-box">
-				    	<div class="form-entry">
-				    		<label class="form-entry__label">文章类型</label>
+				    	<div class="form-entry flex">
+				    		<label class="form-entry__label">文章类型:</label>
 				    		<div class="form-entry__field">
 				    			<select class="textfield">
 				    				<option value="0" selected="selected">请选择</option>
@@ -166,14 +422,14 @@
 				    		</div>
 				    	</div>
 				    </div>
-				    <div class="form-entry">
-				    	<label class="form-entry">发布形式：</label>
+				    <div class="form-entry form-entry__field-switch-box flex form-entry-marginBottom">
+				    	<label class="form-entry__label">发布形式：</label>
 				    	<div class="form-entry__field">
 				    		<div class="switch-box">
 				    			<input type="radio" id="public" value="public" class="form-control form-control-sm chk-switch">
 				    			<label for="public" class="lab-switch">公开</label>
 				    			<input type="radio" id="private" value="private" class="form-control form-control-sm chk-switch">
-				    			<label for="private" class="lab-switch">公开</label>
+				    			<label for="private" class="lab-switch">私密</label>
 				    		</div>
 				    	</div>
 				    </div>
