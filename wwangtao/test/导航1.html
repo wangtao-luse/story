@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{border-style: none;}
+			button, input, select, textarea {
+			    font-family: inherit;
+			    font-size: inherit;
+			    line-height: inherit;
+			    margin: 0;
+			    outline: none;
+			}
+			button{
+				cursor: pointer;
+			}
+			.text-input{
+				display: block;
+				width: 100%;
+				height: 36px;
+				padding: 3px 12px;
+				line-height: 1.5;
+				color: inherit;
+			}
+			.layout__panel--articletitle-bar{
+				background: #fff;
+				width: 1200px;
+				margin: 0 auto;
+			}
+			.article-bar{
+				height: 100%;
+			}
+			.article-bar__link-box{
+				
+			}
+			.article-bar__link-box,
+			.article-bar__input-box,
+			.article-bar__user-box{
+				display: inline-block;
+			}
+			.article-bar__link-box a.btn-goback{
+				width: 88px;
+				height: 25px;
+				line-height: 25px;
+			}
+			.article-bar__input-box{
+				width: 67%;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				background: #fff;
+				margin: 8px 16px 8px 8px;
+			}
+			.article-bar__user-box{
+				margin-left: 12px;
+			}
+			.article-bar__user-box .article-button{
+				display: inline-block;
+			}
+			.article-bar__user-box .user-box{
+				display: inline-block;
+			}
+			.article-bar__user-box .btn-save {
+			    margin-right: 16px;
+			    padding: 8px 16px;
+			    font-size: 16px;
+			    color: #0099FF;
+			    border: 1px solid #0084FF;
+			    border-radius: 4px;
+			    white-space: nowrap;
+			    background-color: #fff;
+			}
+			.article-bar__user-box .btn-save:hover{
+				background: #0099FF;
+				color: #fff;
+			}
+			.article-bar__user-box .article-button{
+				padding: 8px 32px 8px 0;
+			}
+			.article-bar__user-box .btn-publish {
+			    padding: 8px 16px;
+			    font-size: 16px;
+			    color: #fff;
+			    border: none;
+			    border-radius: 4px;
+			    white-space: nowrap;
+			    background-color: #0099FF;
+			}
+			.article-bar__user-box .user-box {
+				position: relative;
+			   vertical-align: middle;
+			}
+			.article-bar__user-box .user-box .btn-userinfo {
+			    cursor: pointer;
+			    vertical-align: middle;
+			}
+			.article-bar__user-box .user-box .btn-userinfo .avatar-box img {
+			    display: block;
+			    border-radius: 16px;
+			}
+			.article-bar__user-box .user-box .user-option-box {
+			    display: none;
+			    position: absolute;
+			    top: 36px;
+			    left: -35px;
+			    padding: 16px;
+			    width: 64px;
+			    height: 69px;
+			    background: #fff;
+			    border: 1px solid #ebebeb;
+			    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+			    border-radius: 4px;
+			    z-index: 1;
+			}
+			.article-bar__user-box .user-box .user-option-box a {
+			    display: block;
+			    margin-top: 4px;
+			    font-size: 14px;
+			    color: #3c3c3c;
+			    text-decoration: none;
+			}
+			.article-bar__user-box .user-box .user-option-box a:first-child {
+			    margin-top: 0;
+			}
+			.article-bar__user-box .user-box .user-option-box:before {
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    left: 46px;
+			    top: -5px;
+			    width: 0;
+			    height: 0;
+			    border-left: 5px solid transparent;
+			    border-right: 5px solid transparent;
+			    border-bottom: 5px solid #fff;
+			}
+			
+			
+			
+			
+			textarea {
+			    resize: none;
+			    overflow-y: auto;
+			}
+			.article_setting_area{
+				padding-top: 20px;
+    			border-top: 1px solid #ebebeb;
+    			background: #fff;
+    			width: 1200px;
+    			margin: 0 auto;
+			}
+			.msg-editor__setting-group{
+				margin-bottom: 30px;
+			}
+			.setting-group__title{
+				font-size: 16px;
+			    line-height: 20px;
+			    margin-bottom: 20px;
+			}
+			.setting-group__content_main{
+				
+			}
+			.setting-group__cover{
+				float: left;
+			    position: relative;
+			    margin-right: 10px;
+			}
+			.select-cover__btn {
+			    display: block;
+			    width: 211.5px;
+			    height: 90px;
+			    box-sizing: border-box;
+			    border: 2px dashed #ebebeb;
+			    color: #07c160;
+			    text-align: center;
+			    padding-top: 16px;
+			    -webkit-transition: all .1s;
+			    transition: all .1s;
+			}
+			.icon-add_css {
+			    display: inline-block;
+			    width: 24px;
+			    height: 24px;
+			    position: relative;
+			}
+			
+			.icon-add_css:before, .icon-add_css:after {
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    background-color: #07c160;
+			}
+			.icon-add_css:before {
+			    width: 20px;
+			    height: 2px;
+			    left: 2px;
+			    top: 11px;
+			}
+			.icon-add_css:after {
+			    width: 2px;
+			    height: 20px;
+			    left: 11px;
+			    top: 2px;
+			}
+			.select-cover__btn .btn-text {
+			    display: block;
+			}
+			.setting-group__abstract {
+			    overflow: hidden;
+			}
+			.frm_textarea_box {
+			    display: inline-block;
+			    width: 288px;
+			    padding: 4px 0 4px 10px;
+			    font-size: 14px;
+			    border: 1px solid #e7e7eb;
+			    box-shadow: none;
+			    -moz-box-shadow: none;
+			    -webkit-box-shadow: none;
+			    border-radius: 0;
+			    -moz-border-radius: 0;
+			    -webkit-border-radius: 0;
+			    background-color: #fff;
+			}
+	.frm_textarea_box.with_counter {
+	    position: relative;
+	    margin-bottom: 27px;
+	}
+	.setting-group__content_main .frm_textarea_box {
+	    display: block;
+	    width: auto;
+	    height: 90px;
+	    margin-bottom: 0!important;
+	    padding-bottom: 20px;
+	    box-sizing: border-box;
+	    position: relative;
+	}
+	.setting-group__content_main .frm_textarea {
+	    height: 100%;
+	}
+	.frm_input, .frm_textarea {
+	    width: 100%;
+	    background-color: transparent;
+	    border: 0;
+	    outline: 0;
+	}
+	.setting-group__content_main .frm_counter {
+	    height: 20px;
+	    line-height: 14px;
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    text-align: right;
+	    padding-right: 10px;
+	    font-style: normal;
+	}
+	.frm_textarea_box.with_counter .frm_counter {
+	    color: #9a9a9a;
+	    font-size: 14px;
+	    font-weight: 400;
+	    font-style: normal;
+	}
+	.move-file {
+	position: absolute;
+	z-index: 4;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+.form-tag-box{
+	margin-top: 12px;
+}
+.form-tag-box .form-entry__field {
+    width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    vertical-align: top;
+    display: inline-block;
+}
+.form-tag-box .form-entry__field {
+    border: none!important;
+}
+
+.tag__box div.tag__options-content {
+    width: 99%;
+    height: 160px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid #e8e8ee;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+.tag__box div.tag__options-content div.tag__options-txt {
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #e8e8ee;
+}
+.tag__box div.tag__options-content div.tag__options-txt {
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #e8e8ee;
+}
+.tag__box div.tag__options-list {
+    margin-left: 1px;
+    padding: 8px 8px 0 0;
+    width: 454px;
+    max-height: 117px;
+    background: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.tag__option-box {
+    float: left;
+    height: 21px;
+    line-height: 21px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 16px 8px 0;
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #606266;
+}
+.tag__option-box label.tag__option-label {
+    padding-left: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.tag__box {
+    padding-top: 4px;
+    width: 480px;
+}
+.tag__box button.tag__btn-tag {
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(38,125,204,.1);
+    color: #555666;
+    font-size: 14px;
+    background: transparent;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+
+
+
+.form-entry__label {
+    margin-right: 8px;
+    display: inline-block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+.textfield {
+    display: block;
+    background-color: #fff;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.05em;
+    padding: 0.25em 0.5em;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    color: inherit;
+    height: 2em;
+    border: 0;
+    border-radius: 4px;
+}
+.inline-box .form-entry .form-entry__field select.textfield {
+    height: 32px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #999;
+}
+ .inline-box .form-entry__field {
+	display: inline-block;
+    width: 150px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.inline-box .form-entry{
+	display: inline-block;
+}
+.form-entry__field-switch-box{
+	margin-left: 40px;
+}
+
+.inline-box .switch-box input{
+	margin-left: 16px;
+}
+.inline-box .switch-box input:first-child{
+	margin-left: 0px;
+}
+		</style>
+	</head>
+	<body>
+		<div id="layout">
+			<div class="layout-panel layout__panel--articletitle-bar">
+				<div class="article-bar">
+					<div class="article-bar__link-box">
+						<a class="btn-goback">文章管理</a>
+					</div>
+					<div class="article-bar__input-box">
+						<input class="article-bar__title article-bar__title--input text-input" />
+					</div>
+					<div class="article-bar__user-box">
+						<div class="article-button">
+							<button type="button" class="btn btn-save">保存草稿</button>
+						    <button type="button" class="btn btn-publish">发布文章</button>
+						</div>
+						
+						<div class="user-box">
+							<div class="btn-userinfo">
+								<div class="avatar-box">
+									<a href="#">
+										<img src="https://profile.csdnimg.cn/B/4/6/3_qq_29393273" width="32" height="32" class="img-user-avatar" />
+									</a>
+								</div>
+							    <div class="user-option-box">
+							      <a href="#">文章管理</a>	
+							      <a href="#">我的文章</a>
+							      <a href="#">退出</a>
+							    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			    <div class="md" style="height: 760px;"></div>
+			    <div class="article_setting_area">
+			    	<div id="js_cover_description_area" class="msg-editor__setting-group">
+			    		<div class="setting-group__title">封面和摘要</div>
+			    		<div class="setting-group__content setting-group__content_main">
+			    			<div id="js_cover_area" class="setting-group__cover setting-group__cover_primary">
+			    				<div class="select-cover__btn js_cover_btn_area">
+			    					<i class="icon-add_css"></i>
+			    					<span class="btn-text">选择封面</span>
+			    					<input type="file" class="move-file" />
+			    				</div>
+			    			</div>
+			    		    <div id="js_description_area" class="setting-group__abstract js_desc_area">
+			    		    	<span class="frm_textarea_box with_counter counter_in append count" id="js_description_span">
+			    		    		<textarea id="js_description" placeholder="选填，摘要会在订阅号消息、转发链接等文章外的场景显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字" class="frm_textarea js_desc js_counter js_field" name="digest" maxlength="120"></textarea>
+			    		    		<em class="frm_input_append frm_counter">0/120</em>
+			    		    	</span>
+			    		    </div>
+			    		</div>
+			    	</div>
+			    </div>
+			    <div class="appmsg-editor__setting-group" id="article_setting_area2">
+			    	<div id="article_type_setting" class="setting-group__title">文章设置</div>
+			    	<div class="inline-box">
+				    	<div class="form-entry flex">
+				    		<label class="form-entry__label">文章类型:</label>
+				    		<div class="form-entry__field">
+				    			<select class="textfield">
+				    				<option value="0" selected="selected">请选择</option>
+				    				<option value="original">原创</option>
+				    				<option value="repost">转载</option>
+				    			</select>
+				    		</div>
+				    	</div>
+				    	<div class="form-entry form-entry__field-switch-box flex form-entry-marginBottom">
+				    	<label class="form-entry__label">发布形式：</label>
+				    	<div class="form-entry__field">
+				    		<div class="switch-box">
+				    			<input type="radio" id="public" value="public" class="form-control form-control-sm chk-switch">
+				    			<label for="public" class="lab-switch">公开</label>
+				    			<input type="radio" id="private" value="private" class="form-control form-control-sm chk-switch">
+				    			<label for="private" class="lab-switch">私密</label>
+				    		</div>
+				    	</div>
+				    </div>
+			    	</div>
+			        <div class="form-entry flex form-tag-box">
+						<label class="form-entry__label">分类专栏:</label>
+						<div class="form-entry__field">
+							<div class="tag__box">
+								<div class="tag-wrap">
+									<button class="tag__btn-tag">
+										<span class="icon tag-icon"></span>
+										新建分类专栏
+									</button>
+								</div>
+								<div class="tag__options-content">
+									<div class="tag__options-txt">
+										<span>最多选择3个分类专栏</span>
+										<font>#为二级分类</font>
+									</div>
+									<div class="tag__options-list">
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+			    	<div class="form-entry flex form-tag-box">
+						<label class="form-entry__label">分类专栏:</label>
+						<div class="form-entry__field">
+							<div class="tag__box">
+								<div class="tag-wrap">
+									<button class="tag__btn-tag">
+										<span class="icon tag-icon"></span>
+										新建分类专栏
+									</button>
+								</div>
+								<div class="tag__options-content">
+									<div class="tag__options-txt">
+										<span>最多选择3个分类专栏</span>
+										<font>#为二级分类</font>
+									</div>
+									<div class="tag__options-list">
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+										<div class="tag__option-box">
+										  <label class="tag__option-label">
+										  	<input type="checkbox" class="tag__option-chk" value="java" />
+										  	<i class="tag__option-icon">
+										  		<span class="icon"></span>
+										  	</i>
+										  	<span class="spanIsAgree">Java</span>
+										  </label>
+										</div>
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+			    </div>
+			</div>
+		</div>
+	</body>
+</html>
