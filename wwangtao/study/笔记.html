@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		1.静态布局(使用div布局,尽量少使用table布局);
+		   一列布局：
+		    固定容器宽度,设置margin使其居中;
+		  .container{width:固定宽度;margin:0 auto}
+		2.去除容器的padding和margin;
+		  可以使用通配选择符(*)
+		  *{margin:0;padding:0}
+		  或指定常用元素
+		  body,h1, h2, h3, h4, h5, h6,hr, 
+		  p, blockquote,dl, dt, dd, ul, ol,
+		  li,pre, form, fieldset, legend,
+		  button, input, textarea,th, td {
+			    margin: 0;
+			    padding: 0;
+			}
+		3.CSS关系选择符http://css.doyoe.com/
+		   1.包含选择符(E F):
+		     div p{rules}
+		           选择所有被div元素包含的p元素(包含了儿子,孙子,孙子的孙子...);
+		   2.子选择符(E>F)
+		     div>p{rules}
+		           选择所有作被div元素包含的的子元素p(不含孙辈)。
+		   3.相邻选择符(E+F)
+		     div+p{rules}
+		         选择紧贴在div元素之后第一个p元素，元素div与p必须同属一个父级;
+		   4.兄弟选择符(E~F)
+		     div~p{rules}
+		       选择div元素后面的所有兄弟元素p，元素didv与p必须同属一个父级;
+		4.字体
+		  1.font-size指定元素的字体大小;
+		     a.正文字体大小一般设置为16px;
+		     b.标题字体大小一般设置为16px-20px;
+		  2.font-weight定义元素文本字体的粗细
+		    a.normal正常的字体。相当于数字值400;
+		    b.bold粗体。相当于数字值700;
+		5.文本
+		  1.text-align定义元素内容的水平对齐方式;
+		    a.left:内容左对齐
+		    b.center:内容居中对齐
+		    c.right:内容右对齐
+		    d.justify:两端对齐
+		    e.行内元素无效;
+		  2.white-space指定元素是否保留文本间的空格、换行；指定文本超过边界时是否换行
+		    nowrap：强制所有文本在同一行内显示。
+		    normal：默认处理方式
+		  3.vertical-align：定义行内元素在行框内的垂直对齐方式。
+		     middle:垂直居中;
+		     top:顶部对齐
+		     bottom:底部对齐;
+		  4.line-height定义元素中行框的最小高度。
+		  
+		6.颜色
+		  1.color设置文本颜色;
+		    a.正文内容的黑色字体颜色可使用#545454 #3f3f3f、#7f7f7f #333；
+			   标题颜色可以用 #f79646、#000000、#3daad6、#2e6e9e。
+        7.解决元素塌陷问题：
+        .clearfix:after {
+			    content: ".";
+			    display: block;
+			    clear: both;
+			    visibility: hidden;
+			    line-height: 0;
+			    height: 0;
+			    font-size: 0;
+			}
+		8.布局
+		  1.display设置或检索对象是否及如何显示;
+		  2.float定义了元素向左或者向右浮动放置;		  
+		  3.clear清除浮动;
+		  4.visibility定义元素是否可见;
+		  5.overflow定义了元素处理溢出内容的方式
+		     a.hidden：隐藏溢出容器的内容且不出现滚动条;
+		     b.scroll：隐藏溢出容器的内容，溢出的内容可以通过滚动呈现;
+		9.定位
+		  1.position指定一个元素在文档中的定位方式;
+		  2.z-index定义一个元素在文档中的层叠顺序;
+		  3.top
+		  4.right
+		  6.bottom
+		  7.left
+		 10.用户界面
+		  1.text-overflow定义内联内容溢出其块容器是否截断或者添加(...)及自定义字符
+		    a.clip：当内联内容溢出块容器时，将溢出部分裁切掉。
+		    b.ellipsis：当内联内容溢出块容器时，将溢出部分替换为（...）
+		  2.cursor:设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状
+		    a.pointer:手形;
+		  3.outline:设置或检索对象外的线条轮廓
+		    outline:0;(可以去除input线条轮廓)
+		  11.多行文本溢出处理方法:
+		    a. -webkit-line-clamp: 2;限制在一个块元素显示的文本的行数。 
+		              为了实现该效果，它需要组合其他的WebKit属性。
+		             常见结合属性:
+			    display: -webkit-box;
+			    -webkit-box-orient: vertical;
+		    b.仅支持webkit浏览器; 
+		    box{
+		    	width:固定宽度;
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    cursor: pointer;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 2;
+			    -webkit-box-orient: vertical;
+			}
+			
+			
+			12.单行文本溢出:
+			box{
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space:nowrap
+			}
+	</body>
+</html>

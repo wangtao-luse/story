@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<script>
+			$(function(){
+				$("#js_article_tags_area .frm_checkbox_label").on("click",function(e){
+				var selected = $(this).hasClass("selected");
+				if(selected){
+					$(this).removeClass("selected");	
+				}else{
+				 $(this).addClass("selected");	
+				}
+				e.stopPropagation();
+				e.preventDefault();
+				
+			});
+			
+			$(".weui-desktop-form-tag__input").on("keypress",function(){
+				$(".weui-desktop-dropdown-menu.article_tags_sug").css("display","block");
+			});
+			
+			})
+			
+		</script>
+		<style>
+			body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, fieldset, textarea {
+			    margin: 0;
+			}
+			fieldset, legend, textarea, input {
+			    padding: 0;
+			}
+			button, input, select, textarea {
+		    font-family: inherit;
+		    font-size: 100%;
+		    margin: 0;
+		    outline: 0;
+		}
+		textarea {
+		    overflow: auto;
+		    vertical-align: top;
+		    resize: none;
+		}
+		textarea, input {
+	    color: #353535;
+		}
+		textarea {
+	    resize: none;
+	    overflow-y: auto;
+	}
+	button {
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: default;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-width: 0;
+    cursor: pointer;
+}
+			#article_setting_area{
+			  max-width: 1200px;
+			  min-width: 980px;
+			  margin:0 auto;	
+			}
+			.appsmg-editor__after-area{
+				padding-top: 20px;
+				border-top: 1px solid #ebebeb;
+			}
+			.msg-editor__setting-group{
+				margin-bottom: 30px;
+			}
+			.setting-group__title{
+				font-size: 16px;
+				line-height: 20px;
+				margin-bottom: 20px;
+			}
+			.setting-group__cover{
+				float: left;
+				margin-right: 10px;
+				position: relative;
+			}
+			.select-cover__btn{
+				width: 211px;
+				height: 90px;
+				box-sizing: border-box;
+				border: 2px dashed #EBEBEB;
+				color: #10B2FA;
+				text-align: center;
+				padding-top: 16px;
+			}
+			.icon-add_css{
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				position: relative;
+			}
+			.icon-add_css:before,.icon-add_css:after{
+				content: "";
+				display: block;
+				background-color: #10B2FA;
+				position: absolute;
+			}
+			.icon-add_css:before{
+				width: 20px;
+				height: 2px;
+				left: 2px;
+				top: 11px;
+				
+			}
+			.icon-add_css:after{
+				width: 2px;
+				height: 20px;				
+				left: 11px;
+				top: 2px;
+			}
+			.select-cover__btn .btn-text {
+			    display: block;
+			}
+			.move-file{
+				opacity: 0;
+				-moz-opacity: 0;
+				filter: alpha(opacity=0);
+				cursor: pointer;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.setting-group__abstract{
+				overflow: hidden;
+			}
+			.frm_textarea_box {
+			    display: inline-block;
+			    width: 288px;
+			    padding: 4px 0 4px 10px;
+			    font-size: 14px;
+			    border: 1px solid #e7e7eb;
+			    box-shadow: none;
+			    -moz-box-shadow: none;
+			    -webkit-box-shadow: none;
+			    border-radius: 0;
+			    -moz-border-radius: 0;
+			    -webkit-border-radius: 0;
+			    background-color: #fff;
+			}
+			.setting-group__content_main .frm_textarea_box{
+				display: block;
+				width: auto;
+				height: 90px;
+				padding-bottom: 20px;
+				box-sizing: border-box;
+				position: relative;
+			}
+			.frm_input, .frm_textarea {
+			    width: 100%;
+			    background-color: transparent;
+			    border: 0;
+			    outline: 0;
+			}
+			.setting-group__content_main .frm_textarea {
+		   		 height: 100%;
+		    }
+		    .setting-group__content_main .frm_counter {
+			    height: 20px;
+			    line-height: 14px;
+			    position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+			    text-align: right;
+			    padding-right: 10px;
+			    font-style: normal;
+			}
+			.frm_textarea_box.with_counter .frm_counter {
+			    color: #9a9a9a;
+			    font-size: 14px;
+			    font-weight: 400;
+			    font-style: normal;
+			}
+			.frm_checkbox_label {
+			    display: inline-block;
+			    text-align: left;
+			    cursor: pointer;
+			    margin-right: 1em;
+			}
+			.allow_click_opr{
+				display: inline-block;
+			}
+			.frm_checkbox{
+				position: absolute;
+				left: -999em;
+			}
+			.icon_checkbox{
+				margin-right: 3px;
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				background: url(../img/common/base_z49d030.png) 0 -220px no-repeat;
+				vertical-align: middle;
+			}
+			.selected .icon_checkbox {
+			    background: url(../img/common/base_z49d030.png) 0 -240px no-repeat;
+			}
+			.read-more__icon__more {
+	    		font-size: 0;
+			    display: inline-block;
+			    width: 16px;
+			    height: 16px;
+			    background-image: url(../img/common/icon.svg);
+			    background-size: contain;
+			    background-repeat: no-repeat;
+			    vertical-align: middle;
+			    margin-top: -3px;
+			    margin-left: -2px;
+			    margin-right: 8px;
+			}
+			
+/**dialog*/
+.weui-desktop-dialog__wrp {
+    z-index: 5000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: auto;
+}
+.weui-desktop-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    margin: 40px;
+    white-space: normal;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+    max-width: 980px;
+    min-width: 600px;
+    box-sizing: border-box;
+}
+.weui-desktop-dialog__hd {
+    position: relative;
+    overflow: hidden;
+    padding: 0 32px;
+    line-height: 72px;
+    height: 72px;
+}
+.weui-desktop-dialog__title {
+    font-weight: 400;
+    font-size: 16px;
+}			
+.weui-desktop-dialog__close-btn {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    margin-top: -9px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+}
+.weui-desktop-icon-btn {
+    background-color: transparent;
+    padding: 0;
+    border-width: 0;
+    vertical-align: middle;
+    font-size: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+.article_tags_dialog .article_tags_dialog_inner {
+    padding: 20px 32px 0;
+}
+.weui-desktop-form__control-group {
+    margin-bottom: 30px;
+}
+.weui-desktop-form__control-group {
+    margin-bottom: 30px;
+}
+.article_tags_dialog .weui-desktop-form__control-group {
+    margin-bottom: 40px;
+}
+.weui-desktop-form__label {
+    float: left;
+    margin: .48571429em 30px 0 0;
+    width: 5em;
+}
+.weui-desktop-form__label {
+    float: left;
+    margin: 0.48571429em 30px 0 0;
+    width: 5em;
+}
+.article_tags_dialog .weui-desktop-form__label {
+    width: 2em;
+    margin-right: 20px;
+}
+.weui-desktop-form__controls {
+    display: table-cell;
+    width: 1%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.article_tags_dialog .tags_input_wrap {
+    position: relative;
+}
+.weui-desktop-form-tag__area {
+    display: block;
+    border: 1px solid #E4E8EB;
+    padding: 0.48571429em 10px 0;
+    border-radius: 3px;
+    position: relative;
+    overflow: auto;
+}
+.weui-desktop-form__input-prepend-in, .weui-desktop-form__input-append-in {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    text-align: right;
+    z-index: 1;
+}
+.weui-desktop-form__input-append-in {
+    right: 0;
+    padding-right: 10px;
+}
+.weui-desktop-form__input-prepend-in, .weui-desktop-form__input-append-in {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    text-align: right;
+    z-index: 1;
+}
+.weui-desktop-form__input-append-in {
+    right: 0;
+    padding-right: 10px;
+}
+.weui-desktop-form__counter {
+    font-style: normal;
+    color: #9A9A9A;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.weui-desktop-form-tag__area .weui-desktop-form__counter {
+    margin-left: 16px;
+    position: relative;
+    z-index: 1;
+}
+.weui-desktop-form__input-prepend-in:after, .weui-desktop-form__input-append-in:after {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.weui-desktop-form-tag__wrp {
+    display: block;
+    overflow: auto;
+    margin-right: -0.48571429em;
+}
+.weui-desktop-form-tag__wrp {
+    margin: 0;
+}
+.weui-desktop-form-tag__input {
+    border-width: 0;
+    background-color: transparent;
+    margin-left: 3px;
+    width: 5em;
+    height: 1.45714286em;
+    line-height: 1.45714286em;
+    font-size: 14px;
+}
+.weui-desktop-form-tag__area .weui-desktop-form-tag, .weui-desktop-form-tag__area .weui-desktop-form-tag__input {
+    vertical-align: top;
+    margin-bottom: 0.48571429em;
+}
+.article_tags_dialog .weui-desktop-form-tag__input {
+    width: 11em;
+}
+.weui-desktop-form-tag__input__label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: text;
+}
+.weui-desktop-dropdown-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    min-width: 128px;
+    width: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    background-color: #fff;
+    z-index: 4000;
+}
+.article_tags_dialog .article_tags_sug {
+    top: 36px;
+}
+.weui-desktop-form__tips {
+    padding-top: 10px;
+    color: #9A9A9A;
+    line-height: 1.6;
+}
+.weui-desktop-popover__wrp {
+    display: inline;
+    position: relative;
+    font-size: 14px;
+}
+.weui-desktop-icon {
+    display: inline-block;
+    font-size: 0;
+}
+.weui-desktop-icon__tips {
+    width: 18px;
+    height: 18px;
+}
+.article_tags_dialog .weui-desktop-icon__tips {
+    vertical-align: -3px;
+    margin-left: 5px;
+}
+.weui-desktop-popover {
+    width: 280px;
+    position: absolute;
+    z-index: 500;
+    text-align: left;
+    color: #353535;
+    line-height: 1.6;
+    white-space: normal;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+.weui-desktop-popover_pos-up-left, .weui-desktop-popover_pos-up-center, .weui-desktop-popover_pos-up-right {
+    top: 100%;
+    padding-top: 16px;
+}
+.weui-desktop-popover_pos-up-center, .weui-desktop-popover_pos-down-center {
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.article_tags_dialog .weui-desktop-popover {
+    width: 374px;
+}
+.article_tags_dialog .weui-desktop-form__control-group:last-child {
+    margin-bottom: 0;
+}
+.weui-desktop-form__label {
+    float: left;
+    margin: 0.48571429em 30px 0 0;
+    width: 5em;
+}
+.article_tags_dialog .weui-desktop-form__label {
+    width: 2em;
+    margin-right: 20px;
+}
+.weui-desktop-form__controls {
+    display: table-cell;
+    width: 1%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.article_tags_dialog .article_tags_history_hd {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 18px;
+}
+.article_tags_dialog .article_tags_history_hd h4 {
+    -ms-flex: 1;
+    flex: 1;
+    font-weight: 400;
+}
+.article_tags_dialog .article_tags_history_bd {
+    max-height: 180px;
+    overflow-y: auto;
+}
+.weui-desktop-form__check-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.article_tags_dialog .article_tags_history_bd .weui-desktop-form__check-label {
+    margin-bottom: 16px;
+}
+.weui-desktop-form__radio, .weui-desktop-form__checkbox {
+    position: absolute;
+    left: -9999em;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.weui-desktop-icon-radio, .weui-desktop-icon-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border: 1px solid #C9CDD3;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    font-size: 0;
+}
+.weui-desktop-icon-checkbox {
+    text-align: center;
+}
+.weui-desktop-form__check-content {
+    vertical-align: middle;
+}
+.weui-desktop-dialog__ft {
+    padding: 24px 32px;
+    text-align: center;
+}
+.weui-desktop-dialog__ft > .weui-desktop-btn {
+    margin: 0 .5em;
+}
+.weui-desktop-btn_primary.weui-desktop-btn_disabled, .weui-desktop-btn_primary.weui-desktop-btn_loading:before {
+    background-color: #83E0B0;
+    border-color: #83E0B0;
+    color: #C1EFD7;
+}
+
+
+
+.weui-desktop-dialog__ft > .weui-desktop-btn {
+    margin: 0 .5em;
+}
+.weui-desktop-dialog__ft>.weui-desktop-btn {
+    margin: 0 .5em;
+}
+
+.weui-desktop-btn_default {
+    background-color: #FBFBFB;
+    border-color: #E4E8EB;
+    color: #353535;
+}
+.weui-desktop-btn_default:hover {
+    background-color: #EFF0F2;
+    color: #858585;
+    border-color: #E4E8EB;
+}
+.weui-desktop-btn {
+    display: inline-block;
+    padding: 0 22px;
+    min-width: 54px;
+    line-height: 2.42857143;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.weui-desktop-btn_default {
+    background-color: #FBFBFB;
+    border-color: #E4E8EB;
+    color: #353535;
+}
+.weui-desktop-dialog__ft > .weui-desktop-btn {
+    margin: 0 .5em;
+}
+</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="article-bar"></div>
+			<div class="md"></div>
+			<div class="appsmg-editor__after-area" id="article_setting_area">
+				<div id="js_cover_description_area" class="msg-editor__setting-group">
+					<div class="setting-group__title">封面和摘要</div>
+					<div class="setting-group__content setting-group__content_main">
+						<div id="js_cover_area" class="setting-group__cover setting-group__cover_primary">
+							<div class="select-cover__btn js_cover_btn_area">
+								<i class="icon-add_css"></i>
+		    					<span class="btn-text">选择封面</span>
+		    					<input type="file" class="move-file" />
+							</div>
+						</div>
+					    <div id="js_description_area" class="setting-group__abstract js_desc_area">
+					    	<span class="frm_textarea_box with_counter counter_in append count" id="js_description_span">
+					    		<textarea id="js_description" placeholder="选填，摘要会在订阅号消息、转发链接等文章外的场景显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字" class="frm_textarea js_desc js_counter js_field" name="digest" maxlength="120"></textarea>
+			    		    	<em class="frm_input_append frm_counter">0/120</em>
+					    	</span>
+					    </div>
+					</div>
+				</div>
+			    <div id="article_setting_area2" class="msg-editor__setting-group">
+			    	<div class="setting-group__title">文章设置</div>
+			    	<div class="setting-group__content">
+			    		<!-- 文章标签开始-->
+			    		<div id="js_article_tags_area" class="setting-group__checkbox-item">
+			    		  <label class="frm_checkbox_label">
+			    		  	<input type="checkbox" class="frm_checkbox js_article_tags" />
+			    		  	<i class="icon_checkbox"></i>
+			    		  	<div class="allow_click_opr js_article_tags_label">
+			    		  		<span class="lbl_content">文章标签</span>
+			    		  		<i class="lbl_content_after read-more__icon__more"></i>
+			    		  		<span class="lbl_content_after lbl_content_desc js_article_tags_content"></span>
+			    		  	</div>
+			    		  </label>
+			    		</div>
+			    	    <!--文章标签结束-->
+			    	</div>
+			    </div>
+			    <div id="js-categories-area" class="msg-editor__setting-group">
+			    	<div class="setting-group__content">
+			    		<!-- 文章分类开始-->
+			    		<div id="js_article_tags_area" class="setting-group__checkbox-item">
+			    		  <label class="frm_checkbox_label">
+			    		  	<input type="checkbox" class="frm_checkbox js_article_tags" />
+			    		  	<i class="icon_checkbox"></i>
+			    		  	<div class="allow_click_opr js_article_tags_label">
+			    		  		<span class="lbl_content">分类专栏</span>
+			    		  		<i class="lbl_content_after read-more__icon__more"></i>
+			    		  		<span class="lbl_content_after lbl_content_desc js_article_tags_content"></span>
+			    		  	</div>
+			    		  </label>
+			    		</div>
+			    	    <!--文章分类结束-->
+			    </div>
+			</div>
+			</div>
+		</div>
+        <div>
+			<div class="weui-desktop-dialog__wrp article_tags_dialog js_article_tags_dialog">
+				<div class="weui-desktop-dialog" style="width: 600px;">
+					<div class="weui-desktop-dialog__hd">
+						<h3 class="weui-desktop-dialog__title">话题标签</h3> <button class="weui-desktop-icon-btn weui-desktop-dialog__close-btn"><svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M10.01 8.996l7.922-7.922c.086-.086.085-.21.008-.289l-.73-.73c-.075-.074-.208-.075-.29.007L9 7.984 1.077.062C.995-.02.863-.019.788.055l-.73.73c-.078.078-.079.203.007.29l7.922 7.92-7.922 7.922c-.086.086-.085.212-.007.29l.73.73c.075.074.207.074.29-.008l7.92-7.921 7.922 7.921c.082.082.215.082.29.008l.73-.73c.077-.078.078-.204-.008-.29l-7.921-7.921z"></path></svg></button></div>
+					<div class="weui-desktop-dialog__bd">
+						<div class="article_tags_dialog_inner">
+							<form>
+								<div class="weui-desktop-form__control-group"><label class="weui-desktop-form__label">话题</label>
+									<div class="weui-desktop-form__controls">
+										<div class="tags_input_wrap js_not_hide_similar_tags">
+											<div>
+												<div class="weui-desktop-form-tag-control"><span class="weui-desktop-form-tag__area"><span class="weui-desktop-form__input-append-in"><em class="weui-desktop-form__counter">0/16</em></span> <span class="weui-desktop-form-tag__wrp"> <input id="tag-0.7277698927293168" type="text" placeholder="请输入话题，按回车分割" class="weui-desktop-form-tag__input"></span> <label for="tag-0.7277698927293168" class="weui-desktop-form-tag__input__label"></label></span>
+													<!---->
+													<!---->
+													<!---->
+													<!---->
+												</div>
+											</div>
+											<!---->
+											<div class="weui-desktop-dropdown-menu article_tags_sug" style="display: none;">
+												<div class="article_tags_sug_tips">创建话题</div>
+												<ul class="weui-desktop-dropdown__list">
+													<li class="weui-desktop-dropdown__list-ele">
+														<div class="weui-desktop-dropdown__list-ele-contain"></div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="weui-desktop-form__tips">
+											<span> 最多五个，设置后文章顶部会展现话题
+												
+											</span>
+										</div>
+										<!---->
+									</div>
+								</div>
+								<div class="weui-desktop-form__control-group"><label class="weui-desktop-form__label"> </label>
+									<div class="weui-desktop-form__controls">
+										<div class="article_tags_history">
+											<div class="article_tags_history_hd">
+												<h4>历史话题</h4></div>
+											<div class="article_tags_history_bd"><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612311375873"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">张家界旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612210712579"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">张家界旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667938664450"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667921887232"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148297953282"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148281176065"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148230844425"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593352108630654980"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351845396135944"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351624507310083"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351160432738306"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350932279377921"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350634198581251"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350341989810181"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350111487639555"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593349794498920449"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1591932451130490884"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1586327643296153606"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行</span></label></div>
+										</div>
+										<!---->
+										<!---->
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="weui-desktop-dialog__ft"><button type="button" class="weui-desktop-btn weui-desktop-btn_primary weui-desktop-btn_disabled">确定</button> <button type="button" class="weui-desktop-btn weui-desktop-btn_default">取消</button></div>
+				</div>
+			</div>
+			<div class="weui-desktop-mask"></div>
+		</div>
+	</body>
+</html>
