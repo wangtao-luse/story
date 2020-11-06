@@ -6,6 +6,10 @@
 		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
 		<script>
 			$(function(){
+				var isEmpty=function(o){
+					return null==o||""==o||"null"==0;
+				}
+				//文章设置checkebox选择取消选择效果
 				$("#js_article_tags_area .frm_checkbox_label").on("click",function(e){
 				var selected = $(this).hasClass("selected");
 				if(selected){
@@ -17,13 +21,54 @@
 				e.preventDefault();
 				
 			});
-			
-			$(".weui-desktop-form-tag__input").on("keypress",function(){
-				$(".weui-desktop-dropdown-menu.article_tags_sug").css("display","block");
+			//判断是否是拼音输入法
+			var isPinyin = false;
+			$(".weui-desktop-form-tag__input").on('compositionstart', function () { isPinyin = true });//此时为拼音输入法
+			$(".weui-desktop-form-tag__input").on('compositionend', function () { isPinyin = false });//此时为直接输入，包括数字、字符和英文输入
+			//keyup在控件有焦点的情况下释放键时发生
+			$(".weui-desktop-form-tag__input").on("keyup",function(event){
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				 $(this).attr("autocomplete","off");
+				//1.获取提示对象
+				var $this = $(".weui-desktop-dropdown-menu.article_tags_sug");
+				//2.显示提示对象
+				$($this).css("display","block");
+				//3.获取当前对象的值
+				var tag = $(this).val();
+				var b =isEmpty(tag);
+				if(b){//为空
+				  $($this).css("display","none");	
+				}
+				if(!isPinyin){//英文输入法
+					$($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);	
+				}else{//中文输入法
+				     if(keycode == '13'){
+				         $($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);
+				      }
+				}
+				
 			});
-			
-			})
-			
+			$(".weui-desktop-form-tag__input").on("keypress",function(event){
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+			    var tag = $(this).val();
+			    if(keycode == '13'&&!isEmpty(tag)){
+			    	var node=$(".weui-desktop-form-tag__area .weui-desktop-form-tag__wrp");
+				    appendTag(node,tag); 
+				}
+			});
+			$(".weui-desktop-dropdown__list .weui-desktop-dropdown__list-ele").on("click",function(){
+			    var $this = $(".weui-desktop-dropdown-menu.article_tags_sug");
+			    $($this).css("display","none");
+			    var node=$(".weui-desktop-form-tag__area .weui-desktop-form-tag__wrp");
+			    var tag =$(".weui-desktop-form-tag__input").val();
+			    appendTag(node,tag);
+				    
+			});
+			});
+			function appendTag($node,tag){
+			   var html ="<span class='weui-desktop-form-tag'><i class='weui-desktop-form-tag__name'>"+tag+"</i> <button type='button' class='weui-desktop-opr-btn weui-desktop-opr-btn_close'>删除</button></span>";
+				$node.before(html);
+			}
 		</script>
 		<style>
 			body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, fieldset, textarea {
@@ -33,43 +78,46 @@
 			    padding: 0;
 			}
 			button, input, select, textarea {
-		    font-family: inherit;
-		    font-size: 100%;
-		    margin: 0;
-		    outline: 0;
-		}
-		textarea {
-		    overflow: auto;
-		    vertical-align: top;
-		    resize: none;
-		}
-		textarea, input {
-	    color: #353535;
-		}
-		textarea {
-	    resize: none;
-	    overflow-y: auto;
-	}
-	button {
-    background: none;
-    border: 0;
-    color: inherit;
-    cursor: default;
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
-    padding: 0;
-    -webkit-appearance: button;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-    background-color: transparent;
-    border-width: 0;
-    cursor: pointer;
-}
+			    font-family: inherit;
+			    font-size: 100%;
+			    margin: 0;
+			    outline: 0;
+			}
+			textarea {
+			    overflow: auto;
+			    vertical-align: top;
+			    resize: none;
+			}
+			textarea, input {
+		    	color: #353535;
+			}
+			textarea {
+			    resize: none;
+			    overflow-y: auto;
+			}
+			button {
+			    background: none;
+			    border: 0;
+			    color: inherit;
+			    cursor: default;
+			    font: inherit;
+			    line-height: normal;
+			    overflow: visible;
+			    padding: 0;
+			    -webkit-appearance: button;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+		    }
+			button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+			    -webkit-appearance: none;
+			    background-color: transparent;
+			    border-width: 0;
+			    cursor: pointer;
+			}
+			ul,ol{
+				list-style: none;
+			}
 			#article_setting_area{
 			  max-width: 1200px;
 			  min-width: 980px;
@@ -380,6 +428,74 @@ button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::
 .weui-desktop-form-tag__wrp {
     margin: 0;
 }
+.weui-desktop-form-tag {
+    position: relative;
+    z-index: 1;
+    background-color: #F3F3F3;
+    display: inline-block;
+    margin-right: 0.48571429em;
+    line-height: 1.45714286em;
+}
+.weui-desktop-form-tag__area .weui-desktop-form-tag, .weui-desktop-form-tag__area .weui-desktop-form-tag__input {
+    vertical-align: top;
+    margin-bottom: 0.48571429em;
+}
+.weui-desktop-form-tag__name {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    max-width: 5em;
+    display: inline-block;
+    padding: 0 4px;
+    font-style: normal;
+    vertical-align: middle;
+    margin-top: -0.2em;
+    font-size: 12px;
+}
+.article_tags_dialog .weui-desktop-form-tag__name {
+    max-width: 10em;
+}
+.weui-desktop-opr-btn_close {
+    position: relative;
+    border-width: 0;
+    background-color: transparent;
+}
+.weui-desktop-form-tag__name + .weui-desktop-opr-btn_close {
+    vertical-align: middle;
+    margin-top: -2px;
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #E4E8EB;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.weui-desktop-opr-btn_close:before{
+  	content: "";
+  	width: 10px;
+  	height: 1px;
+  	background-color: red;
+  	left: 50%;
+  	top: 50%;
+  	transform-origin: 50% 50%;
+  	-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  	margin-left: -5px;
+}
+.weui-desktop-opr-btn_close:after{
+	content: "";
+	width: 10px;
+  	height: 1px;
+  	background-color: red;
+  	left: 50%;
+  	top: 50%;
+  	transform-origin: 50% 50%;
+  	-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  	margin-left: -5px;
+}
+
+
 .weui-desktop-form-tag__input {
     border-width: 0;
     background-color: transparent;
@@ -409,7 +525,6 @@ button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::
     left: 0;
     right: 0;
     min-width: 128px;
-    width: fit-content;
     background: #FFFFFF;
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
     border-radius: 2px;
@@ -419,10 +534,45 @@ button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::
 .article_tags_dialog .article_tags_sug {
     top: 36px;
 }
+.article_tags_dialog .article_tags_sug .article_tags_sug_tips {
+    color: #9A9A9A;
+    padding: 0 15px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    margin-top: 15px;
+}
+.weui-desktop-dropdown__list {
+    max-height: 370px;
+    overflow-y: auto;
+    top: 0px;
+    left: 0;
+    margin-left: 0;
+    padding: 8px 0;
+}
+.weui-desktop-dropdown__list {
+    top: 5px;
+    z-index: 4001;
+}
+.weui-desktop-dropdown__list-ele {
+    cursor: pointer;
+}
+.weui-desktop-dropdown__list-ele:hover {
+    background-color: #FAFAFA;
+}
+
 .weui-desktop-form__tips {
     padding-top: 10px;
     color: #9A9A9A;
     line-height: 1.6;
+}
+.weui-desktop-dropdown__list-ele .weui-desktop-dropdown__list-ele-contain {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 16px;
+    color: #353535;
 }
 .weui-desktop-popover__wrp {
     display: inline;
@@ -484,6 +634,7 @@ button, [type="button"], [type="reset"], [type="submit"], input[type="search"]::
     word-wrap: break-word;
     word-break: break-all;
 }
+
 .article_tags_dialog .article_tags_history_hd {
     display: -ms-flexbox;
     display: flex;
