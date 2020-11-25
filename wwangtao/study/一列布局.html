@@ -32,6 +32,15 @@
 			.article-content div.img-container+p{
 				margin-top: 26px;
 			}
+	.clearfix{zoom:1}/*IE浏览器的专用属性（针对IE*/）
+    .clearfix:after{/*伪对象选择符 （在这个对象被浏览器渲染后添加一定的内容）*/
+       content:".";/*添加内容写在这里的属性值 这个属性是专门配合伪类对象,必须写;*/
+       display:block;/*将添加的内容转换为块级元素*/
+       visibility:hidden;/*可视化属性；控制元素是否可见;无论是否可见，保留物理空间；和display属性不同;*/
+       height:0;/*将添加进去的内容的高度设置为0；消除其占位；*/
+       clear:both;/*将添加去的内容作为清除浮动的对象，实现外围对象中有内容存在，因此可以自动判断高度;（告诉浮动元素说不要出现在我的两边）*/
+     }
+  
 		</style>
 		1.静态布局(使用div布局,尽量少使用table布局);
 		2.居中 固定容器宽度,设置margin;

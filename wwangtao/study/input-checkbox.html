@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<script>
+			/*1.label标签绑定click事件执行两次解决办法
+			   a.label 标签常用于包装表单元素，比如 radio checkbox input 等，如果给 label 绑定上 onclick 事件，触发事件会被执行两次;
+			   b.解决方案:
+			           改用change事件;
+			 */
+			$(function(){
+				$(".input-check-label").on("change",function(event){
+					//1.获取当前选择标签的值
+					var tag = $(this).find(".checkbox-input").val();
+					console.log(tag);
+					
+					//2.获取元素下选择的标签的对象;
+					var checkNode = $(".input-check-label .checkbox-input:checked");
+					$.each(checkNode,function(index,item){
+						var t = checkNode.val();
+					});
+					//设置最多可以选5项
+					var len = checkNode.length;
+					if(len>=5){
+						$(".input-check-label .checkbox-input:not(:checked)").prop("disabled",true);
+					}else{
+						$(".input-check-label .checkbox-input:not(:checked)").prop("disabled",false);
+					}
+				});
+			});
+		</script>
+		<style>
+	/*		1.HTML设计
+			<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input"/>
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+			2.调整默认checkbox的位置,使其不可见;
+			.checkbox-input{
+				position: absolute;
+				left: -99999em;
+			}
+			2.使用自定义样式
+			.icon-checkbox{
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				border: 1px solid #C9CDD3;
+				background-color: #FFFFFF;
+				box-sizing: border-box;
+				font-size: 0;
+				text-align: center;
+				vertical-align: middle;
+			}
+			3.添加选中后的样式(利用border和transform完成选择的效果)
+			.checkbox-input:checked+ .icon-checkbox:before{
+				content: "";
+				width: 8px;
+				height: 4px;
+				border-left: 2px solid #21B020;
+				border-bottom: 2px solid #21B020;
+				display: inline-block;
+				vertical-align: 8px;
+				margin-top: 3px;
+				transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			    -ms-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			    -webkit-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			}
+			4.添加自定义disabled后的样式
+			.checkbox-input:disabled+ .icon-checkbox{
+				background-color: #EBEDEF;
+			}
+			* */
+			
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			input[type='checkbox']{
+				box-sizing: border-box;
+				padding: 0;
+			}
+			.wrapper{
+				width: 980px;
+				margin: 20px auto;
+			}
+			.check-box{
+				width: 488px;
+				overflow-y: auto;
+				border: 1px solid #E4E8EB;
+				padding: 20px 32px;
+			}
+			.input-check-label{
+				display: inline-block;
+				margin-right: 30px;
+				margin-bottom: 16px;
+				cursor: pointer;
+			}
+			.checkbox-input{
+				position: absolute;
+				left: -99999em;
+			}
+			.icon-checkbox{
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				border: 1px solid #C9CDD3;
+				background-color: #FFFFFF;
+				box-sizing: border-box;
+				font-size: 0;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.check-content{
+				vertical-align: middle;
+			}
+			.checkbox-input:checked+ .icon-checkbox:before{
+				content: "";
+				width: 8px;
+				height: 4px;
+				border-left: 2px solid #21B020;
+				border-bottom: 2px solid #21B020;
+				display: inline-block;
+				vertical-align: 8px;
+				margin-top: 3px;
+				transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			    -ms-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			    -webkit-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+			}
+			.checkbox-input:disabled+ .icon-checkbox{
+				background-color: #EBEDEF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="check-box">
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="sh"/>
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="zjj"/>
+					<i class="icon-checkbox"></i>
+					<span class="check-content">张家界旅行</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="sz"/>
+					<i class="icon-checkbox"></i>
+					<span class="check-content">深圳旅行</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox"class="checkbox-input" value="szhou"/>
+					<i class="icon-checkbox"></i>
+					<span class="check-content">苏州旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="" />
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="" />
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="" />
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox"class="checkbox-input" value="" />
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+				<label class="input-check-label">
+					<input type="checkbox" class="checkbox-input" value="" />
+					<i class="icon-checkbox"></i>
+					<span class="check-content">上海旅行攻略</span>
+				</label>
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
+		<script>
+			$(function(){
+				//当按键被按下并释放的时候触发;
+				//如果在文档元素上进行设置，则无论元素是否获得焦点，该事件都会发生
+				$(".input-text").on("keyup",function(event){
+					var keycode = (event.keyCode ? event.keyCode : event.which);
+					if(keycode=='13'){
+						
+					}
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text" autocomplete="off"  class="input-text"/>
+	</body>
+</html>

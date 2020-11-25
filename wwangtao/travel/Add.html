@@ -6,71 +6,201 @@
 		<script type="text/javascript" src="../js/jquery-3.4.1.js.js" ></script>
 		<script>
 			$(function(){
+				
 				var isEmpty=function(o){
 					return null==o||""==o||"null"==0;
 				}
+				
 				//文章设置checkebox选择取消选择效果
 				$("#js_article_tags_area .frm_checkbox_label").on("click",function(e){
-				var selected = $(this).hasClass("selected");
-				if(selected){
-					$(this).removeClass("selected");	
-				}else{
-				 $(this).addClass("selected");	
-				}
-				e.stopPropagation();
-				e.preventDefault();
+					var selected = $(this).hasClass("selected");
+					if(selected){
+						$(this).removeClass("selected");	
+					}else{
+					 $(this).addClass("selected");	
+					}
+					e.stopPropagation();
+					e.preventDefault();
+				
+			  });
+			  
+			  //判断是否是拼音输入法
+			  var isPinyin = false;
+			  $(".weui-desktop-form-tag__input").on('compositionstart', function () { isPinyin = true });//此时为拼音输入法
+			  $(".weui-desktop-form-tag__input").on('compositionend', function () { isPinyin = false });//此时为直接输入，包括数字、字符和英文输入
+			 
+			 //keyup在控件有焦点的情况下释放键时发生
+			  $(".weui-desktop-form-tag__input").on("keyup",function(event){
+					 var keycode = (event.keyCode ? event.keyCode : event.which);
+					 //标签的个数
+					 var opr = $(".weui-desktop-form-tag__wrp .weui-desktop-form-tag").length;
+					$(this).attr("autocomplete","off");
+					//获取提示对象
+					var $this = $(".weui-desktop-dropdown-menu.article_tags_sug");
+					//显示提示对象
+					$($this).css("display","block");
+					//获取当前对象的值
+					var tag = $(this).val();
+					var b =isEmpty(tag);
+					if(b){//为空
+					  $($this).css("display","none");	
+					}
+					//判断每个标签的长度
+					if(tag.length>16){
+						$(".weui-desktop-form-tag-control .weui-desktop-form-tag__area").addClass("weui-desktop-form-tag_warn");
+					}else{
+						$(".weui-desktop-form-tag-control .weui-desktop-form-tag__area").removeClass("weui-desktop-form-tag_warn");
+					}
+					//修改提示信息
+					$(".weui-desktop-form__counter").text(tag.length+"/16");
+					if(!isPinyin){//英文输入法
+						if(opr>=5){
+						 	$(".weui-toptips.weui-toptips_error").css("display","block");
+						 	  $($this).css("display","none");	
+						 }else{
+						 	//设置话题
+						$($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);
+						 
+						 }
+						 	
+						     
+					}else{//中文输入法
+						if(opr>=5){
+							 	$(".weui-toptips.weui-toptips_error").css("display","block");
+							 	  $($this).css("display","none");	
+						}
+					     if(keycode == '13'){
+					     	
+					        
+							 if(opr>=5){
+							 	$(".weui-toptips.weui-toptips_error").css("display","block");
+							 	  $($this).css("display","none");	
+							 }else{
+							 	 //设置话题
+					         $($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);
+							 }
+							
+					        
+					     }
+					      
+					}
+					if(keycode == '13'&&!isEmpty(tag)){
+				        appendTag(tag);
+				        $(".weui-desktop-form-tag__input").val("");
+				         $($this).css("display","none");
+				         if(tag.length>16){
+				         	$(".weui-desktop-form__msg.weui-desktop-form__msg_warn").remove();
+				         	 var errorinfo="<div class=\"weui-desktop-form__msg weui-desktop-form__msg_warn\">输入的话题不符合平台要求，请删除</div>";
+				             $(".weui-desktop-dropdown-menu.article_tags_sug").before(errorinfo);
+				             
+				         }else{
+				         	$(".weui-desktop-form__msg.weui-desktop-form__msg_warn").remove();
+				         }
+				        
+					 }
 				
 			});
-			//判断是否是拼音输入法
-			var isPinyin = false;
-			$(".weui-desktop-form-tag__input").on('compositionstart', function () { isPinyin = true });//此时为拼音输入法
-			$(".weui-desktop-form-tag__input").on('compositionend', function () { isPinyin = false });//此时为直接输入，包括数字、字符和英文输入
-			//keyup在控件有焦点的情况下释放键时发生
-			$(".weui-desktop-form-tag__input").on("keyup",function(event){
-				var keycode = (event.keyCode ? event.keyCode : event.which);
-				 $(this).attr("autocomplete","off");
-				//1.获取提示对象
-				var $this = $(".weui-desktop-dropdown-menu.article_tags_sug");
-				//2.显示提示对象
-				$($this).css("display","block");
-				//3.获取当前对象的值
-				var tag = $(this).val();
-				var b =isEmpty(tag);
-				if(b){//为空
-				  $($this).css("display","none");	
-				}
-				if(!isPinyin){//英文输入法
-					$($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);	
-				}else{//中文输入法
-				     if(keycode == '13'){
-				         $($this).find(".weui-desktop-dropdown__list-ele-contain").text(tag);
-				      }
-				}
-				
-			});
-			$(".weui-desktop-form-tag__input").on("keypress",function(event){
-				var keycode = (event.keyCode ? event.keyCode : event.which);
-			    var tag = $(this).val();
-			    if(keycode == '13'&&!isEmpty(tag)){
-			    	var node=$(".weui-desktop-form-tag__area .weui-desktop-form-tag__wrp");
-				    appendTag(node,tag); 
-				}
-			});
-			$(".weui-desktop-dropdown__list .weui-desktop-dropdown__list-ele").on("click",function(){
+			
+			   //点击标签的时候
+			  $(".weui-desktop-dropdown__list .weui-desktop-dropdown__list-ele").on("click",function(){
+			    //隐藏创建标签
 			    var $this = $(".weui-desktop-dropdown-menu.article_tags_sug");
-			    $($this).css("display","none");
-			    var node=$(".weui-desktop-form-tag__area .weui-desktop-form-tag__wrp");
-			    var tag =$(".weui-desktop-form-tag__input").val();
-			    appendTag(node,tag);
+			     $($this).css("display","none");
+			     //创建标签个数
+			     var opr = $(".weui-desktop-form-tag__wrp .weui-desktop-form-tag").length;
+			     //获取输入的标签
+			     var tag =$(".weui-desktop-form-tag__input").val();
+			     //将文本框的标签设置为空
+			     $(".weui-desktop-form-tag__input").val("");
+			     //检查标签是否合法
+			     if(opr>5){//大于5个标签显示错误信息
+			     	$(".weui-toptips.weui-toptips_error").css("display","block");
+			     }else{//否则追加标签
+			     	appendTag(tag);
+			     }
+			     
+			     if(tag.length>16){//每个标签的如歌大于16个字符提示错误信息
+			     	        //1.清除已有的错误信息
+				         	 $(".weui-desktop-form__msg.weui-desktop-form__msg_warn").remove();
+				         	//2.显示错误信息
+				         	 var errorinfo="<div class=\"weui-desktop-form__msg weui-desktop-form__msg_warn\">输入的话题不符合平台要求，请删除</div>";
+				             $(".weui-desktop-dropdown-menu.article_tags_sug").before(errorinfo);
+				             
+				         }else{
+				         	//1.清楚错误信息
+				         	$(".weui-desktop-form__msg.weui-desktop-form__msg_warn").remove();
+				         	//2.移除对应的样式
+				         	$(".weui-desktop-form-tag-control .weui-desktop-form-tag__area").removeClass("weui-desktop-form-tag_warn");
+				         }
+				        
 				    
+			 });
+			 //删除标签
+			 $(document).on("click",".weui-desktop-opr-btn.weui-desktop-opr-btn_close",function(){
+				  $(this).parent().remove();
+				  var opr = $(".weui-desktop-form-tag__wrp .weui-desktop-form-tag");
+				  var flag = false;
+				  $.each(opr, function(index,item) {
+				  	var tag = $(this).find(".weui-desktop-form-tag__name").text();
+				  	if(tag.length>=16){
+				  		return true;
+				  		
+				  	}
+				  	
+				  });
+				  if(!flag){
+				  	$(".weui-desktop-form__msg.weui-desktop-form__msg_warn").remove();	
+				  	$(".weui-desktop-form-tag-control .weui-desktop-form-tag__area").removeClass("weui-desktop-form-tag_warn");
+				  	}
 			});
+			//checkbox历史标签
+			$(".weui-desktop-form__check-label").on("change",function(e){
+				var checked =$(this).find(".weui-desktop-form__checkbox").is(":checked");
+				var tag=$(this).find(".weui-desktop-form__check-content").text();
+				if(checked){
+					 appendTag(tag);	
+				}else{
+					//开启未选择的标签
+					$(".article_tags_history_bd .weui-desktop-form__checkbox:not(:checked)").attr("disabled",false);
+					//
+				}
+				
+				//获取勾选的历史标签
+				var len = $(this).find(".weui-desktop-form__checkbox:checked").length;
+				//获取已经设置的标签个数
+				var tagLen = $(".weui-desktop-form-tag__wrp .weui-desktop-form-tag").length;
+				
+				if(tagLen>=5){
+					//禁用未选择的标签
+					$(".article_tags_history_bd .weui-desktop-form__checkbox:not(:checked)").attr("disabled",true);
+				}else{
+					//开启未选择的标签
+					$(".article_tags_history_bd .weui-desktop-form__checkbox:not(:checked)").attr("disabled",false);
+				}
+				
 			});
-			function appendTag($node,tag){
+			
+			});
+			//追加显示标签
+			function appendTag(tag){
+				//追加标签
+			   var $node=$(".weui-desktop-form-tag__input");
 			   var html ="<span class='weui-desktop-form-tag'><i class='weui-desktop-form-tag__name'>"+tag+"</i> <button type='button' class='weui-desktop-opr-btn weui-desktop-opr-btn_close'>删除</button></span>";
 				$node.before(html);
+				
 			}
+			$(document).on("click",".weui-desktop-dialog__close-btn",function(){
+				$(".weui-desktop-dialog__wrp").parent().css("display","none");
+			});
 		</script>
 		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				font-size: 14px;
+			}
 			body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, fieldset, textarea {
 			    margin: 0;
 			}
@@ -118,6 +248,90 @@
 			ul,ol{
 				list-style: none;
 			}
+			
+			.article-bar{
+				max-width: 1200px;
+				min-width: 980px;
+				margin: 0 auto;
+				padding: 8px 0;
+			}
+			
+			.btn-goback{
+				display: inline-block;
+				font-size: 16px;
+				line-height: 20px;
+			}
+			.article-bar a{
+				text-decoration: none;
+				color: inherit;
+			}
+			
+			.title-input{
+				position: relative;
+				display: inline-block;
+				width: 800px;
+				border: 1px solid #EBEBEB;
+				
+				
+			}
+			#txtTitle{
+				width: 100%;
+				padding: 8px;
+				font-size: 18px;
+				line-height: 24px;
+				border-radius: 4px;
+				border: 1px solid #EBEBEB;
+				outline: 0;
+			}
+			.el-input__suffix{
+				position: absolute;
+				top: 50%;
+				right: 5px;
+			}
+			
+			.user-box{
+				float: right;
+				position: relative;
+			}
+			
+			.avatar-box .img-user-avatar{
+				border-radius: 16px;
+			}
+			.user-option-box{
+				display: none;
+				width: 96px;
+				height: 110px;
+				padding: 16px;
+				background: #FFF;
+				border: 1px solid #ebebeb;
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+				border-radius: 4px;
+				box-sizing: border-box;
+				position: absolute;
+				top: 36px;
+				left: -35px;
+				z-index: 1;
+			}
+			.user-option-box a{
+				display: block;
+				color: #3c3c3c;
+				cursor: pointer;
+				line-height: 1.75;
+				margin-top: 4px;
+				
+			}
+			.user-option-box a:first-child {
+		      margin-top: 0;
+		    }
+		    .md{
+		    	width: 1200px;
+		    	height: 800px;
+		    	margin: 8px auto;
+		    	border: 1px solid #EBEBEB;
+		    }
+		    
+		    
+		    
 			#article_setting_area{
 			  max-width: 1200px;
 			  min-width: 980px;
@@ -377,6 +591,9 @@
     position: relative;
     overflow: auto;
 }
+.weui-desktop-form-tag_warn {
+    border-color: #FA5151;
+}
 .weui-desktop-form__input-prepend-in, .weui-desktop-form__input-append-in {
     position: absolute;
     top: 0;
@@ -457,16 +674,29 @@
 .article_tags_dialog .weui-desktop-form-tag__name {
     max-width: 10em;
 }
+.weui-desktop-opr-btn {
+    border: 1px solid #E4E8EB;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    background-color: #FFFFFF;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    color: transparent;
+}
 .weui-desktop-opr-btn_close {
     position: relative;
     border-width: 0;
     background-color: transparent;
 }
+
 .weui-desktop-form-tag__name + .weui-desktop-opr-btn_close {
-    vertical-align: middle;
-    margin-top: -2px;
     width: 16px;
     height: 16px;
+    margin-top: -2px;
+    vertical-align: middle;
     border-left: 1px solid #E4E8EB;
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -476,23 +706,35 @@
   	content: "";
   	width: 10px;
   	height: 1px;
-  	background-color: red;
+  	margin-left: -5px;
+  	
+  	background-color: #9A9A9A;
+  	position: absolute;
   	left: 50%;
   	top: 50%;
-  	transform-origin: 50% 50%;
-  	-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  	margin-left: -5px;
+  	
+  	-webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
 }
 .weui-desktop-opr-btn_close:after{
 	content: "";
 	width: 10px;
   	height: 1px;
-  	background-color: red;
+  	margin-left: -5px;
+  	background-color: #9A9A9A;
+  	position: absolute;
   	left: 50%;
   	top: 50%;
-  	transform-origin: 50% 50%;
-  	-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  	margin-left: -5px;
+  	-webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+    -ms-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+    -webkit-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
 }
 
 
@@ -740,13 +982,223 @@ input[type="checkbox"], input[type="radio"] {
 .weui-desktop-dialog__ft > .weui-desktop-btn {
     margin: 0 .5em;
 }
+.weui-desktop-form__msg {
+    padding-top: 10px;
+    color: #fa5151;
+}
+.weui-desktop-form__msg_warn {
+    color: #fa5151;
+}
+.weui-desktop-form__msg {
+    padding-top: 10px;
+    color: #FA5151;
+}
+.weui-desktop-form__msg_warn {
+    color: #FA5151;
+}
+.weui-desktop-form__msg {
+    padding-top: 10px;
+    color: #FA5151;
+}
+.weui-desktop-form__msg_warn {
+    color: #FA5151;
+}
+.weui-desktop-form__checkbox:checked + .weui-desktop-icon-checkbox:before {
+    content: " ";
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid #10B2FA;
+    border-bottom: 2px solid #10B2FA;
+    border-radius: 1px;
+    display: inline-block;
+    vertical-align: 8px;
+    margin-top: 3px;
+    transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+    -ms-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+    -webkit-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+}
+.weui-desktop-form__checkbox:disabled + .weui-desktop-icon-checkbox {
+    background-color: #EBEDEF;
+}
+.weui-toptips {
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 50000;
+}
+.weui-toptips .weui-toptips__inner {
+    display: inline-block;
+    min-width: 280px;
+    padding: 5px 30px;
+    color: #FFFFFF;
+}
+.weui-toptips_error .weui-toptips__inner {
+    background-color: #EAA000;
+}
+.weui-desktop-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    cursor: default;
+    color: #FFFFFF;
+}
+
+.tool_area_wrp{
+	margin: 30px auto 0;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: #fff;
+    border-top: 1px solid #d9dadc;
+    z-index: 118;
+    border-top-width: 0;
+    box-shadow: 0 -1px 4px 0 rgba(0,0,0,0.05);
+    
+}
+.tool_area{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+.tool_area .tool_bar{
+	position: relative;
+	padding: 20px 60px 15px 30px;
+}
+.tool_bar .tool_bar_extend_left {
+    float: left;
+    vertical-align: middle;
+    margin-top: 5px;
+    font-size: 0;
+}
+.tool_bar .fold_tips {
+    font-size: 14px;
+    position: relative;
+    color: #9a9a9a;
+    margin-top: 5px;
+    padding-left: 14px;
+    margin-left: 14px;
+}
+.tool_bar .fold_tips:first-child {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.btn {
+    display: inline-block;
+    overflow: visible;
+    padding: 0 22px;
+    height: 30px;
+    line-height: 30px;
+    *line-height: 28px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 14px;
+    border-width: 1px;
+    border-style: solid;
+    cursor: pointer;
+}
+.btn_default {
+    background-color: #fff;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),to(#fff));
+    background-image: linear-gradient(to bottom,#fff 0,#fff 100%);
+    border-color: #e7e7eb;
+    color: #353535;
+}
+.btn_primary {
+    background-color: #10B2FA;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#010B2FA),to(#10B2FA));
+    background-image: linear-gradient(to bottom,#10B2FA 0,#10B2FA 100%);
+    border-color: #10B2FA;
+    color: #fff;
+}
+.btn {
+    min-width: 60px;
+}
+.r {
+    float: right;
+}
+.tool_bar .btn {
+    margin-right: 1em;
+}
+.btn.btn_input {
+    padding: 0;
+}
+.btn.btn_input {
+    min-width: 104px;
+}
+.tool_bar .btn.r {
+    margin-right: 0;
+    margin-left: 1em;
+}
+.tool_bar .btn {
+    min-width: 100px;
+}
+.page_appmsg_new .tool_bar .btn.r {
+    margin-left: 12px;
+}
+.btn button {
+    display: block;
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    overflow: visible;
+    padding: 0 22px;
+}
+.btn_primary button {
+    color: #fff;
+}
+.btn.btn_input button {
+    width: 100%;
+}
+.tool_bar .btn:last-child {
+    margin-left: 0;
+}
+.tool_area .tool_bar:after {
+    content: "\200B";
+    display: block;
+    height: 0;
+    clear: both;
+}
 </style>
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="article-bar"></div>
+			<div class="article-bar">
+			   <div class="btn-goback"><a href="#">文章管理</a></div>
+			   <div class="title-input">
+			   	    <input type="text" maxlength="100" id="txtTitle" placeholder="请输入标题" />
+			   	    <span class="el-input__suffix">
+			   	    	0/100
+			   	    </span>
+			   </div>
+			   <div class="user-box">
+			   	 <div class="btn-userinfo">
+			   	 	<div class="avatar-box">
+			   	 		<a href="#"><img class="img-user-avatar" src="https://profile.csdnimg.cn/B/4/6/3_qq_29393273" width="32" height="32" ></a>
+			   	 	</div>
+			   	 	<div class="user-option-box">
+			   	 		<a href="#">文章管理</a>
+			   	 		<a href="#">我的文章</a>
+			   	 		<a href="#">退出</a>
+			   	 	</div>
+			   	 </div>
+			   </div>	
+			</div>
 			<div class="md"></div>
-			<div class="appsmg-editor__after-area" id="article_setting_area">
+			<div class="appsmg-editor__after-area" id="article_setting_area" style="min-height: 360px;">
 				<div id="js_cover_description_area" class="msg-editor__setting-group">
 					<div class="setting-group__title">封面和摘要</div>
 					<div class="setting-group__content setting-group__content_main">
@@ -801,26 +1253,52 @@ input[type="checkbox"], input[type="radio"] {
 			    </div>
 			</div>
 			</div>
+			 <div class="tool_area_wrp">
+			 	 <div class="js_bot_bar tool_area">
+			    <div class="tool_bar">
+			    	<div class="tool_bar_extend_left" id="bot_bar_left_container">
+			    		<span class="fold_tips" id="word_count_container">
+			    			正文字数
+			    			<span class="fold_tips_value js_word_count">1449</span>
+			    		</span>
+			    	    
+			    	</div>
+			    	<span id="js_submit" class="btn btn_input btn_primary r">
+			    		<button type="button">保存</button>
+			    	</span>
+			    	<span id="js_submit" class="btn btn_input btn_default r">
+			    		<button type="button">保存草稿</button>
+			    	</span>
+			    </div>
+			  </div>
+			 </div>
+			
 		</div>
-        <div>
+		<div id="app">
+			<div class="weui-toptips weui-toptips_error" style="display: none;"><div class="weui-toptips__inner">      最多添加5个话题    </div></div>
+		
+         <div>
 			<div class="weui-desktop-dialog__wrp article_tags_dialog js_article_tags_dialog">
 				<div class="weui-desktop-dialog" style="width: 600px;">
 					<div class="weui-desktop-dialog__hd">
 						<h3 class="weui-desktop-dialog__title">话题标签</h3> <button class="weui-desktop-icon-btn weui-desktop-dialog__close-btn"><svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M10.01 8.996l7.922-7.922c.086-.086.085-.21.008-.289l-.73-.73c-.075-.074-.208-.075-.29.007L9 7.984 1.077.062C.995-.02.863-.019.788.055l-.73.73c-.078.078-.079.203.007.29l7.922 7.92-7.922 7.922c-.086.086-.085.212-.007.29l.73.73c.075.074.207.074.29-.008l7.92-7.921 7.922 7.921c.082.082.215.082.29.008l.73-.73c.077-.078.078-.204-.008-.29l-7.921-7.921z"></path></svg></button></div>
 					<div class="weui-desktop-dialog__bd">
 						<div class="article_tags_dialog_inner">
-							<form>
+							<form onsubmit="return false;">
 								<div class="weui-desktop-form__control-group"><label class="weui-desktop-form__label">话题</label>
 									<div class="weui-desktop-form__controls">
 										<div class="tags_input_wrap js_not_hide_similar_tags">
 											<div>
-												<div class="weui-desktop-form-tag-control"><span class="weui-desktop-form-tag__area"><span class="weui-desktop-form__input-append-in"><em class="weui-desktop-form__counter">0/16</em></span> <span class="weui-desktop-form-tag__wrp"> <input id="tag-0.7277698927293168" type="text" placeholder="请输入话题，按回车分割" class="weui-desktop-form-tag__input"></span> <label for="tag-0.7277698927293168" class="weui-desktop-form-tag__input__label"></label></span>
+												<div class="weui-desktop-form-tag-control">
+													<span class="weui-desktop-form-tag__area"><span class="weui-desktop-form__input-append-in"><em class="weui-desktop-form__counter">0/16</em></span> <span class="weui-desktop-form-tag__wrp"> <input id="tag-0.7277698927293168" type="text" placeholder="请输入话题，按回车分割" class="weui-desktop-form-tag__input"></span> <label for="tag-0.7277698927293168" class="weui-desktop-form-tag__input__label"></label></span>
 													<!---->
 													<!---->
 													<!---->
 													<!---->
 												</div>
 											</div>
+											
+												
 											<!---->
 											<div class="weui-desktop-dropdown-menu article_tags_sug" style="display: none;">
 												<div class="article_tags_sug_tips">创建话题</div>
@@ -844,7 +1322,13 @@ input[type="checkbox"], input[type="radio"] {
 										<div class="article_tags_history">
 											<div class="article_tags_history_hd">
 												<h4>历史话题</h4></div>
-											<div class="article_tags_history_bd"><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612311375873"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">张家界旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612210712579"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">张家界旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667938664450"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667921887232"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148297953282"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148281176065"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148230844425"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593352108630654980"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351845396135944"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351624507310083"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351160432738306"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350932279377921"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350634198581251"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350341989810181"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350111487639555"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593349794498920449"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1591932451130490884"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1586327643296153606"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行</span></label></div>
+											<div class="article_tags_history_bd">
+												<label class="weui-desktop-form__check-label">
+													<input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612311375873">
+													<i class="weui-desktop-icon-checkbox"></i>
+													<span class="weui-desktop-form__check-content">张家界旅行攻略</span>
+												</label>
+												<label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593354612210712579"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">张家界旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667938664450"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353667921887232"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">深圳旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148297953282"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148281176065"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593353148230844425"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">广州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593352108630654980"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">北京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351845396135944"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351624507310083"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">杭州旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593351160432738306"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350932279377921"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">南京旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350634198581251"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350341989810181"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">长沙旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593350111487639555"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1593349794498920449"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">上海旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1591932451130490884"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行攻略</span></label><label class="weui-desktop-form__check-label"><input type="checkbox" checking="" class="weui-desktop-form__checkbox" value="1586327643296153606"> <i class="weui-desktop-icon-checkbox"></i> <span class="weui-desktop-form__check-content">苏州旅行</span></label></div>
 										</div>
 										<!---->
 										<!---->
@@ -858,5 +1342,6 @@ input[type="checkbox"], input[type="radio"] {
 			</div>
 			<div class="weui-desktop-mask"></div>
 		</div>
+	   </div>
 	</body>
 </html>
